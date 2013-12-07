@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.google.com/recaptcha/api/noscript?k=<PUBLIC_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      pragma:
+      - no-cache
+      expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date:
+      - Sun, 03 Nov 2013 08:18:28 GMT
+      content-type:
+      - text/html
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      alternate-protocol:
+      - 80:quic
+      connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PCFET0NUWVBFIEhUTUw+PGh0bWw+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0i
+        Q29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9VVRG
+        LTgiPgo8dGl0bGU+VmVyaWZpY2Hn428gZGUgc2VndXJhbudhIGRvIHJlQ0FQ
+        VENIQSAobmVjZXNz4XJpbyBwYXJhIHByZWVuY2hlciBvIGZvcm11bOFyaW8p
+        PC90aXRsZT48L2hlYWQ+Cjxib2R5PjxwPlByZWNpc2Ftb3MgdGVyIGNlcnRl
+        emEgZGUgcXVlIG8gYWNlc3NvIG7jbyBzZWphIHVtYSBpbnZhc+NvLiBSZXNv
+        bHZhIG8gZGVzYWZpbyBhYmFpeG8gZSBjbGlxdWUgbm8gYm90428gIlNvdSB1
+        bSB1c3XhcmlvIGh1bWFubyIgcGFyYSBvYnRlciB1bSBj82RpZ28gZGUgY29u
+        ZmlybWHn428uIFBhcmEgZmFjaWxpdGFyIGVzc2UgcHJvY2Vzc28gbm8gZnV0
+        dXJvLCByZWNvbWVuZGFtb3MgcXVlIHZvY+ogYXRpdmUgbyBKYXZhc2NyaXB0
+        LjwvcD4KPGZvcm0gYWN0aW9uPSIiIG1ldGhvZD0iUE9TVCI+PGlucHV0IHR5
+        cGU9ImhpZGRlbiIgbmFtZT0icmVjYXB0Y2hhX2NoYWxsZW5nZV9maWVsZCIg
+        aWQ9InJlY2FwdGNoYV9jaGFsbGVuZ2VfZmllbGQiIHZhbHVlPSIwM0FISl9W
+        dXVUUjRiMUJuU0l5SldhOTA2eWxaYzV3UmdZd2lyUTBYWWNrNGdsNWZXeUxx
+        UFJjaUwwUmRwUGdDT1BaSmlIQTNOV3VDSldwLVBoRTY5VnFEODQzTXVSZlJJ
+        cTVSNTVuc0h5OGx3ZW0wUmwtUXE0YWxUcGtqMlNwWndpT1p6MlVuRlhKeG9r
+        TE5mN0hjc1pSZ01wZXBxdU5aRWlsRXBIZDdSSXh1U1ZVQmIyM0dnbVJBTSI+
+        CjxjZW50ZXI+PGltZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjU3IiBhbHQ9IiIg
+        c3JjPSJpbWFnZT9jPTAzQUhKX1Z1dVRSNGIxQm5TSXlKV2E5MDZ5bFpjNXdS
+        Z1l3aXJRMFhZY2s0Z2w1Zld5THFQUmNpTDBSZHBQZ0NPUFpKaUhBM05XdUNK
+        V3AtUGhFNjlWcUQ4NDNNdVJmUklxNVI1NW5zSHk4bHdlbTBSbC1RcTRhbFRw
+        a2oyU3Bad2lPWnoyVW5GWEp4b2tMTmY3SGNzWlJnTXBlcHF1TlpFaWxFcEhk
+        N1JJeHVTVlVCYjIzR2dtUkFNIj48L2NlbnRlcj4KPGRpdiBjbGFzcz0icmVj
+        YXB0Y2hhX2lucHV0X2FyZWEiPjxsYWJlbCBmb3I9InJlY2FwdGNoYV9yZXNw
+        b25zZV9maWVsZCI+RGlnaXRlIG8gdGV4dG86PC9sYWJlbD48L2Rpdj4KPGRp
+        dj48aW5wdXQgbmFtZT0icmVjYXB0Y2hhX3Jlc3BvbnNlX2ZpZWxkIiBpZD0i
+        cmVjYXB0Y2hhX3Jlc3BvbnNlX2ZpZWxkIiB0eXBlPSJ0ZXh0IiBhdXRvY29t
+        cGxldGU9Im9mZiI+PC9kaXY+CjxkaXY+PGEgaHJlZj0iP2s9PFBVQkxJQ19L
+        RVk+JmFtcDtpc19hdWRpbz1mYWxzZSI+VGVudGUgb3V0cm8gZGVzYWZpbzwv
+        YT4KPGEgaHJlZj0iP2s9PFBVQkxJQ19LRVk+JmFtcDtpc19hdWRpbz10cnVl
+        Ij5PYnRlciB1bSBkZXNhZmlvIGRlIOF1ZGlvPC9hPgo8YSBocmVmPSJodHRw
+        Oi8vd3d3Lmdvb2dsZS5jb20vcmVjYXB0Y2hhL2hlbHA/Yz0wM0FISl9WdXVU
+        UjRiMUJuU0l5SldhOTA2eWxaYzV3UmdZd2lyUTBYWWNrNGdsNWZXeUxxUFJj
+        aUwwUmRwUGdDT1BaSmlIQTNOV3VDSldwLVBoRTY5VnFEODQzTXVSZlJJcTVS
+        NTVuc0h5OGx3ZW0wUmwtUXE0YWxUcGtqMlNwWndpT1p6MlVuRlhKeG9rTE5m
+        N0hjc1pSZ01wZXBxdU5aRWlsRXBIZDdSSXh1U1ZVQmIyM0dnbVJBTSZhbXA7
+        aGw9cHQtQlIiIHRhcmdldD0iX2JsYW5rIj5BanVkYTwvYT48L2Rpdj4KPGRp
+        dj48aW5wdXQgdHlwZT0ic3VibWl0IiBuYW1lPSJzdWJtaXQiIHZhbHVlPSJT
+        b3UgdW0gdXN14XJpbyBodW1hbm8iPjwvZGl2PjwvZm9ybT48L2JvZHk+PC9o
+        dG1sPg==
+    http_version: 
+  recorded_at: Sun, 03 Nov 2013 08:18:28 GMT
+- request:
+    method: post
+    uri: http://www.google.com/recaptcha/api/verify
+    body:
+      encoding: US-ASCII
+      string: privatekey=<PRIVATE_KEY>&remoteip=127.0.0.1&challenge=03AHJ_VuuTR4b1BnSIyJWa906ylZc5wRgYwirQ0XYck4gl5fWyLqPRciL0RdpPgCOPZJiHA3NWuCJWp-PhE69VqD843MuRfRIq5R55nsHy8lwem0Rl-Qq4alTpkj2SpZwiOZz2UnFXJxokLNf7HcsZRgMpepquNZEilEpHd7RIxuSVUBb23GgmRAM&response=foo+bar
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      pragma:
+      - no-cache
+      expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date:
+      - Sun, 03 Nov 2013 08:18:29 GMT
+      content-type:
+      - text/plain
+      x-recaptcha-request-duration:
+      - '0'
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      alternate-protocol:
+      - 80:quic
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        false
+        incorrect-captcha-sol
+    http_version: 
+  recorded_at: Sun, 03 Nov 2013 08:18:29 GMT
+recorded_with: VCR 2.7.0

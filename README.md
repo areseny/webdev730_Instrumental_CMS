@@ -20,3 +20,12 @@ heroku config:add ASSET_SYNC_MANIFEST=false
 heroku config:add ASSET_SYNC_EXISTING_REMOTE_FILES=keep
 heroku config:add CLOUDFRONT_DOMAIN=xxx.cloudfront.net
 ```
+
+## Recaptcha
+
+Set the following env. variables on Heroku:
+
+```
+heroku config:add RECAPTCHA_PUBLIC_KEY=xxx
+heroku config:add RECAPTCHA_PRIVATE_KEY=yyy
+```
