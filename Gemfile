@@ -17,3 +17,7 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-livereload'
 end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
