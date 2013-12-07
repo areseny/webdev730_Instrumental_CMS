@@ -37,4 +37,5 @@ end
 group :test do
   gem 'vcr'
   gem 'factory_girl'
+  gem 'capybara'
 end

@@ -1,0 +1,22 @@
+@import 'mixins';
+
+.field-with-errors {
+  border: 1px solid red !important;
+}
+
+.field-error-message {
+  margin: 6px 0 0 0 !important;
+  color: red;
+  font-style: italic;
+}
+
+ul.field-error-message {
+  padding: 0px;
+
+  li {
+    list-style: none;
+    &:before {
+      content: "- "
+    }
+  }
+}
