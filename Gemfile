@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'unicorn'
 gem 'redcarpet'
+gem 'memcachier'
+gem 'dalli'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
