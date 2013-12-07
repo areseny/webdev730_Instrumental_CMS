@@ -1,0 +1,11 @@
+<% cache do %>
+<div class="newsletter-signup">
+  <%= form_for Subscriber.new, remote: true do |f| %>
+    <%= f.label :name, "Newsletter" %>
+    <%= f.text_field :name, placeholder: "Nome" %>
+    <%= f.text_field :email, placeholder: "E-mail" %>
+    <%= f.submit "enviar", class: 'btn-green' %>
+  <% end -%>
+  <a href="#top" class="scroll-to-top" title="Voltar ao topo">Voltar ao topo</a>
+</div>
+<% end -%>

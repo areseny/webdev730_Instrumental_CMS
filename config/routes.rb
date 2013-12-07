@@ -12,4 +12,6 @@ InstrumentalSescBrasil::Application.routes.draw do
     post :contact, path: "contato"
   end
 
+  resources :subscribers, only: [:create]
+
 end

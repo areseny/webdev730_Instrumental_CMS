@@ -1,0 +1,6 @@
+<% if @subscriber.errors.empty? %>
+  alert('Você foi adicionado a nossa newsletter, obrigado.');
+  $(".newsletter-signup input[type=text]").val("");
+<% else -%>
+  alert('<%= j @subscriber.errors.full_messages.join("\n") %>');
+<% end -%>

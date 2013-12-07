@@ -1,0 +1,42 @@
+@import "mixins";
+
+.newsletter-signup {
+
+  width: 980px;
+  margin: 0px auto;
+
+  form {
+    display: inline-block;
+    width: 539px;
+    height: 50px;
+    padding: 15px 10px 0 18px;
+    background: image-url("bg-newsletter.png");
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 5px;
+    color: white;
+    font: 16px DIN Pro Bold;
+    text-transform: uppercase;
+    &:after { content: ": "; }
+  }
+
+  input[type=text] {
+    height: 22px;
+    padding: 0 10px;
+    border: none;
+    @include border-radius(5px, 5px, 5px, 5px);
+  }
+
+  .scroll-to-top {
+    width: 91px;
+    height: 50px;
+    float: right;
+    cursor: pointer;
+    background: image-url("up.png");
+    text-indent: -9999px;
+  }
+
+}
