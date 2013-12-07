@@ -1,0 +1,28 @@
+@import 'mixins';
+
+.btn-cyan {
+  border: none;
+  padding: 2px 15px;
+  background: $cyan;
+  color: white;
+  font: 16px Aaux Pro Bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  @include border-radius(3px, 3px, 3px, 3px);
+}
+
+.btn-green {
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  height: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  border: none;
+  padding: 0 30px;
+  @include gradient(#008c95, #055459);
+  @include box-shadow(1px);
+}
