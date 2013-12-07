@@ -10,6 +10,7 @@ gem 'unicorn'
 gem 'redcarpet'
 gem 'memcachier'
 gem 'dalli'
+gem 'faraday'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
@@ -34,5 +35,6 @@ group :development, :test do
 end
 
 group :test do
+  gem 'vcr'
   gem 'factory_girl'
 end
