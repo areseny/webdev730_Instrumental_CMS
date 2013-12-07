@@ -51,6 +51,16 @@ body {
     color: white;
   }
 
+  small {
+    float: right;
+    color: white;
+    display: inline-block;
+    padding-top: 10px;
+    font: 14px Arial Narrow;
+    white-space: nowrap;
+    text-align: right;
+  }
+
   &.block-title-orange {
     padding: 12px;
     background-color: $orange;

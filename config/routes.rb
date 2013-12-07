@@ -7,4 +7,9 @@ InstrumentalSescBrasil::Application.routes.draw do
     get :privacy, path: "privacidade"
   end
 
+  controller :contact_form do
+    get :contact_form, path: "contato"
+    post :contact, path: "contato"
+  end
+
 end

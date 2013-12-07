@@ -1,0 +1,22 @@
+<% content_for :content do %>
+
+<% cache(:contact_form_header) do %>
+<div class="block-title">
+  <h1><%= t ".title" %></h1>
+  <small><%= t ".hint" %></small>
+</div>
+<% end -%>
+
+<div class="block contact-form">
+  <div class="contact-form-content">
+    <%= yield %>
+  </div>
+  <% cache(:contact_form_social_nav) do %>
+  <nav class="contact-form-social-nav" role="navigation">
+    <%= contact_form_facebook_link %>
+    <%= contact_form_twitter_link %>
+  </nav>
+  <% end -%>
+</div>
+<% end -%>
+<%= render template: "layouts/application" %>

@@ -1,0 +1,30 @@
+<%= form_for(@contact_form, url: contact_path, remote: true) do |f| %>
+
+  <%= render "flash_messages" %>
+
+  <div class="form-row">
+    <%= f.text_field :name, autofocus: true,
+                     placeholder: t(".name") %>
+    <%= f.error_message_for :name %>
+  </div>
+
+  <div class="form-row">
+    <%= f.email_field :email, placeholder: t(".email") %>
+    <%= f.error_message_for :email %>
+  </div>
+
+  <div class="form-row">
+    <%= f.text_area :message, placeholder: t(".message") %>
+    <%= f.error_message_for :message %>
+  </div>
+
+  <div class="form-row">
+    <%= recaptcha_box %>
+    <%= f.error_message_for :captcha %>
+  </div>
+
+  <div class="form-row">
+    <%= f.button t(".send"), class: "btn-green" %>
+  </div>
+
+<% end -%>

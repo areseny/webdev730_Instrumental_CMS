@@ -1,0 +1,47 @@
+@import 'mixins';
+
+.contact-form {
+  display: table;
+  > * {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+.contact-form-content {
+  padding: 30px;
+  width: 100%;
+}
+
+.contact-form-social-nav {
+  padding: 30px 30px 30px 51px;
+  background: image-url("separator.jpg") no-repeat 5px top;
+  min-height: 383px;
+
+  a { display: inline-block; }
+  a + a { margin-top: 25px; }
+}
+
+.new_contact_form {
+  .form-row {
+    > input[type=text],
+    > input[type=email],
+    > textarea {
+      width: 100%;
+      display: block;
+      padding: 12px 25px;
+      border: 1px solid $formborders;
+      font-size: 14px;
+      font-family: Arial Narrow, Arial;
+    }
+
+    .field-error-message { padding-left: 25px; }
+
+    > input { height: 45px; }
+    > textarea { height: 150px; }
+
+    & + .form-row { margin-top: 20px; }
+  }
+
+  .flash { margin-bottom: 20px; }
+}

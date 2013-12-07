@@ -1,6 +1,11 @@
 pt-BR:
   title: Instrumental SESC Brasil
 
+  layouts:
+    contact_form:
+      title: Contato
+      hint: Envie sua mensagem com sugestões, críticas e dúvidas por e-mail.
+
   application:
     footer:
       social: "Instrumental na Rede"
@@ -54,11 +59,29 @@ pt-BR:
           Foi premiada pela APCA (Associação Paulista de Críticos de Arte) em 1998, 1999 e 2000 pelo programa de rádio Vozes do Brasil.
 
           Em 2002, lançou o livro de entrevistas Vozes do Brasil com artistas como Cássia Eller, Lenine, Arnaldo Antunes, Luiz Melodia, entre outros.
+
+  contact_form:
+    form:
+      name: Nome
+      email: E-mail
+      message: Mensagem
+      send: enviar
+
   flash:
     server_error: |-
       Ocorreu um erro no servidor.
 
       A equipe de desenvolvimento já foi avisada.
+    contact_form:
+      error: |-
+        Não foi possível enviar sua mensagem.
+
+        Verifique se os campos foram preenchidos corretamente.
+
+      success: |-
+        Sua mensagem foi enviada com sucesso!
+
+        Entraremos em contato assim que possível.
 
   links:
     twitter:
@@ -77,3 +100,36 @@ pt-BR:
   errors:
     messages:
       email_format: "não é um endereço de e-mail válido"
+      invalid_captcha: "não confere"
+
+  postman:
+    contact_form_notification:
+      to:
+        name: "Instrumental SESC Brasil"
+        email: "contato.instrumental@streamer.com.br"
+      subject: "Mensagem enviada pelo formulário de contato do site do Instrumental SESC Brasil"
+      body: |-
+        Mensagem enviada através do formulário de contato do site:
+
+        De: %NOME%
+        E-mail: %EMAIL%
+        Endereço IP: %IP%
+
+        Mensagem:
+
+        %MENSAGEM%
+
+    contact_form_acknowledgement:
+      from:
+        name: "Instrumental SESC Brasil"
+        email: "contato@instrumentalsescbrasil.org.br"
+      subject: "Obrigado por seu contato"
+      body: |-
+        Olá, %NOME%. Obrigado pelo seu contato no site do Instrumental SESC Brasil.
+
+        Sua mensagem foi recebida, e entraremos em contato assim que possível.
+
+        Atenciosamente,
+
+        Equipe Instrumental SESC Brasil
+        %URL%

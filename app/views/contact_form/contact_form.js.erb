@@ -1,0 +1,3 @@
+response = "<%= raw j render('form') %>";
+$(".contact-form-content").html(response);
+$(document).trigger("recaptcha:create");
