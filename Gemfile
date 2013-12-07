@@ -11,6 +11,7 @@ gem 'redcarpet'
 gem 'memcachier'
 gem 'dalli'
 gem 'faraday'
+gem 'airbrake'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'

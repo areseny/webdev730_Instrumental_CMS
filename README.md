@@ -37,3 +37,11 @@ Use the Mandrill add-on and set the following env. variable on Heroku:
 ```
 heroku config:add EMAIL_HOST=instrumentalsescbrasil.org.br
 ```
+
+# Airbrake error monitoring
+
+Set this:
+
+```
+heroku config:add AIRBRAKE_KEY=xxx
+```
