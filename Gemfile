@@ -14,4 +14,6 @@ gem 'unicorn'
 group :development do
   gem 'foreman'
   gem 'quiet_assets'
+  gem 'guard-bundler'
+  gem 'guard-livereload'
 end
