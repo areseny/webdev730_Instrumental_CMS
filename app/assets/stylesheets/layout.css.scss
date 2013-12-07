@@ -18,3 +18,65 @@ body {
   padding: 35px 0;
   overflow: auto;
 }
+
+.round {
+  @include border-radius(10px, 10px, 10px, 10px);
+}
+
+.fill {
+  width: 100%;
+}
+
+.block {
+  @include border-radius(10px, 10px, 10px, 10px);
+  background: white;
+  padding: 25px;
+  & + * { margin-top: 15px; }
+}
+
+.block-title {
+  margin: 0 25px;
+  padding: 20px;
+  background: black;
+  color: white;
+  display: block;
+  overflow: auto;
+  @include border-radius(10px, 10px, 0, 0);
+
+  h1, h2, h3 {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    font: 25px Aaux Pro Bold;
+    color: white;
+  }
+
+  &.block-title-orange {
+    padding: 12px;
+    background-color: $orange;
+  }
+}
+
+.feature {
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.feature-sidebar {
+  position: absolute;
+  top: 35px;
+  right: 0px;
+  width: 340px;
+}
+
+.feature-title {
+  display: inline-block;
+  margin: 0 0 10px 0;
+  color: white;
+  font: 40px Aaux Pro Light;
+}
+
+.autoscroll {
+  overflow: auto;
+  padding-right: 10px;
+}
