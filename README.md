@@ -29,3 +29,11 @@ Set the following env. variables on Heroku:
 heroku config:add RECAPTCHA_PUBLIC_KEY=xxx
 heroku config:add RECAPTCHA_PRIVATE_KEY=yyy
 ```
+
+# E-mail delivery
+
+Use the Mandrill add-on and set the following env. variable on Heroku:
+
+```
+heroku config:add EMAIL_HOST=instrumentalsescbrasil.org.br
+```

@@ -28,6 +28,7 @@ group :development do
   gem 'quiet_assets'
   gem 'guard-bundler'
   gem 'guard-livereload'
+  gem 'letter_opener'
 end
 
 group :development, :test do

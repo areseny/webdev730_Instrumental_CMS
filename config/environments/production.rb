@@ -78,4 +78,19 @@ InstrumentalSescBrasil::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Sends e-mail via SMTP in production
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    host: ENV['EMAIL_HOST']
+  }
+  ActionMailer::Base.smtp_settings = {
+    :port =>           '587',
+    :address =>        'smtp.mandrillapp.com',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
+    :domain =>         'instrumentalsescbrasil.org',
+    :authentication => :plain
+  }
+  ActionMailer::Base.delivery_method = :smtp
 end
