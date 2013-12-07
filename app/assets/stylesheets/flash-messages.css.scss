@@ -1,0 +1,29 @@
+@import 'mixins';
+
+.flash {
+  display: block;
+  position: relative;
+  padding: 10px 10px 10px 50px;
+  margin-bottom: 35px;
+  border: 1px solid;
+  @include border-radius(3px, 3px, 3px, 3px);
+
+  &:before {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font: 24px FontAwesome;
+  }
+
+  &.flash-error  {
+    border-color: red;
+    background-color: #ffaaaa;
+    &:before { content: "\f071"; }
+  }
+
+  &.flash-success  {
+    border-color: green;
+    background-color: #aaffaa;
+    &:before { content: "\f00C"; }
+  }
+}
