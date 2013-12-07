@@ -68,3 +68,7 @@ pt-BR:
     sesctv:
       url: "http://www.sesctv.org.br/"
       title: "Sesc TV"
+
+  errors:
+    messages:
+      email_format: "não é um endereço de e-mail válido"
