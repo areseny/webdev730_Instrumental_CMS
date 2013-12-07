@@ -1,0 +1,48 @@
+$orange: #eb6909;
+$cyan: #0099a1;
+$footerbg: #282828;
+$greytext: #414141;
+$darkcyan: #085b67;
+$formborders: #b8b8b8;
+
+@mixin border-radius($nw, $ne, $se, $sw) {
+  -moz-border-radius: $nw $ne $se $sw;
+  -webkit-border-radius: $nw $ne $se $sw;
+  -khtml-border-radius: $nw $ne $se $sw;
+  border-radius: $nw $ne $se $sw;
+}
+
+@mixin box-shadow($size) {
+  -moz-box-shadow: $size $size 4px #111;
+  -webkit-box-shadow: $size $size 4px #111;
+  box-shadow: $size $size 4px #111;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#111111')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#111111');
+}
+
+@mixin gradient($from, $to) {
+  background: $from;
+  background: -moz-linear-gradient(top, $from 0%, $to 100%);
+  background: -webkit-gradient(
+    linear, left top, left bottom,
+    color-stop(0%,$from), color-stop(100%,$to));
+  background: -webkit-linear-gradient(top, $from 0%, $to 100%);
+  background: -o-linear-gradient(top, $from 0%, $to 100%);
+  background: -ms-linear-gradient(top, $from 0%, $to 100%);
+  background: linear-gradient(to bottom, $from 0%, $to 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(
+    startColorstr='#{$from}', endColorstr='#{$to}', GradientType=0 );
+}
+
+@mixin webfont($family, $file, $marker) {
+  @font-face {
+    font-family: $family;
+    src: url(font-path("#{$file}.eot"));
+    src: url(font-path("#{$file}.eot?#iefix")) format("embedded-opentype"),
+         url(font-path("#{$file}.woff")) format("woff"),
+         url(font-path("#{$file}.ttf")) format("truetype"),
+         url(font-path("#{$file}.svg##{$marker}")) format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
