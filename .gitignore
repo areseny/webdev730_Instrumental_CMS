@@ -17,3 +17,6 @@
 
 # Ignore source material (PSD files etc)
 /doc/source
+
+# Ignore local environment configuration
+.env
