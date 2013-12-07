@@ -1,0 +1,40 @@
+@import 'mixins';
+
+header {
+  display: block;
+  background: white;
+  height: 114px;
+  position: relative;
+  overflow: hidden;
+  @include border-radius(0, 0, 10px, 10px);
+}
+
+.header-logo {
+  text-indent: -999px;
+  background: transparent;
+  display: table;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  img { display: table-cell; }
+}
+
+.nav-header {
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
+  height: 30px;
+  max-width: 700px;
+  overflow: hidden;
+
+  a {
+    color: $greytext;
+    font: 14px Aaux Pro Bold;
+    line-height: 30px;
+    display: inline-block;
+    padding: 0 16px;
+    text-decoration: none;
+
+    & + a { border-left: 1px solid $greytext; }
+  }
+}

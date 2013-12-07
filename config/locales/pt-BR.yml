@@ -1,2 +1,36 @@
 pt-BR:
-  app: Instrumental SESC Brasil
+  title: Instrumental SESC Brasil
+
+  application:
+    footer:
+      social: "Instrumental na Rede"
+      copyright: "© 2013 SescTV - Todos os direitos reservados"
+      tune_info: |-
+        ### Sintonize o SESC TV
+
+        Sky - Canal 03
+        Digital Satélite B3 - freq: 3768v
+        Net Digital - Canal 137 - SP e RJ
+
+        Para outras localidades [clique aqui](http://www.sesctv.org.br/programacao.cfm "Programação do SESC TV")
+
+  home:
+    privacy:
+      title: Política de Privacidade
+
+    about_us:
+      title: O Projeto
+
+  links:
+    twitter:
+      url: "https://twitter.com/search?q=%23InstrumentalSescBrasil"
+      title: "Entre em contato através do Twitter"
+    facebook:
+      url: "https://www.facebook.com/pages/Instrumental-SESC-Brasil/302853153079835"
+      title: "Entre em contato através do Facebook"
+    sescsp:
+      url: "http://www.sescsp.org.br/sesc"
+      title: "Sesc São Paulo"
+    sesctv:
+      url: "http://www.sesctv.org.br/"
+      title: "Sesc TV"

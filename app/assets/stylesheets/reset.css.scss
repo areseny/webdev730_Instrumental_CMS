@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  font-size: 14px;
+  font-family: Arial Narrow, Arial;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  img { border: none; }
+}
+
+p {
+  margin: 0px;
+  // Add margin between paragraphs in sequence
+  & + p { margin-top: 10px; }
+}
