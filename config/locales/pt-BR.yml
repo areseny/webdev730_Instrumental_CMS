@@ -54,6 +54,11 @@ pt-BR:
           Foi premiada pela APCA (Associação Paulista de Críticos de Arte) em 1998, 1999 e 2000 pelo programa de rádio Vozes do Brasil.
 
           Em 2002, lançou o livro de entrevistas Vozes do Brasil com artistas como Cássia Eller, Lenine, Arnaldo Antunes, Luiz Melodia, entre outros.
+  flash:
+    server_error: |-
+      Ocorreu um erro no servidor.
+
+      A equipe de desenvolvimento já foi avisada.
 
   links:
     twitter:
