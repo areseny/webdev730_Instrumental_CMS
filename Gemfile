@@ -44,4 +44,5 @@ group :test do
   gem 'vcr'
   gem 'factory_girl'
   gem 'capybara'
+  gem 'dedent'
 end
