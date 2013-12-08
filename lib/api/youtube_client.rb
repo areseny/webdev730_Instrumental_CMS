@@ -17,7 +17,8 @@ class YoutubeClient
   end
 
   def uploads
-    return to_enum(:uploads) unless block_given?
+    @uploads_count = 0
+    return to_enum(:uploads) { @uploads_count } unless block_given?
     pageToken = nil
     begin
       response = api.get("playlistItems",
@@ -26,6 +27,7 @@ class YoutubeClient
                          maxResults: ResultsPerPage,
                          pageToken: pageToken).body
       pageToken = response.nextPageToken
+      @uploads_count = response.pageInfo.totalResults
       response.items.each do |i|
         yield({
           video_id: i.snippet.resourceId.videoId,
