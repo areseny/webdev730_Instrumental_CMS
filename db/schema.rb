@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207224757) do
+ActiveRecord::Schema.define(version: 20131208104413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auth_providers", force: true do |t|
+    t.string   "key",        null: false
+    t.string   "name",       null: false
+    t.string   "token"
+    t.string   "user_id"
+    t.string   "user_name"
+    t.datetime "synced_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "auth_providers", ["key"], name: "index_auth_providers_on_key", unique: true, using: :btree
 
   create_table "contact_messages", force: true do |t|
     t.string   "email",      null: false

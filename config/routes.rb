@@ -14,4 +14,7 @@ InstrumentalSescBrasil::Application.routes.draw do
 
   resources :subscribers, only: [:create]
 
+  get 'auth/:provider/callback' => 'oauth#callback'
+  get 'auth/failure' => 'oauth#failure'
+
 end

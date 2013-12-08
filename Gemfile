@@ -12,6 +12,9 @@ gem 'memcachier'
 gem 'dalli'
 gem 'faraday'
 gem 'airbrake'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-soundcloud'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
