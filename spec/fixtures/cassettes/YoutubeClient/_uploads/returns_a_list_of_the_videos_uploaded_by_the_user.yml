@@ -1,0 +1,270 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=foobarbazrefreshtoken&client_id=<YOUTUBE_KEY>&client_secret=<YOUTUBE_SECRET>
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Instrumental SESC Brasil
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      pragma:
+      - no-cache
+      expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      date:
+      - Sun, 03 Nov 2013 08:26:50 GMT
+      content-type:
+      - application/json
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      alternate-protocol:
+      - 443:quic
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "access_token" : "ya29.AHES6ZQGEGmct8ckiHe39Q4IkS_mM9hJ8AWvV0DHyd1xEQ",
+          "token_type" : "Bearer",
+          "expires_in" : 3600,
+          "id_token" : "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE1Yzc4MTllY2E1YzU3NWFmM2YyMDdjYjY0YjFiNmU1OThhM2ExZTUifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwidmVyaWZpZWRfZW1haWwiOiJ0cnVlIiwiZW1haWxfdmVyaWZpZWQiOiJ0cnVlIiwiZW1haWwiOiJwb3RpZ3VhckBwb3RpZ3Vhci5uZXQiLCJpZCI6IjEwMTQwNTM4NzU4NTYwNzk5MjgxMyIsInN1YiI6IjEwMTQwNTM4NzU4NTYwNzk5MjgxMyIsInRva2VuX2hhc2giOiJFbDlLWWR3QUFobFVCN0VtNmJycjJRIiwiYXRfaGFzaCI6IkVsOUtZZHdBQWhsVUI3RW02YnJyMlEiLCJhdWQiOiIzNjkwODQ1NjY3MDAuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJoZCI6InBvdGlndWFyLm5ldCIsImNpZCI6IjM2OTA4NDU2NjcwMC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF6cCI6IjM2OTA4NDU2NjcwMC5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImlhdCI6MTM4MzQ2NjkxMCwiZXhwIjoxMzgzNDcwODEwfQ.AIrp7892v6n4elJWTlnu6n7dKsSRik5EgAyld0WQJ6-XN9Ndkxd_2fAYXjBJFvOFkPEVMSFOR1AljHdP9radaWebU_KzLTx6Tx2cEjtekRR6lAFISG-txTHScDBVHWxMRYYi5CU40XSuF1dKiIRlfq021GtSo188aVsLfJcDMMk"
+        }
+    http_version: 
+  recorded_at: Sun, 03 Nov 2013 08:26:50 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=contentDetails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Instrumental SESC Brasil
+      Authorization:
+      - Bearer ya29.AHES6ZQGEGmct8ckiHe39Q4IkS_mM9hJ8AWvV0DHyd1xEQ
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      expires:
+      - Sun, 03 Nov 2013 08:26:50 GMT
+      date:
+      - Sun, 03 Nov 2013 08:26:50 GMT
+      cache-control:
+      - private, max-age=300, must-revalidate, no-transform
+      etag:
+      - '"WD4VMEpMvsFyTbuuNulahhED0yg/Q9jWKgt6XCdwKg2pnPDp6SBe8gM"'
+      content-type:
+      - application/json; charset=UTF-8
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      alternate-protocol:
+      - 443:quic
+      connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#channelListResponse",
+         "etag": "\"WD4VMEpMvsFyTbuuNulahhED0yg/Q9jWKgt6XCdwKg2pnPDp6SBe8gM\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#channel",
+           "etag": "\"WD4VMEpMvsFyTbuuNulahhED0yg/nTorBkyf5CFT6rwWkp7FEB6drFY\"",
+           "id": "UC1J33aBDpyI7j_BapVU511Q",
+           "contentDetails": {
+            "relatedPlaylists": {
+             "likes": "LL1J33aBDpyI7j_BapVU511Q",
+             "favorites": "FL1J33aBDpyI7j_BapVU511Q",
+             "uploads": "UU1J33aBDpyI7j_BapVU511Q",
+             "watchHistory": "HL1J33aBDpyI7j_BapVU511Q",
+             "watchLater": "WL1J33aBDpyI7j_BapVU511Q"
+            },
+            "googlePlusUserId": "101405387585607992813"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Sun, 03 Nov 2013 08:26:51 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlistItems?playlistId=UU1J33aBDpyI7j_BapVU511Q&part=snippet&maxResults=50&pageToken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Instrumental SESC Brasil
+      Authorization:
+      - Bearer ya29.AHES6ZQGEGmct8ckiHe39Q4IkS_mM9hJ8AWvV0DHyd1xEQ
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      expires:
+      - Sun, 03 Nov 2013 08:26:51 GMT
+      date:
+      - Sun, 03 Nov 2013 08:26:51 GMT
+      cache-control:
+      - private, max-age=0, must-revalidate, no-transform
+      etag:
+      - '"WD4VMEpMvsFyTbuuNulahhED0yg/NGq7TUu_1bAaJBNmf4HeB7pKKq0"'
+      content-type:
+      - application/json; charset=UTF-8
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      server:
+      - GSE
+      alternate-protocol:
+      - 443:quic
+      connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogImtpbmQiOiAieW91dHViZSNwbGF5bGlzdEl0ZW1MaXN0UmVzcG9uc2Ui
+        LAogImV0YWciOiAiXCJXRDRWTUVwTXZzRnlUYnV1TnVsYWhoRUQweWcvTkdx
+        N1RVdV8xYkFhSkJObWY0SGVCN3BLS3EwXCIiLAogInBhZ2VJbmZvIjogewog
+        ICJ0b3RhbFJlc3VsdHMiOiA0LAogICJyZXN1bHRzUGVyUGFnZSI6IDUwCiB9
+        LAogIml0ZW1zIjogWwogIHsKICAgImtpbmQiOiAieW91dHViZSNwbGF5bGlz
+        dEl0ZW0iLAogICAiZXRhZyI6ICJcIldENFZNRXBNdnNGeVRidXVOdWxhaGhF
+        RDB5Zy8zNUxiekFFVUhwYUY4R0pVajhzN0pkMlZ3ak1cIiIsCiAgICJpZCI6
+        ICJVVWFuQlpGYmZVSXo2d3J4Y1JnQkVlRFpBZGlxQVktTlNXIiwKICAgInNu
+        aXBwZXQiOiB7CiAgICAicHVibGlzaGVkQXQiOiAiMjAxMy0wOS0yNlQwNTo0
+        MDoxMS4wMDBaIiwKICAgICJjaGFubmVsSWQiOiAiVUMxSjMzYUJEcHlJN2pf
+        QmFwVlU1MTFRIiwKICAgICJ0aXRsZSI6ICJGZXJyby12ZWxobyBkZSBKdXF1
+        ZcOtIiwKICAgICJkZXNjcmlwdGlvbiI6ICJOYSBlc3RyYWRhIGRlIFJpdmll
+        cmEiLAogICAgInRodW1ibmFpbHMiOiB7CiAgICAgImRlZmF1bHQiOiB7CiAg
+        ICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5jb20vc192aS9qSG5odWw0
+        aUFZay9kZWZhdWx0LmpwZz9zcXA9Q055UTJKTUYmcnM9QU9uNENMQjZ0YUpt
+        NTcxR2dVVUd5UEZRYWUzTGkzTjNhZyIKICAgICB9LAogICAgICJtZWRpdW0i
+        OiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5jb20vc192aS9q
+        SG5odWw0aUFZay9tcWRlZmF1bHQuanBnP3NxcD1DTnlRMkpNRiZycz1BT240
+        Q0xBd1Bnem1aOGZTUC1fdzUyV1Vja2xGSXJreGp3IgogICAgIH0sCiAgICAg
+        ImhpZ2giOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5jb20v
+        c192aS9qSG5odWw0aUFZay9ocWRlZmF1bHQuanBnP3NxcD1DTnlRMkpNRiZy
+        cz1BT240Q0xCbi1FckRyMV9uWTNNLW5iS0tfYlFya1g1QW5nIgogICAgIH0s
+        CiAgICAgInN0YW5kYXJkIjogewogICAgICAidXJsIjogImh0dHBzOi8vaTEu
+        eXRpbWcuY29tL3NfdmkvakhuaHVsNGlBWWsvc2RkZWZhdWx0LmpwZz9zcXA9
+        Q055UTJKTUYmcnM9QU9uNENMREJscnJGeEllT2xCbGhQVm1TV2hqazRKQzFP
+        ZyIKICAgICB9CiAgICB9LAogICAgImNoYW5uZWxUaXRsZSI6ICJQb3RpZ3Vh
+        ciBGYWdhIiwKICAgICJwbGF5bGlzdElkIjogIlVVMUozM2FCRHB5STdqX0Jh
+        cFZVNTExUSIsCiAgICAicG9zaXRpb24iOiAwLAogICAgInJlc291cmNlSWQi
+        OiB7CiAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgInZpZGVv
+        SWQiOiAiakhuaHVsNGlBWWsiCiAgICB9CiAgIH0KICB9LAogIHsKICAgImtp
+        bmQiOiAieW91dHViZSNwbGF5bGlzdEl0ZW0iLAogICAiZXRhZyI6ICJcIldE
+        NFZNRXBNdnNGeVRidXVOdWxhaGhFRDB5Zy9sUnJUUld4WHh2elhudGNXOEdB
+        UnhseXBFSzRcIiIsCiAgICJpZCI6ICJVVWFuQlpGYmZVSXo0VkZKcTh5a184
+        RVEtVVVRNVd0a2w1IiwKICAgInNuaXBwZXQiOiB7CiAgICAicHVibGlzaGVk
+        QXQiOiAiMjAxMy0wOS0yNlQwNTozODoyNC4wMDBaIiwKICAgICJjaGFubmVs
+        SWQiOiAiVUMxSjMzYUJEcHlJN2pfQmFwVlU1MTFRIiwKICAgICJ0aXRsZSI6
+        ICJFc3RyYWRhIHByYSBSaXZpZXJhIiwKICAgICJkZXNjcmlwdGlvbiI6ICJW
+        aWFnZW0iLAogICAgInRodW1ibmFpbHMiOiB7CiAgICAgImRlZmF1bHQiOiB7
+        CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5jb20vc192aS9oM016
+        X0c4YnFJZy9kZWZhdWx0LmpwZz9zcXA9Q055UTJKTUYmcnM9QU9uNENMRFJF
+        N0JzVDM3X3FEOGhNZ201eDlrSVg1Z014ZyIKICAgICB9LAogICAgICJtZWRp
+        dW0iOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5jb20vc192
+        aS9oM016X0c4YnFJZy9tcWRlZmF1bHQuanBnP3NxcD1DTnlRMkpNRiZycz1B
+        T240Q0xBaXpOUThuSTE2NTZ4eHk5UEZvcUdUSG83azJnIgogICAgIH0sCiAg
+        ICAgImhpZ2giOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55dGltZy5j
+        b20vc192aS9oM016X0c4YnFJZy9ocWRlZmF1bHQuanBnP3NxcD1DTnlRMkpN
+        RiZycz1BT240Q0xBSVNiRTExT2trekQ5NFplMjhZTWlVT3I4VUF3IgogICAg
+        IH0sCiAgICAgInN0YW5kYXJkIjogewogICAgICAidXJsIjogImh0dHBzOi8v
+        aTEueXRpbWcuY29tL3NfdmkvaDNNel9HOGJxSWcvc2RkZWZhdWx0LmpwZz9z
+        cXA9Q055UTJKTUYmcnM9QU9uNENMQ2RFc1VhbGJfRTJxX3BQeC1abGNqd0pa
+        V0pOUSIKICAgICB9CiAgICB9LAogICAgImNoYW5uZWxUaXRsZSI6ICJQb3Rp
+        Z3VhciBGYWdhIiwKICAgICJwbGF5bGlzdElkIjogIlVVMUozM2FCRHB5STdq
+        X0JhcFZVNTExUSIsCiAgICAicG9zaXRpb24iOiAxLAogICAgInJlc291cmNl
+        SWQiOiB7CiAgICAgImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgInZp
+        ZGVvSWQiOiAiaDNNel9HOGJxSWciCiAgICB9CiAgIH0KICB9LAogIHsKICAg
+        ImtpbmQiOiAieW91dHViZSNwbGF5bGlzdEl0ZW0iLAogICAiZXRhZyI6ICJc
+        IldENFZNRXBNdnNGeVRidXVOdWxhaGhFRDB5Zy8wbC1ZZGgxSDc2SnpjdXpB
+        Vkk0cHlLVUlrM1lcIiIsCiAgICJpZCI6ICJVVWFuQlpGYmZVSXo0SkFjVWMt
+        RUVTMi1IRWlOck01UXJBIiwKICAgInNuaXBwZXQiOiB7CiAgICAicHVibGlz
+        aGVkQXQiOiAiMjAxMy0wOS0yNlQwNTozNTo0OC4wMDBaIiwKICAgICJjaGFu
+        bmVsSWQiOiAiVUMxSjMzYUJEcHlJN2pfQmFwVlU1MTFRIiwKICAgICJ0aXRs
+        ZSI6ICJMaWxhIiwKICAgICJkZXNjcmlwdGlvbiI6ICJBIGdhdGEgVGFsaWJh
+        biIsCiAgICAidGh1bWJuYWlscyI6IHsKICAgICAiZGVmYXVsdCI6IHsKICAg
+        ICAgInVybCI6ICJodHRwczovL2kxLnl0aW1nLmNvbS9zX3ZpL09QYk5mMnoy
+        UW9BL2RlZmF1bHQuanBnP3NxcD1DTnlRMkpNRiZycz1BT240Q0xDVjJEUXJa
+        OTJyeklBMlZjR0laOUJpeUxTTnhRIgogICAgIH0sCiAgICAgIm1lZGl1bSI6
+        IHsKICAgICAgInVybCI6ICJodHRwczovL2kxLnl0aW1nLmNvbS9zX3ZpL09Q
+        Yk5mMnoyUW9BL21xZGVmYXVsdC5qcGc/c3FwPUNOeVEySk1GJnJzPUFPbjRD
+        TEJuVnljNVN1UldHSGdFQXByMDVWTTk0clhTd0EiCiAgICAgfSwKICAgICAi
+        aGlnaCI6IHsKICAgICAgInVybCI6ICJodHRwczovL2kxLnl0aW1nLmNvbS9z
+        X3ZpL09QYk5mMnoyUW9BL2hxZGVmYXVsdC5qcGc/c3FwPUNOeVEySk1GJnJz
+        PUFPbjRDTEFOclB6dkhvbko4UHVfZ1dMLW5odm9fMGFGR1EiCiAgICAgfSwK
+        ICAgICAic3RhbmRhcmQiOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55
+        dGltZy5jb20vc192aS9PUGJOZjJ6MlFvQS9zZGRlZmF1bHQuanBnP3NxcD1D
+        TnlRMkpNRiZycz1BT240Q0xBYlVCTHd1YlhMMHJlbi1Dc0hzT2h6X3YyVmNB
+        IgogICAgIH0KICAgIH0sCiAgICAiY2hhbm5lbFRpdGxlIjogIlBvdGlndWFy
+        IEZhZ2EiLAogICAgInBsYXlsaXN0SWQiOiAiVVUxSjMzYUJEcHlJN2pfQmFw
+        VlU1MTFRIiwKICAgICJwb3NpdGlvbiI6IDIsCiAgICAicmVzb3VyY2VJZCI6
+        IHsKICAgICAia2luZCI6ICJ5b3V0dWJlI3ZpZGVvIiwKICAgICAidmlkZW9J
+        ZCI6ICJPUGJOZjJ6MlFvQSIKICAgIH0KICAgfQogIH0sCiAgewogICAia2lu
+        ZCI6ICJ5b3V0dWJlI3BsYXlsaXN0SXRlbSIsCiAgICJldGFnIjogIlwiV0Q0
+        Vk1FcE12c0Z5VGJ1dU51bGFoaEVEMHlnL0plcGtISDZGSlNGMjNsRDljVjYz
+        UDFzM1YzUVwiIiwKICAgImlkIjogIlVVYW5CWkZiZlVJejRkQ3BsN1pnRjct
+        czQ0LUFmcnBselciLAogICAic25pcHBldCI6IHsKICAgICJwdWJsaXNoZWRB
+        dCI6ICIyMDEyLTA4LTE0VDAxOjIxOjE0LjAwMFoiLAogICAgImNoYW5uZWxJ
+        ZCI6ICJVQzFKMzNhQkRweUk3al9CYXBWVTUxMVEiLAogICAgInRpdGxlIjog
+        IklmIEkgRmVsbCIsCiAgICAiZGVzY3JpcHRpb24iOiAiUmVuZGl0aW9uIG9m
+        IGlmIEkgRmVsbCBieSBtZSAmIG15IG1vbSIsCiAgICAidGh1bWJuYWlscyI6
+        IHsKICAgICAiZGVmYXVsdCI6IHsKICAgICAgInVybCI6ICJodHRwczovL2kx
+        Lnl0aW1nLmNvbS92aS83cFp0cGtnOGVXMC9kZWZhdWx0LmpwZyIKICAgICB9
+        LAogICAgICJtZWRpdW0iOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55
+        dGltZy5jb20vdmkvN3BadHBrZzhlVzAvbXFkZWZhdWx0LmpwZyIKICAgICB9
+        LAogICAgICJoaWdoIjogewogICAgICAidXJsIjogImh0dHBzOi8vaTEueXRp
+        bWcuY29tL3ZpLzdwWnRwa2c4ZVcwL2hxZGVmYXVsdC5qcGciCiAgICAgfSwK
+        ICAgICAic3RhbmRhcmQiOiB7CiAgICAgICJ1cmwiOiAiaHR0cHM6Ly9pMS55
+        dGltZy5jb20vdmkvN3BadHBrZzhlVzAvc2RkZWZhdWx0LmpwZyIKICAgICB9
+        CiAgICB9LAogICAgImNoYW5uZWxUaXRsZSI6ICJQb3RpZ3VhciBGYWdhIiwK
+        ICAgICJwbGF5bGlzdElkIjogIlVVMUozM2FCRHB5STdqX0JhcFZVNTExUSIs
+        CiAgICAicG9zaXRpb24iOiAzLAogICAgInJlc291cmNlSWQiOiB7CiAgICAg
+        ImtpbmQiOiAieW91dHViZSN2aWRlbyIsCiAgICAgInZpZGVvSWQiOiAiN3Ba
+        dHBrZzhlVzAiCiAgICB9CiAgIH0KICB9CiBdCn0K
+    http_version: 
+  recorded_at: Sun, 03 Nov 2013 08:26:51 GMT
+recorded_with: VCR 2.7.0
