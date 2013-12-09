@@ -1,0 +1,64 @@
+:remove_artists_by_legacy_id:
+  - 56
+  - 54
+:date_changes:
+  :shows:
+    59: '2008-02-19'
+    81: '2008-07-15'
+    83: '2008-07-29'
+    89: '2008-09-09'
+    102: '2008-12-09'
+    143: '2009-10-06'
+    146: '2009-10-27'
+    171: '2010-05-03'
+    176: '2010-06-07'
+    199: '2010-11-22'
+    291: '2012-10-15'
+  :interviews:
+    15: '2007-05-15'
+    67: '2008-06-10'
+    81: '2008-09-09'
+    100: '2008-12-09'
+    114: '2009-02-03'
+    155: '2010-06-07'
+    165: '2010-11-01'
+  :video_chats:
+    5: '2007-11-06'
+    97: '2009-08-04'
+:name_changes:
+  "Orkestra Rumpílezz": "Letieres Leite & Orkestra Rumpilezz"
+  "Marcio Bahia Quinteto": "Márcio Bahia"
+  "Nailor Proveta Quinteto": "Nailor Proveta"
+  "Nailor Proveta Quarteto": "Nailor Proveta"
+  "Jalapeno": "Jalapeño"
+  "Sebatião Tapajós": "Sebastião Tapajós"
+  "Trio Celso de Almeida, Fábio Torres e Paulo Paulelli": "Fabio Torres Trio"
+  "Alexandre Gismonti Trio": "Alexandre Gismonti"
+  "Bernardo  Rodrigues": "Bernardo Rodrigues"
+  "Camarônes Orquestra Guitarrística": "Camarones Orquestra Guitarrística"
+  "Eduardo Ribeiro": "Edu Ribeiro"
+  "Hamilton de Holanda Quinteto": "Hamilton de Holanda"
+  "Ivan Lins e Banda Guanabara": "Ivan Lins"
+  "Izaías e seus Chorões": "Izaías e Seus Chorões"
+  "Jaques Morelenbaum e o Cello Samba Trio": "Jaques Morelenbaum"
+  "Jazz Seis": "Jazz 6"
+  "Joana Queiroz Quarteto": "Joana Queiroz"
+  "João Paulo Gonçalves Quarteto": "João Paulo Gonçalves"
+  "Leo Gandelman Quinteto": "Leo Gandelman"
+  "Marcio Bahia Quinteto": "Márcio Bahia"
+  "Marco Pereira Trio": "Marco Pereira"
+  "Maurício Ribeiro": "Mauricio Ribeiro"
+  "Rufo Herrera e Orquestra Experimental da Orquestra Ouro Preto": "Rufo Herrera e Orquestra Ouro Preto"
+  "Sandro Albert Quartet": "Sandro Albert"
+  "Sidiel Vieira Quinteto": "Sidiel Vieira"
+  "The Mullet Monster Máfia": "The Mullet Monster Mafia"
+  "Trio + 1": "Trio+1"
+  "Trio Celso de Almeida, Fábio Torres e Paulo Paulelli": "Fabio Torres Trio"
+  "Vento em madeira": "Vento em Madeira"
+  "Írio Jr.": "Írio Júnior"
+  "Aquilo Del Nisso": "Aquilo del Nisso"
+:additions:
+  - :name: "Armandinho e Yamandu Costa"
+  - :name: "Mozar Terra"
+  - :name: "Henrique Annes"
+  - :name: "Pereira da Viola"

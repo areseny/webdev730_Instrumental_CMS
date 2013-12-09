@@ -103,6 +103,67 @@ namespace :db do
       end
     end
 
+    # applies the corrections from db/legacy/corrections.yml
+    # into db/legacy/merged.yml,
+    # generating the file db/legacy/corrected.yml
+    task :correct do
+      data = YAML.load_file(File.expand_path("db/legacy/merged.yml"))
+      artists_by_name = index_artists_by_name(data)
+      artists_by_legacy_id = index_artists_by_legacy_id(data)
+      shows_by_legacy_id = index_shows_by_legacy_id(data)
+      interviews_by_legacy_id = index_interviews_by_legacy_id(data)
+      video_chats_by_legacy_id = index_video_chats_by_legacy_id(data)
+      # Fix artists with empty or "xxxxx" descriptions
+      data[:artists].each do |art|
+        if (art[:description] || "").strip =~ /^x*$/ && art[:shows]
+          art[:description] = art[:shows].first[:description]
+        end
+      end
+      corrections = YAML.load_file(File.expand_path("db/legacy/corrections.yml"))
+      corrections[:remove_artists_by_legacy_id].each do |legacy_id|
+        data[:artists].delete artists_by_legacy_id[legacy_id]
+        artists_by_legacy_id.delete(legacy_id)
+      end
+      corrections[:date_changes][:shows].each do |legacy_id, date|
+        shows_by_legacy_id[legacy_id][:date]= date
+      end
+      corrections[:date_changes][:interviews].each do |legacy_id, date|
+        interviews_by_legacy_id[legacy_id][:date]= date
+      end
+      corrections[:date_changes][:video_chats].each do |legacy_id, date|
+        video_chats_by_legacy_id[legacy_id][:date]= date
+      end
+      corrections[:name_changes].each do |old_name, new_name|
+        artist = artists_by_name.delete(old_name)
+        artist[:name] = new_name
+        if existing_artist = artists_by_name[new_name]
+          data[:artists].delete artist
+          existing_artist[:shows] += (artist[:shows] || [])
+          existing_artist[:interviews] += (artist[:interviews] || [])
+          existing_artist[:video_chats] += (artist[:video_chats] || [])
+          existing_artist[:legacy_ids] += (artist[:legacy_ids] || [])
+          existing_artist[:facebook_page] ||= artist[:facebook_page]
+          existing_artist[:twitter_widget_id] ||= artist[:twitter_widget_id]
+          # Merge images on folders:
+          Dir["tmp/legacy/images/#{old_name}/*.jpg"].each_with_index do |file, i|
+            FileUtils.mv file, "tmp/legacy/images/#{new_name}/merged_#{i}"
+          end
+        else
+          artists_by_name[new_name] = artist
+          # Rename folder
+          if Dir.exists?("tmp/legacy/images/#{old_name}")
+            FileUtils.mv "tmp/legacy/images/#{old_name}", "tmp/legacy/images/tmp-folder"
+            FileUtils.mv "tmp/legacy/images/tmp-folder", "tmp/legacy/images/#{new_name}"
+          end
+        end
+      end
+      corrections[:additions].each do |artist|
+        data[:artists] << artist
+      end
+      File.open("db/legacy/corrected.yml", 'w') { |f| f.write data.to_yaml }
+      File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
+    end
+
     private
 
     def index_artists_by_name(data)
@@ -114,6 +175,50 @@ namespace :db do
         [name, artists.first]
       end
       Hash[artists_by_name]
+    end
+
+    def index_artists_by_legacy_id(data)
+      results = {}
+      data[:artists].each do |art|
+        art[:legacy_ids].each { |id| results[id] = art }
+      end
+      results
+    end
+
+    def index_shows_by_legacy_id(data)
+      all_shows = data[:artists].map { |a| a[:shows] || [] }.flatten
+      results = all_shows.group_by{ |r| r[:legacy_id] }.map do |legacy_id, shows|
+        if shows.length > 1
+          puts "More than one show with same legacy_id! #{legacy_id}"
+          exit
+        end
+        [legacy_id, shows.first]
+      end
+      Hash[results]
+    end
+
+    def index_interviews_by_legacy_id(data)
+      all_interviews = data[:artists].map { |a| a[:interviews] || [] }.flatten
+      results = all_interviews.group_by{ |r| r[:legacy_id] }.map do |legacy_id, interviews|
+        if interviews.length > 1
+          puts "More than one interview with same legacy_id! #{legacy_id}"
+          exit
+        end
+        [legacy_id, interviews.first]
+      end
+      Hash[results]
+    end
+
+    def index_video_chats_by_legacy_id(data)
+      all_video_chats = data[:artists].map { |a| a[:video_chats] || [] }.flatten
+      results = all_video_chats.group_by{ |r| r[:legacy_id] }.map do |legacy_id, video_chats|
+        if video_chats.length > 1
+          puts "More than one video_chat with same legacy_id! #{legacy_id}"
+          exit
+        end
+        [legacy_id, video_chats.first]
+      end
+      Hash[results]
     end
 
     def legacy_sql(command)
