@@ -38,6 +38,8 @@ group :development do
   gem 'guard-bundler'
   gem 'guard-livereload'
   gem 'letter_opener'
+  gem 'dotenv', require: false
+  gem 'tiny_tds', require: false
 end
 
 group :development, :test do
