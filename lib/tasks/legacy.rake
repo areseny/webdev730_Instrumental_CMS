@@ -228,7 +228,74 @@ namespace :db do
       File.open('db/legacy/seeds.yml', 'w') { |f| f.write(data.to_yaml) }
     end
 
+    # Generates a CSV file from the contents in
+    # db/legacy/synced.yml, for checking purposes
+    task :csv_dump do
+      data = YAML.load_file(File.expand_path("db/legacy/synced.yml"))
+      puts [
+        "Artista", "Data", "Evento", "Vídeo", "Descrição", "Ficha Técnica",
+        "Título", "Compositor", "Gêneros", "Formação"
+      ].join("\t")
+      data[:artists].each do |artist|
+        puts [artist[:name], nil, nil, nil, truncated_text(artist[:description])].join("\t")
+        artist[:shows].each { |show| dump_csv_show show, "Show" }
+        artist[:legacy_shows].each { |show| dump_csv_show show, "Show (Memória)" }
+        artist[:interviews].each { |event| dump_csv_event event, "Entrevista" }
+        artist[:video_chats].each { |event| dump_csv_event event, "Bate-Papo" }
+        artist[:tv_shows].each { |event| dump_csv_event event, "Programa Instrumental" }
+        artist[:sound_checks].each { |event| dump_csv_event event, "Programa Passagem de Som" }
+        artist[:legacy_tv_shows].each { |event| dump_csv_event event, "Programa Memória" }
+      end
+    end
+
     private
+
+    def dump_csv_show(show, type)
+      puts [nil, show[:date], type, nil, truncated_text(show[:description])].join("\t")
+      if (show[:songs] || []).any?
+        show[:songs].each do |song|
+          puts [
+            nil, nil, "Música",
+            youtube_link(song[:video]),
+            nil, nil,
+            song[:title], song[:composer],
+            song[:genres].to_sentence,
+            dump_csv_band_members(song)
+          ].join("\t")
+        end
+      else
+        puts [ nil, nil, "Nenhuma música nesse show" ].join("\t")
+      end
+    end
+
+    def dump_csv_event(event, type)
+      puts [
+        nil, event[:date], type, youtube_link(event[:video]),
+        truncated_text(event[:description]),
+        truncated_text(event[:factsheet]),
+      ].join("\t")
+    end
+
+    def truncated_text(text)
+      text_helper.truncate((text || "").gsub(/\t/, " "), length: 50)
+    end
+
+    def text_helper
+      @text_helper ||= Object.new.extend(ActionView::Helpers::TextHelper)
+    end
+
+    def dump_csv_band_members(song)
+      members = song[:band_members] || {}
+      members.map{ |name, inst| "#{name}: #{inst.to_sentence}" }.join("; ")
+    end
+
+    def youtube_link(video)
+      if video
+        "http://www.youtube.com/watch?v=#{video[:video_id]}"
+      else
+        "Vídeo não cadastrado"
+      end
+    end
 
     def index_artists_by_name(data)
       artists_by_name = data[:artists].group_by{ |r| r[:name] }.map do |name, artists|
