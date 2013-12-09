@@ -16,6 +16,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-soundcloud'
 gem 'faraday_middleware'
+gem 'acts_as_list'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
