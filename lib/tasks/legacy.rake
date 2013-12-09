@@ -63,7 +63,39 @@ namespace :db do
       File.open("db/legacy/seeds.yml", 'w') { |f| f.write(results.to_yaml) }
     end
 
+    # Merges db/legacy/dump.yml with db/legacy/v0.1.yml
+    #  (obtained from the v0.1 site, contains facebook and twitter info)
+    # to produce /db/legacy/merged.yml
+    task :merge do
+      data = YAML.load_file(File.expand_path("db/legacy/dump.yml"))
+      artists_by_name = index_artists_by_name(data)
+      exports = YAML.load_file(File.expand_path("db/legacy/v0.1.yml"))
+      exports.each do |row|
+        artist = artists_by_name[row[:name]]
+        if !artist
+          puts "Artist not found! #{row[:name]}"
+          exit
+        else
+          artist[:facebook_page] = row[:facebook_page]
+          artist[:twitter_widget_id] = row[:twitter_widget_id]
+        end
+      end
+      File.open("db/legacy/merged.yml", 'w') { |f| f.write data.to_yaml }
+      File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
+    end
+
     private
+
+    def index_artists_by_name(data)
+      artists_by_name = data[:artists].group_by{ |r| r[:name] }.map do |name, artists|
+        if artists.length > 1
+          puts "More than one artist with same name! #{name}"
+          exit
+        end
+        [name, artists.first]
+      end
+      Hash[artists_by_name]
+    end
 
     def legacy_sql(command)
       require 'tiny_tds'
