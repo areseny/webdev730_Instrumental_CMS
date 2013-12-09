@@ -164,6 +164,70 @@ namespace :db do
       File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
     end
 
+    # Loads data from YouTube video uploads and sync with
+    # data contained in db/legacy/corrected.yml,
+    # generating db/legacy/synced.yml
+    task :sync => :environment do
+      data = YAML.load_file(File.expand_path("db/legacy/corrected.yml"))
+      artists_by_name = index_artists_by_name(data)
+      youtube = AuthProvider.find_by_key!("youtube")
+      user_id = youtube.user_id
+      token = youtube.token
+      client = YoutubeClient.new(token)
+
+      # Normalize collections first
+      collections = [
+        :shows, :interviews, :video_chats, :tv_shows,
+        :sound_checks, :legacy_tv_shows, :legacy_shows
+      ]
+      data[:artists].each do |artist|
+        collections.each do |collection|
+          artist[collection] ||= []
+        end
+      end
+
+      uploads = client.uploads
+      uploads.each do |video|
+        parser = YoutubeParser.new(title: video[:title], description: video[:description])
+        if parser.eligible?
+          artist = artists_by_name[parser.artist_name]
+          if artist
+            collection = parser.match_type.to_s.pluralize.to_sym
+            collection = :legacy_shows if collection == :shows && parser.date.year <= 2004
+            event = artist[collection].detect { |e| e[:date] == parser.date.to_s }
+            if event.nil?
+              event = { description: parser.description, date: parser.date.to_s }
+              artist[collection] << event
+            end
+            if event[:video]
+              puts "\tVídeo duplicado encontrado: #{youtube_link(video)}"
+            else
+              event[:factsheet] = parser.factsheet if parser.factsheet
+              video[:timecodes] = parser.timecodes if parser.timecodes.any?
+              artist[:description] = parser.description if artist[:description].nil?
+              if collection == :shows || collection == :legacy_shows
+                song = {
+                  title: parser.song_title,
+                  composer: parser.composer_name,
+                  band_members: parser.band_members,
+                  genres: parser.genres,
+                  video: video
+                }
+                event[:songs] ||= []
+                event[:songs] << song
+              else
+                event[:video] = video
+              end
+            end
+          else
+            puts "\tArtista não encontrado (#{parser.artist_name}): http://www.youtube.com/watch?v=#{video[:video_id]}\n"
+          end
+        end
+      end
+      File.open('db/legacy/synced.yml', 'w') { |f| f.write(data.to_yaml) }
+      File.open('db/legacy/seeds.yml', 'w') { |f| f.write(data.to_yaml) }
+    end
+
     private
 
     def index_artists_by_name(data)
