@@ -84,6 +84,25 @@ namespace :db do
       File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
     end
 
+    # Downloads all the artists images from the v0.1 site (from db/legacy/v0.1.yml)
+    # and put into /tmp/legacy/images
+    task :get_images do
+      exports = YAML.load_file(File.expand_path("db/legacy/v0.1.yml"))
+      exports.each do |row|
+        artist_folder = "tmp/legacy/images/#{artist[:name]}"
+        system "mkdir -p \"#{artist_folder}\""
+        if !(row[:banner] =~ /no-banner/)
+          system "wget #{row[:banner]} -O \"#{artist_folder}/banner.jpg\""
+        end
+        if !(row[:thumbnail] =~ /no-thumbnail/)
+          system "wget #{row[:thumbnail]} -O \"#{artist_folder}/thumbnail.jpg\""
+        end
+        row[:gallery].each_with_index do |url, i|
+          system "wget #{url} -O \"#{artist_folder}/gallery_#{i}.jpg\""
+        end
+      end
+    end
+
     private
 
     def index_artists_by_name(data)
