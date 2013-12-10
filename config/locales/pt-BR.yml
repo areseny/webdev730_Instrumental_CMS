@@ -138,3 +138,11 @@ pt-BR:
     name: Nome
     email: E-mail
 
+  slugs:
+    show: show
+    interview: entrevista
+    video_chat: bate-papo
+    tv_show: programa-instrumental
+    sound_check: programa-passagem-de-som
+    legacy_tv_show: programa-instrumental-memoria
+    legacy_show: show-memoria
