@@ -1,12 +1,12 @@
-require 'dotenv/tasks'
-
 namespace :db do
 
   namespace :legacy do
 
     # Generates db/legacy/dump.yml file, containing
     # the data from the original legacy database
-    task :dump => :dotenv do
+    task :dump do
+      require 'dotenv'
+      Dotenv.load
       results = { artists: [] }
       artists_by_legacy_id = {}
       shows_by_legacy_id = {}
