@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208104414) do
+ActiveRecord::Schema.define(version: 20131210132929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20131208104414) do
     t.string   "twitter_widget_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail"
+    t.string   "banner"
+    t.integer  "banner_width"
+    t.integer  "banner_height"
   end
 
   add_index "artists", ["name"], name: "index_artists_on_name", unique: true, using: :btree
@@ -93,6 +97,18 @@ ActiveRecord::Schema.define(version: 20131208104414) do
   add_index "events", ["artist_id", "date", "type"], name: "index_events_on_artist_id_and_date_and_type", unique: true, using: :btree
   add_index "events", ["artist_id", "slug"], name: "index_events_on_artist_id_and_slug", unique: true, using: :btree
   add_index "events", ["artist_id"], name: "index_events_on_artist_id", using: :btree
+
+  create_table "gallery_images", force: true do |t|
+    t.integer  "artist_id",              null: false
+    t.string   "image",                  null: false
+    t.integer  "width",      default: 0, null: false
+    t.integer  "height",     default: 0, null: false
+    t.integer  "position",   default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gallery_images", ["artist_id", "position"], name: "index_gallery_images_on_artist_id_and_position", unique: true, using: :btree
 
   create_table "genres", force: true do |t|
     t.string   "name",       null: false
