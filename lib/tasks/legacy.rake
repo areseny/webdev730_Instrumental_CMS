@@ -60,7 +60,7 @@ namespace :db do
         video_chats_by_legacy_id[row['vch_ID']] = video_chat
       end
       File.open("db/legacy/dump.yml", 'w') { |f| f.write(results.to_yaml) }
-      File.open("db/legacy/seeds.yml", 'w') { |f| f.write(results.to_yaml) }
+      update_seeds results
     end
 
     # Merges db/legacy/dump.yml with db/legacy/v0.1.yml
@@ -81,7 +81,7 @@ namespace :db do
         end
       end
       File.open("db/legacy/merged.yml", 'w') { |f| f.write data.to_yaml }
-      File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
+      update_seeds data
     end
 
     # Downloads all the artists images from the v0.1 site (from db/legacy/v0.1.yml)
@@ -161,7 +161,7 @@ namespace :db do
         data[:artists] << artist
       end
       File.open("db/legacy/corrected.yml", 'w') { |f| f.write data.to_yaml }
-      File.open("db/legacy/seeds.yml", 'w') { |f| f.write data.to_yaml }
+      update_seeds data
     end
 
     # Loads data from YouTube video uploads and sync with
@@ -225,7 +225,67 @@ namespace :db do
         end
       end
       File.open('db/legacy/synced.yml', 'w') { |f| f.write(data.to_yaml) }
-      File.open('db/legacy/seeds.yml', 'w') { |f| f.write(data.to_yaml) }
+      update_seeds data
+    end
+
+    # Uploads artist images in the Dropbox folder to Amazon S3,
+    # and updates the references in db/legacy/seeds.yml
+    task :upload_images do
+      require 'dotenv'
+      Dotenv.load
+      Rake::Task["environment"].execute
+      data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
+      artists_by_slug = index_artists_by_slug(data)
+      path = File.expand_path("~/Dropbox/Instrumental/IMAGENS")
+      directories = Dir.glob("#{path}/*").select{ |d| File.directory?(d) }
+      directories.each do |directory|
+        artist_name = File.basename(directory).to_s.strip.force_encoding("UTF-8")
+        slug = artist_name.parameterize
+        artist = artists_by_slug[slug]
+        if artist.nil?
+          puts "Artist not found: #{artist_name}"
+        else
+          Dir["#{path}/#{artist_name}/*.jpg"].each do |file|
+            if File.basename(file) == "thumbnail.jpg"
+              model = OpenStruct.new(slug: slug)
+              uploader = ThumbnailUploader.new(model)
+              uploader.cache!(File.open(file))
+              if artist[:thumbnail] != uploader.filename
+                uploader.store!
+                puts "Uploaded: #{uploader.url}"
+                artist[:thumbnail] = uploader.filename
+              end
+            elsif File.basename(file) == "banner.jpg"
+              model = OpenStruct.new(slug: slug)
+              uploader = BannerUploader.new(model)
+              uploader.cache!(File.open(file))
+              if artist[:banner] != uploader.filename
+                uploader.store!
+                artist[:banner] = uploader.filename
+                artist[:banner_width] = model.banner_width
+                artist[:banner_height] = model.banner_height
+                puts "Uploaded: #{uploader.url}"
+              end
+            else
+              model = OpenStruct.new(artist: OpenStruct.new(slug: slug))
+              uploader = GalleryUploader.new(model)
+              uploader.cache!(File.open(file))
+              artist[:gallery] ||= []
+              if artist[:gallery].detect{ |i| i[:image] == uploader.filename }.nil?
+                gallery_model = OpenStruct.new(artist: model)
+                uploader.store!
+                artist[:gallery] << {
+                  image: uploader.filename,
+                  width: model.width,
+                  height: model.height,
+                }
+                puts "Uploaded: #{uploader.url}"
+              end
+            end
+          end
+        end
+      end
+      update_seeds(data)
     end
 
     # Generates a CSV file from the contents in
@@ -249,6 +309,10 @@ namespace :db do
     end
 
     private
+
+    def update_seeds(data)
+      File.open("db/legacy/seeds.yml", 'w') { |f| f.write(data.to_yaml) }
+    end
 
     def dump_csv_show(show, type)
       puts [nil, show[:date], type, nil, truncated_text(show[:description])].join("\t")
@@ -306,6 +370,18 @@ namespace :db do
         [name, artists.first]
       end
       Hash[artists_by_name]
+    end
+
+    def index_artists_by_slug(data)
+      indexed = data[:artists].group_by{ |r| r[:name].parameterize }
+      indexed = indexed.map do |slug, artists|
+        if artists.length > 1
+          puts "More than one artist with same slug! #{slug}"
+          exit
+        end
+        [slug, artists.first]
+      end
+      Hash[indexed]
     end
 
     def index_artists_by_legacy_id(data)
