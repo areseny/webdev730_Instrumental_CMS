@@ -288,6 +288,34 @@ namespace :db do
       update_seeds(data)
     end
 
+    # Downloads mp3 files for all videos in db/legacy/seeds.yml
+    task :download_mp3 => :environment do
+      Rake::Task["environment"].execute
+      data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
+      all_ids = []
+      data[:artists].each do |artist|
+        all_shows = artist[:shows] + artist[:legacy_shows]
+        all_shows.each do |show|
+          (show[:songs] || []).each do |song|
+            all_ids << song[:video][:video_id]
+          end
+        end
+      end
+      all_ids.in_groups_of(8) do |ids|
+        threads = ids.map do |id|
+          Thread.new do
+            url = "http://www.youtube.com/watch?v=#{id}"
+            if !File.exists?("tmp/mp3/#{id}.mp3")
+              system "mkdir -p tmp/mp3 && cd tmp/mp3 && "\
+                "youtube-dl -x -f flv --id --audio-format mp3 --no-progress --quiet #{url}"
+            end
+            puts url
+          end
+        end
+        threads.each &:join
+      end
+    end
+
     # Generates a CSV file from the contents in
     # db/legacy/synced.yml, for checking purposes
     task :csv_dump do
