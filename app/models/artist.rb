@@ -13,7 +13,8 @@ class Artist < ActiveRecord::Base
   has_and_belongs_to_many :instruments
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
   scope :visible, -> { where(id: Event.pluck(:artist_id)) }
-  scope :legacy, -> { where(id: Event.legacy.pluck(:artist_id)) }
+  scope :current, -> { where(id: Event.current.uniq.pluck(:artist_id)) }
+  scope :legacy, -> { where(id: Event.legacy.uniq.pluck(:artist_id)) }
 
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
@@ -23,9 +24,9 @@ class Artist < ActiveRecord::Base
   end
 
   def self.list(letter = nil)
-    list = visible.order(:first_letter)
+    list = current.order(:first_letter)
     letter = "~" if letter == "_"
     list = list.where(first_letter: letter) if letter
-    list.group_by(&:first_letter)
+    list
   end
 end

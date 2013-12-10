@@ -5,6 +5,11 @@ class ArtistsController < ApplicationController
     @artists = Artist.list(params[:letter])
   end
 
+  # GET /artistas(/memoria)
+  def legacy
+    @artists = Artist.legacy
+  end
+
   # GET /artistas/:id
   def show
     @artist = Artist.find_by_slug!(params[:id])

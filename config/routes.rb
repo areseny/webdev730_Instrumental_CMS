@@ -10,6 +10,7 @@ InstrumentalSescBrasil::Application.routes.draw do
   resources :artists, path: 'artistas', only: [:index, :show] do
     collection do
       get 'letra/:letter', letter: /[A-aZ-z_]/, action: :index, as: :letter
+      get :legacy, path: 'memoria'
     end
   end
 

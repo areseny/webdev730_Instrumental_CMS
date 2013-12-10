@@ -66,6 +66,9 @@ pt-BR:
       filters: Filtrar Busca
       filter_by_letter: Por letra
 
+    legacy:
+      title: Memória
+
   contact_form:
     form:
       name: Nome

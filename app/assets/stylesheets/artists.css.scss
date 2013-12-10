@@ -25,6 +25,23 @@
     padding: 25px 25px 0 0;
     &.last { padding: 25px 0 0 0; }
   }
+  &.artists-legacy-grid {
+    // margin: 0 auto;
+    td {
+      padding: 0 25px 25px 0;
+      &.last { padding: 0 0 25px 0; }
+    }
+  }
+}
+
+.artists-legacy-block {
+  width: 925px;
+  margin: 0px auto;
+}
+
+.block-title.artists-legacy-title {
+  width: 800px;
+  margin-left: 50px;
 }
 
 .artists-sidebar {

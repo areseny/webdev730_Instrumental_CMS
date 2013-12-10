@@ -1,4 +1,4 @@
-<% cache [:artists_list, params[:letter]] do %>
+<% cache [:artists_list, @artists.maximum(:updated_at)] do %>
 <div class="artists-sidebar">
   <div class="block search-filters">
     <h2><%= t ".filters" %></h2>
@@ -12,7 +12,7 @@
     <h1><%= t ".title" %></h1>
   </div>
   <div class="block">
-    <% @artists.each do |letter, artists| %>
+    <% @artists.group_by(&:first_letter).each do |letter, artists| %>
     <h2><%= letter %></h2>
     <table class="artists-grid">
       <%= artists.in_groups_of(3, false) do |artists| %>
