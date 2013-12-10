@@ -1,0 +1,11 @@
+<div class="feature">
+  <%= artist_banner(@artist) %>
+  <div class="feature-sidebar">
+    <div class="block artist-description">
+      <h1><%= @artist.name %></h1>
+      <div class="autoscroll">
+        <%= markdown @artist.description %>
+      </div>
+    </div>
+  </div>
+</div>

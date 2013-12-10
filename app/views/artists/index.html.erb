@@ -1,0 +1,29 @@
+<% cache [:artists_list, params[:letter]] do %>
+<div class="artists-sidebar">
+  <div class="block search-filters">
+    <h2><%= t ".filters" %></h2>
+    <h3><%= t ".filter_by_letter" %></h3>
+    <%= render "filter_by_letter" %>
+  </div>
+</div>
+
+<div class="artists-list">
+  <div class="block-title">
+    <h1><%= t ".title" %></h1>
+  </div>
+  <div class="block">
+    <% @artists.each do |letter, artists| %>
+    <h2><%= letter %></h2>
+    <table class="artists-grid">
+      <%= artists.in_groups_of(3, false) do |artists| %>
+      <tr>
+        <% artists.each_with_index do |artist, i| %>
+        <%= content_tag :td, render(artist), class: ('last' if i == 2) %>
+        <% end -%>
+      </tr>
+      <% end -%>
+    </table>
+    <% end -%>
+  </div>
+</div>
+<% end %>

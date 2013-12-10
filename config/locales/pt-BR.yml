@@ -60,6 +60,12 @@ pt-BR:
 
           Em 2002, lançou o livro de entrevistas Vozes do Brasil com artistas como Cássia Eller, Lenine, Arnaldo Antunes, Luiz Melodia, entre outros.
 
+  artists:
+    index:
+      title: Artistas
+      filters: Filtrar Busca
+      filter_by_letter: Por letra
+
   contact_form:
     form:
       name: Nome
