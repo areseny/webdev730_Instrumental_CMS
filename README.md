@@ -54,6 +54,14 @@ Set this:
 heroku config:add FACEBOOK_APP_ID=xxx
 ```
 
+# TimeZone
+
+Set this:
+
+```
+heroku config:add TZ="America/Sao_Paulo"
+```
+
 ## TODO
 
 - Add 404 and 500 custom pages

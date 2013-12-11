@@ -1,0 +1,62 @@
+@import "mixins";
+
+.feeds-background {
+  background: white;
+}
+
+.feeds {
+  width: 980px;
+  min-height: 290px;
+  margin: 0 auto;
+  display: table;
+  padding: 50px 0 0 0;
+  > div {
+    display: table-cell;
+    padding-bottom: 25px;
+  }
+  h2 {
+    color:$orange;
+    font-size: 15px;
+    margin: 0 0 10px 0;
+    .icon-rss-sign { font-size: 150%; padding-left: 12px; }
+  }
+  h3 {
+    color:$darkcyan;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+  }
+}
+
+.feeds ul {
+  padding: 0px;
+  color: $greytext;
+  font: 13px Aaux Pro Light;
+  li {
+    list-style: none;
+    a {
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+    span {
+      font: 13px Aaux Pro Bold;
+      display: inline-block;
+      &:after {
+        content: "|";
+        padding: 0 5px;
+      }
+    }
+    & + li {
+      padding-top: 2px;
+    }
+  }
+}
+
+.site-feed {
+  width: 430px;
+}
+
+.schedule-feed {
+  width: 530px;
+  padding-left: 60px;
+  background: image-url("feed-divider.jpg") no-repeat 10px top;
+}

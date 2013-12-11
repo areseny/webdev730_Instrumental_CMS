@@ -1,0 +1,38 @@
+<div class="feeds-background">
+  <div class="feeds">
+
+    <% cache [:site_feed_list, Event.maximum(:updated_at)] do %>
+    <div class="site-feed">
+      <h2>Ultimas atualizações <i class="icon-rss-sign"></i></h2>
+      <ul>
+        <% Event.order("date desc").limit(8).each do |event| %>
+        <li>
+          <span><%= l event.date, format: :brief %></span>
+          <%= link_to event_feed_description(event), artist_event_path(event.artist, event) %>
+        </li>
+        <% end -%>
+      </ul>
+    </div>
+    <% end -%>
+
+    <% cache [:schedule_feed_list, Date.current, TvScheduleItem.maximum(:updated_at)] do %>
+    <div class="schedule-feed">
+      <h2>Programação SescTV</h2>
+      <% schedule_day = TvScheduleItem.current_or_last_day %>
+      <% if schedule_day %>
+      <h3><%= l schedule_day, format: :short %></h3>
+      <ul>
+        <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
+        <li>
+          <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
+        </li>
+        <% end -%>
+      </ul>
+      <% end -%>
+      <a href="http://www.sesctv.org.br/programacao.cfm"
+         target="_blank" class="btn-green">programação completa</a>
+    </div>
+    <% end -%>
+
+  </div>
+</div>
