@@ -1,0 +1,12 @@
+<div class="feature">
+  <%= artist_banner feature.artist %>
+  <div class="feature-sidebar">
+    <div class="block main-feature-block">
+      <h1><%= link_to feature.artist.name, feature.artist %></h1>
+      <%= feature_subtitle(feature) %>
+      <div class="autoscroll">
+        <%= markdown feature.description %>
+      </div>
+    </div>
+  </div>
+</div>

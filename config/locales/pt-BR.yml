@@ -143,6 +143,10 @@ pt-BR:
         Equipe Instrumental SESC Brasil
         %URL%
 
+  activerecord:
+    models:
+      tv_show: Programa Instrumental SESC Brasil
+
   attributes:
     name: Nome
     email: E-mail

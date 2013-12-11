@@ -15,6 +15,8 @@ namespace :db do
         row[:sound_checks].each { |e| create_sound_check(artist, e) }
         row[:legacy_tv_shows].each { |e| create_legacy_tv_show(artist, e) }
       end
+      tomze = Artist.find_by_slug!('tom-ze')
+      Feature.create!(featurable: tomze.tv_shows.first, enabled: true)
     end
   end
 

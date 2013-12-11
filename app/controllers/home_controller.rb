@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
   # GET /
   def index
+    @feature = Feature.first
   end
 
   # GET /projeto

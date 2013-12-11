@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210132929) do
+ActiveRecord::Schema.define(version: 20131211124130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20131210132929) do
   add_index "events", ["artist_id", "date", "type"], name: "index_events_on_artist_id_and_date_and_type", unique: true, using: :btree
   add_index "events", ["artist_id", "slug"], name: "index_events_on_artist_id_and_slug", unique: true, using: :btree
   add_index "events", ["artist_id"], name: "index_events_on_artist_id", using: :btree
+
+  create_table "features", force: true do |t|
+    t.integer  "featurable_id"
+    t.string   "featurable_type"
+    t.text     "description_override"
+    t.boolean  "enabled",              default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "features", ["enabled"], name: "index_features_on_enabled", using: :btree
 
   create_table "gallery_images", force: true do |t|
     t.integer  "artist_id",              null: false
