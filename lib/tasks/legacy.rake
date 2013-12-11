@@ -288,6 +288,29 @@ namespace :db do
       update_seeds(data)
     end
 
+    # Uses Youtube API to download remaining video data
+    # and updates db/legacy/seeds.yml
+    task :download_video_data do
+      require 'dotenv'
+      Dotenv.load
+      Rake::Task["environment"].execute
+      youtube = AuthProvider.find_by_key!("youtube")
+      user_id = youtube.user_id
+      token = youtube.token
+      client = YoutubeClient.new(token)
+      data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
+      videos_by_id = index_videos_by_video_id(data)
+      videos_by_id.keys.in_groups_of(50, false) do |ids|
+        client.videos(ids).each do |downloaded_video|
+          downloaded_video.merge!(auth_user_id: user_id)
+          id = downloaded_video[:video_id]
+          videos_by_id[id].merge!(downloaded_video)
+          puts "Updated video: #{id}"
+        end
+      end
+      update_seeds(data)
+    end
+
     # Downloads mp3 files for all videos in db/legacy/seeds.yml
     task :download_mp3 => :environment do
       Rake::Task["environment"].execute
@@ -387,6 +410,31 @@ namespace :db do
       else
         "Vídeo não cadastrado"
       end
+    end
+
+    def index_videos_by_video_id(data)
+      indexed = {}
+      viewable = [ :interviews, :tv_shows, :video_chats, :sound_checks, :legacy_tv_shows ]
+      playlists = [ :shows, :legacy_shows ]
+      data[:artists].each do |artist|
+        viewable.each do |collection|
+          artist[collection].each do |item|
+            if video = item[:video]
+              indexed[video[:video_id]] = video
+            end
+          end
+        end
+        playlists.each do |collection|
+          artist[collection].each do |item|
+            (item[:songs] || []).each do |song|
+              if video = song[:video]
+                indexed[video[:video_id]] = video
+              end
+            end
+          end
+        end
+      end
+      indexed
     end
 
     def index_artists_by_name(data)
