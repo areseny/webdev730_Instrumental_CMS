@@ -311,6 +311,27 @@ namespace :db do
       update_seeds(data)
     end
 
+    # Marks all events that have videos as "visible"
+    task :mark_visible_events do
+      data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
+      viewable = [ :interviews, :tv_shows, :video_chats, :sound_checks, :legacy_tv_shows ]
+      playlists = [ :shows, :legacy_shows ]
+      data[:artists].each do |artist|
+        viewable.each do |collection|
+          artist[collection].each do |event|
+            event[:visible] = !event[:video].nil?
+          end
+        end
+        playlists.each do |collection|
+          artist[collection].each do |show|
+            show[:songs] ||= []
+            show[:visible] = show[:songs].any?{ |s| !s[:video].nil? }
+          end
+        end
+      end
+      update_seeds(data)
+    end
+
     # Downloads mp3 files for all videos in db/legacy/seeds.yml
     task :download_mp3 => :environment do
       Rake::Task["environment"].execute
