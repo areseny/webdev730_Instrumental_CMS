@@ -311,6 +311,27 @@ namespace :db do
       update_seeds(data)
     end
 
+    # Try to associate artists with instruments in db/legacy/seeds.yml
+    # by matching the name of the artist with band members
+    task :set_artist_instruments do
+      data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
+      artists_by_name = index_artists_by_name(data)
+      data[:artists].each do |artist|
+        (artist[:shows] + artist[:legacy_shows]).each do |show|
+          (show[:songs] || []).each do |song|
+            (song[:band_members] || []).each do |artist_name, instruments|
+              if existing = artists_by_name[artist_name]
+                existing[:instruments] ||= []
+                existing[:instruments] += instruments
+                existing[:instruments] = existing[:instruments].uniq
+              end
+            end
+          end
+        end
+      end
+      update_seeds(data)
+    end
+
     # Downloads mp3 files for all videos in db/legacy/seeds.yml
     task :download_mp3 => :environment do
       Rake::Task["environment"].execute

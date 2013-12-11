@@ -44,6 +44,7 @@ namespace :db do
   def create_artist(row)
     attrs = row.slice(:name, :description, :facebook_page, :twitter_widget_id, :legacy_ids)
     Artist.create!(attrs) do |artist|
+      artist.instruments = map_instruments(row[:instruments] || [])
       artist.sort_name = artist.name.gsub(/^(a|as|o|os|à|\d+)?\s/i, "").camelize
       artist.slug = artist.name.parameterize
       artist.first_letter = I18n.transliterate(artist.sort_name)[0].downcase.gsub(/[^a-z]/, "~")
