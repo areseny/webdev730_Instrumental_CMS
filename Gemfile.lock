@@ -75,6 +75,8 @@ GEM
       multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
+    fb-channel-file (0.0.2)
+      rails (>= 3.0)
     ffi (1.9.3)
     fog (1.18.0)
       builder
@@ -263,6 +265,7 @@ DEPENDENCIES
   factory_girl
   faraday
   faraday_middleware
+  fb-channel-file
   fog
   foreman
   guard-bundler

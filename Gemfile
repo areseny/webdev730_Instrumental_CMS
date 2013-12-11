@@ -21,6 +21,7 @@ gem 'fog'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'dedent'
+gem 'fb-channel-file'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'

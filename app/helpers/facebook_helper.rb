@@ -1,5 +1,12 @@
 module FacebookHelper
 
+  def facebook_meta_tags
+    meta_tags({
+      "facebook-app-id" => ENV['FACEBOOK_APP_ID'],
+      "facebook-channel-url" => "//#{request.host}/channel.html"
+    })
+  end
+
   def facebook_like_box(artist)
     if artist.facebook_page?
       options = {
