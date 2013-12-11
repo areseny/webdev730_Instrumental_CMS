@@ -65,6 +65,13 @@ pt-BR:
       title: Artistas
       filters: Filtrar Busca
       filter_by_letter: Por letra
+    event_list:
+      site:
+        title: Exclusivo para o Site
+      tv:
+        title: Na Tv
+      legacy:
+        title: Memória
 
     legacy:
       title: Memória
@@ -145,11 +152,21 @@ pt-BR:
 
   activerecord:
     models:
+      show: Show
+      interview: Entrevista
+      video_chat: Bate-Papo
       tv_show: Programa Instrumental SESC Brasil
+      sound_check: Programa Passagem de Som
+      legacy_tv_show: Programa Instrumental
+      legacy_show: Show
 
   attributes:
     name: Nome
     email: E-mail
+
+  date:
+    formats:
+      month: "%B de %Y"
 
   slugs:
     show: show

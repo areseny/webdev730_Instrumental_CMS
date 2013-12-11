@@ -12,6 +12,7 @@ InstrumentalSescBrasil::Application.routes.draw do
       get 'letra/:letter', letter: /[A-aZ-z_]/, action: :index, as: :letter
       get :legacy, path: 'memoria'
     end
+    resources :events, only: [:show], path: ""
   end
 
   controller :contact_form do

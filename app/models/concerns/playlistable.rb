@@ -9,4 +9,7 @@ module Playlistable
     has_many :instruments, -> { uniq }, through: :band_members
   end
 
+  def video
+    songs.first.try :video
+  end
 end

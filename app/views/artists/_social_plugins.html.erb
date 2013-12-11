@@ -1,0 +1,6 @@
+<% if artist.facebook_page? || artist.twitter_widget_id? %>
+  <div class="block artist-social">
+    <%= facebook_like_box(artist) %>
+    <%= twitter_timeline(artist) %>
+  </div>
+<% end -%>

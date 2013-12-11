@@ -13,4 +13,11 @@ module ApplicationHelper
     tags.join.html_safe
   end
 
+  def definition_list(items, options = {})
+    tags = items.map do |key, value|
+      content_tag(:dt, key) + content_tag(:dd, value)
+    end
+    content_tag(:dl, tags.join.html_safe, options)
+  end
+
 end

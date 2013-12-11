@@ -7,5 +7,20 @@
         <%= markdown @artist.description %>
       </div>
     </div>
+    <%= artist_instruments(@artist) %>
+    <%= artist_genres(@artist) %>
+  </div>
+</div>
+
+<div class="artist-content">
+  <div class="artist-main">
+    <%= render "event_list", type: :site, events: @artist.events.site %>
+    <%= render "event_list", type: :tv, events: @artist.events.tv %>
+    <%= render "event_list", type: :legacy, events: @artist.events.legacy %>
+  </div>
+  <div class="artist-sidebar">
+    <%= render "playlist", artist: @artist %>
+    <%= render "gallery", artist: @artist %>
+    <%= render "social_plugins", artist: @artist %>
   </div>
 </div>

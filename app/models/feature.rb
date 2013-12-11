@@ -5,10 +5,6 @@ class Feature < ActiveRecord::Base
     featurable.is_a?(Artist) ? featurable : featurable.artist
   end
 
-  def reference
-    featurable.artist
-  end
-
   def date
     featurable.try(:date)
   end

@@ -51,6 +51,23 @@
   width: 255px;
 }
 
+.block.artist-details {
+  font-size: 14px;
+  padding: 5px 25px;
+
+  dl { padding: 0px; }
+  dt, dd { display: inline-block; }
+  dt {
+    color: $darkcyan;
+    font-weight: bold;
+    font-family: Arial;
+    &:after { content: ":"; }
+  }
+  dd {
+    margin: 0 0 0 5px;
+  }
+}
+
 .artist-thumbnail {
   width: 200px;
   a {
@@ -74,4 +91,125 @@
     margin: 0 0 10px 0;
   }
   .autoscroll { max-height: 130px; }
+}
+
+.artist-content {
+  display: table;
+}
+
+.artist-main {
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  padding-right: 25px;
+}
+
+.artist-sidebar{
+  display: table-cell;
+  vertical-align: top;
+  min-width: 355px;
+}
+
+.events-list {
+  h3 {
+    color: white;
+    margin: 0 -25px;
+    padding: 0 45px;
+    font: 16px Aaux Pro Bold;
+    line-height: 28px;
+    text-transform: uppercase;
+  }
+  &.events-list-site {
+    h3 { background: $cyan; }
+  }
+  &.events-list-tv {
+    h3 { background: $orange; }
+  }
+  &.events-list-legacy {
+    h3 { background: $orange; }
+  }
+}
+
+ul.videos-list {
+  margin: 0px;
+  padding: 25px 0;
+  > li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    overflow: auto;
+    a {
+      display: block;
+      text-decoration: none;
+    }
+    img {
+      float: left;
+      margin: 0 15px 0 0;
+    }
+    h4 {
+      margin: 0px;
+      padding-top: 15px;
+      color: $greytext;
+      font: 18px Aaux Pro Light;
+    }
+    ul.video-stats {
+      margin-top: 10px;
+    }
+    & + li {
+      background: image-url("separator-h.jpg") no-repeat center 15px;
+      padding-top: 36px;
+    }
+  }
+}
+
+ul.video-stats {
+  padding: 0px;
+  color: $cyan;
+  font: bold 12px Arial;
+  overflow: auto;
+  > li {
+    list-style: none;
+    float: left;
+    & + li {
+      &:before {
+        content: "|";
+        padding: 0 8px;
+      }
+    }
+  }
+}
+
+.events-list-title {
+  height: 70px;
+  overflow: hidden;
+  color: white;
+  @include border-radius(5px, 5px, 0, 0);
+  margin: 0 15px;
+  padding: 0 25px;
+  h2 {
+    margin: 0px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    font: bolder 18px Aaux Pro Light;
+    line-height: 70px;
+    padding-left: 54px;
+  }
+  &.events-list-title-tv {
+    background: image-url("events-list-tv-background.jpg") repeat-x;
+    h2 { background-image: image-url("events-list-tv-icon.png"); }
+  }
+  &.events-list-title-site {
+    background: image-url("events-list-site-background.jpg") repeat-x;
+    h2 { background-image: image-url("events-list-site-icon.png"); }
+  }
+  &.events-list-title-legacy {
+    background: image-url("events-list-legacy-background.jpg") repeat-x;
+    h2 { background-image: image-url("events-list-legacy-icon.png"); }
+  }
+}
+
+.artist-social {
+  .fb-like-box + iframe {
+  margin-top: 25px !important;
+  }
 }
