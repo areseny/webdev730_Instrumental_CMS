@@ -45,3 +45,10 @@ Set this:
 ```
 heroku config:add AIRBRAKE_KEY=xxx
 ```
+
+## TODO
+
+- Add 404 and 500 custom pages
+- Auto link to artists in markdown
+- Setup cloud logging service
+- Remove stuff from Heroku's slug compilation
