@@ -1,24 +1,26 @@
 namespace :db do
 
-  task :seed => :environment do
+  task :seed_from_yaml => :environment do
     data = YAML.load_file(File.expand_path("db/legacy/seeds.yml"))
     Artist.transaction do
       artists = data[:artists].sort_by{ |r| r[:name] }
       artists.each do |row|
-        artist = create_artist(row)
-        create_images(artist, row)
-        row[:shows].each { |s| create_show(artist, s) }
-        row[:legacy_shows].each { |s| create_show(artist, s, true) }
-        row[:interviews].each { |e| create_interview(artist, e) }
-        row[:video_chats].each { |e| create_video_chat(artist, e) }
-        row[:tv_shows].each { |e| create_tv_show(artist, e) }
-        row[:sound_checks].each { |e| create_sound_check(artist, e) }
-        row[:legacy_tv_shows].each { |e| create_legacy_tv_show(artist, e) }
+        if !Artist.exists?(name: row[:name])
+          artist = create_artist(row)
+          create_images(artist, row)
+          row[:shows].each { |s| create_show(artist, s) }
+          row[:legacy_shows].each { |s| create_show(artist, s, true) }
+          row[:interviews].each { |e| create_interview(artist, e) }
+          row[:video_chats].each { |e| create_video_chat(artist, e) }
+          row[:tv_shows].each { |e| create_tv_show(artist, e) }
+          row[:sound_checks].each { |e| create_sound_check(artist, e) }
+          row[:legacy_tv_shows].each { |e| create_legacy_tv_show(artist, e) }
+        end
       end
-      tomze = Artist.find_by_slug!('tom-ze')
-      Feature.create!(featurable: tomze.tv_shows.first, enabled: true)
     end
   end
+
+  task :seed => :seed_from_yaml
 
   private
 

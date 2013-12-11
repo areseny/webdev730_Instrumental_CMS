@@ -1,7 +1,6 @@
 @import "mixins";
 
 .main-feature-block {
-  height: 360px;
   h1 {
     color: $cyan;
     font: 40px AAux Pro Light;
@@ -16,5 +15,8 @@
   a {
     text-decoration: none;
     &:hover { text-decoration: underline; }
+  }
+  .autoscroll {
+    max-height: 360px;
   }
 }

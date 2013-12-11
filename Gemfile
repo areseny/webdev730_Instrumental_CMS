@@ -20,6 +20,7 @@ gem 'acts_as_list'
 gem 'fog'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'dedent'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
@@ -50,5 +51,4 @@ group :test do
   gem 'vcr'
   gem 'factory_girl'
   gem 'capybara'
-  gem 'dedent'
 end
