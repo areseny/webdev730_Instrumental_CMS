@@ -1,0 +1,18 @@
+<% if show.songs.any? %>
+<h3>Músicas</h3>
+<ol class="video-nav">
+  <% show.songs.each do |song| %>
+  <li>
+    <%= link_to "#", data: { video_id: song.video.youtube_id } do %>
+      <h4><%= song.title %></h4>
+      <% if song.composer %>
+      <dl>
+        <dt>Compositor</dt>
+        <dd><%= song.composer %></dd>
+      </dl>
+      <% end -%>
+    <% end -%>
+  </li>
+  <% end -%>
+</ol>
+<% end -%>

@@ -25,6 +25,14 @@ class Event < ActiveRecord::Base
     video.try(:comments) || 0
   end
 
+  def timecoded?
+    false
+  end
+
+  def playlist?
+    false
+  end
+
   def to_param
     slug
   end

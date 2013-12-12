@@ -1,0 +1,32 @@
+@import "mixins";
+
+.block.event-block {
+  display: table;
+  > div {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+.event-main {
+  width: 640px;
+  padding-right: 25px;
+}
+
+.video-player {
+  width: 640px;
+  height: 380px;
+  margin: 0 0 25px 0;
+}
+
+.event-sidebar {
+  display: table-cell;
+  width: 100%;
+  height: 300px;
+
+  > h3 {
+    color: $orange;
+    font: 18px Aaux Pro Bold;
+    margin: 0 0 15px 0;
+  }
+}

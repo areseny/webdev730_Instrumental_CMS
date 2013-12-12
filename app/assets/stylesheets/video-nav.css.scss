@@ -1,0 +1,59 @@
+@import "mixins";
+
+ol.video-nav {
+
+  counter-reset: li;
+  margin: 0px;
+  padding: 0px;
+
+  a { text-decoration: none; }
+
+  > li {
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+    min-height: 35px;
+    padding: 10px 10px 10px 35px;
+    background: #ececec;
+    cursor: pointer;
+    color: $greytext;
+    &.selected { color: $orange; }
+
+    &:before {
+      counter-increment: li;
+      content: counter(li);
+      display: inline-block;
+      width: 25px;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      background: $orange;
+      color: white;
+      text-align: center;
+      padding-top: 10px;
+      vertical-align: top;
+      font: 16px Aaux Pro Light;
+    }
+
+    & + li { margin-top: 3px; }
+  }
+
+  h4 {
+    font: 18px Aaux Pro Light;
+    margin: 0 0 5px 0;
+  }
+
+  dl {
+    margin: 0;
+    dt {
+      display: inline-block;
+      &:after { content: ":  "; padding-right: 2px; }
+    }
+    dd {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+}

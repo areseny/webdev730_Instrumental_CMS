@@ -4,8 +4,16 @@
   <h1><%= @event.article_title %></h1>
   <small><%= l @event.date, format: :long %></small>
 </div>
-<div class="block">
-  <%= image_tag @event.video_thumbnail %>
-
+<div class="block event-block">
+  <div class="event-main">
+    <%= video_player(@event) %>
+    <%= markdown @event.description %>
+    <%= render "band_members", show: @event if @event.playlist? %>
+  </div>
+  <div class="event-sidebar">
+    <%= render "timecodes", video: @event.video if @event.timecoded? %>
+    <%= render "playlist", show: @event if @event.playlist? %>
+    <%= render "factsheet", event: @event if @event.factsheet %>
+  </div>
 </div>
 
