@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   scope :tv, -> { where(type: %w(TvShow SoundCheck)) }
   scope :current, -> { where.not(type: %w(LegacyShow LegacyTvShow)) }
   scope :legacy, -> { where(type: %w(LegacyShow LegacyTvShow)) }
+  scope :visible, -> { where(visible: true) }
+  scope :last_first, -> { order("date desc") }
 
   def video_thumbnail
     video.small_thumbnail if video

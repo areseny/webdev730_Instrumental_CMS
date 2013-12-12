@@ -19,6 +19,18 @@ class Artist < ActiveRecord::Base
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
 
+  def site_events
+    events.visible.site.last_first
+  end
+
+  def tv_events
+    events.visible.tv.last_first
+  end
+
+  def legacy_events
+    events.visible.legacy.last_first
+  end
+
   def to_param
     slug
   end
