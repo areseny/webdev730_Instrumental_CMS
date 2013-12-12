@@ -5,11 +5,10 @@ Instrumental Sesc Brasil
 
 Start up with `foreman start -f Procfile.dev`
 
-## Asset sync in production
-
-Set the following env. variables on Heroku:
+## Environment Variables
 
 ```
+# Configure asset sync in production:
 heroku config:add AWS_ACCESS_KEY_ID=xxxx
 heroku config:add AWS_SECRET_ACCESS_KEY=yyyy
 heroku config:add FOG_DIRECTORY=zzzz
@@ -19,46 +18,21 @@ heroku config:add ASSET_SYNC_GZIP_COMPRESSION=true
 heroku config:add ASSET_SYNC_MANIFEST=false
 heroku config:add ASSET_SYNC_EXISTING_REMOTE_FILES=keep
 heroku config:add CLOUDFRONT_DOMAIN=xxx.cloudfront.net
-```
 
-## Recaptcha
-
-Set the following env. variables on Heroku:
-
-```
+# Configure recaptcha:
 heroku config:add RECAPTCHA_PUBLIC_KEY=xxx
 heroku config:add RECAPTCHA_PRIVATE_KEY=yyy
-```
 
-# E-mail delivery
-
-Use the Mandrill add-on and set the following env. variable on Heroku:
-
-```
+# Configure e-mail delivery:
 heroku config:add EMAIL_HOST=instrumentalsescbrasil.org.br
-```
 
-# Airbrake error monitoring
-
-Set this:
-
-```
+# Airbrake error monitoring:
 heroku config:add AIRBRAKE_KEY=xxx
-```
 
-# Facebook API
-
-Set this:
-
-```
+# Facebook API:
 heroku config:add FACEBOOK_APP_ID=xxx
-```
 
-# TimeZone
-
-Set this:
-
-```
+# TimeZone:
 heroku config:add TZ="America/Sao_Paulo"
 ```
 
@@ -69,3 +43,4 @@ heroku config:add TZ="America/Sao_Paulo"
 - Setup cloud logging service
 - Remove stuff from Heroku's slug compilation
 - Configure Facebook App correctly on final domain
+- Optimize cache and queries
