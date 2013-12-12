@@ -83,24 +83,25 @@ ActiveRecord::Schema.define(version: 20131212011201) do
   end
 
   create_table "events", force: true do |t|
-    t.integer  "artist_id",   null: false
-    t.date     "date",        null: false
-    t.string   "type",        null: false
-    t.string   "slug",        null: false
-    t.text     "description", null: false
+    t.integer  "artist_id",                   null: false
+    t.date     "date",                        null: false
+    t.string   "type",                        null: false
+    t.string   "slug",                        null: false
+    t.text     "description",                 null: false
+    t.boolean  "visible",     default: false, null: false
     t.text     "factsheet"
     t.integer  "legacy_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "events", ["artist_id", "date", "type"], name: "index_events_on_artist_id_and_date_and_type", unique: true, using: :btree
-  add_index "events", ["artist_id", "slug"], name: "index_events_on_artist_id_and_slug", unique: true, using: :btree
   add_index "events", ["artist_id"], name: "index_events_on_artist_id", using: :btree
+  add_index "events", ["date", "type"], name: "index_events_on_date_and_type", unique: true, using: :btree
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "features", force: true do |t|
-    t.integer  "featurable_id"
-    t.string   "featurable_type"
+    t.integer  "featurable_id",                        null: false
+    t.string   "featurable_type",                      null: false
     t.text     "description_override"
     t.boolean  "enabled",              default: false, null: false
     t.datetime "created_at"

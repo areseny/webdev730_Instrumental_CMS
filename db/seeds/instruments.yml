@@ -1,0 +1,277 @@
+---
+craviola:
+  name: craviola
+guitarra:
+  name: guitarra
+bateria;:
+  name: bateria;
+violão 7 cordas:
+  name: violão 7 cordas
+contrabaixo acústico:
+  name: contrabaixo acústico
+piano:
+  name: piano
+bateria:
+  name: bateria
+percussão:
+  name: percussão
+baixo elétrico:
+  name: baixo elétrico
+saxofone:
+  name: saxofone
+vocalize;:
+  name: vocalize;
+trompete:
+  name: trompete
+trombone:
+  name: trombone
+flauta transversal:
+  name: flauta transversal
+pandeiro:
+  name: pandeiro
+trompete;:
+  name: trompete;
+piano;:
+  name: piano;
+arranjos:
+  name: arranjos
+sax:
+  name: sax
+flauta:
+  name: flauta
+contrabaixo:
+  name: contrabaixo
+baterista:
+  name: baterista
+teclados:
+  name: teclados
+baixo:
+  name: baixo
+baixo vertical:
+  name: baixo vertical
+violão:
+  name: violão
+rabeca:
+  name: rabeca
+teclado:
+  name: teclado
+reco reco:
+  name: reco reco
+viola:
+  name: viola
+voz:
+  name: voz
+sax soprano:
+  name: sax soprano
+contrabaixo elétrico:
+  name: contrabaixo elétrico
+violão tenor:
+  name: violão tenor
+cavaquinho:
+  name: cavaquinho
+sax soprano.:
+  name: sax soprano.
+acordeon:
+  name: acordeon
+bandolaco:
+  name: bandolaco
+violão de cabaça:
+  name: violão de cabaça
+zabumba:
+  name: zabumba
+sanfona:
+  name: sanfona
+saxofones:
+  name: saxofones
+órgão hammond:
+  name: órgão hammond
+flatua:
+  name: flatua
+percussão.:
+  name: percussão.
+baixo acústico:
+  name: baixo acústico
+violão;:
+  name: violão;
+contrabaixo;:
+  name: contrabaixo;
+gaita:
+  name: gaita
+bateria.:
+  name: bateria.
+viola capira:
+  name: viola capira
+clarinete:
+  name: clarinete
+sax alto:
+  name: sax alto
+piano acústico:
+  name: piano acústico
+violino:
+  name: violino
+flugelhorn:
+  name: flugelhorn
+saxofone barítono:
+  name: saxofone barítono
+saxofone alto:
+  name: saxofone alto
+saxofone tenor:
+  name: saxofone tenor
+violão de aço:
+  name: violão de aço
+vocal:
+  name: vocal
+sopros:
+  name: sopros
+souzabone:
+  name: souzabone
+vibrafone:
+  name: vibrafone
+escaleta:
+  name: escaleta
+ewi:
+  name: ewi
+bandolim:
+  name: bandolim
+trompete/flughelhorn:
+  name: trompete/flughelhorn
+harmônica:
+  name: harmônica
+violoncelo:
+  name: violoncelo
+baixo elétrioco:
+  name: baixo elétrioco
+outros:
+  name: outros
+bugigangas:
+  name: bugigangas
+violão 6:
+  name: violão 6
+7 cordas:
+  name: 7 cordas
+cajón:
+  name: cajón
+programadora/sintetizadora/dj:
+  name: programadora/sintetizadora/dj
+baixo freetless:
+  name: baixo freetless
+piano/teclado:
+  name: piano/teclado
+bandolim 10 cordas:
+  name: bandolim 10 cordas
+efeitos:
+  name: efeitos
+clarone:
+  name: clarone
+sax tenor:
+  name: sax tenor
+soprano:
+  name: soprano
+sax barítono:
+  name: sax barítono
+flugel:
+  name: flugel
+guitarras;:
+  name: guitarras;
+teclados;:
+  name: teclados;
+baixo;:
+  name: baixo;
+piano/ teclados:
+  name: piano/ teclados
+contra baixo:
+  name: contra baixo
+viola sinfônica:
+  name: viola sinfônica
+acordeom:
+  name: acordeom
+guitarra;:
+  name: guitarra;
+violão:
+  name: violão
+percussão:
+  name: percussão
+viola dinâmica:
+  name: viola dinâmica
+viola de 10 cordas:
+  name: viola de 10 cordas
+pifanos:
+  name: pifanos
+samples:
+  name: samples
+percussão;:
+  name: percussão;
+viola de 10 cordas;:
+  name: viola de 10 cordas;
+trompete/flugelhorn:
+  name: trompete/flugelhorn
+trumpete/flugelhorn:
+  name: trumpete/flugelhorn
+guitarras:
+  name: guitarras
+violão de 7 cordas:
+  name: violão de 7 cordas
+saxofone soprano:
+  name: saxofone soprano
+violão de 6 cordas:
+  name: violão de 6 cordas
+violão requinto de 8 cordas:
+  name: violão requinto de 8 cordas
+violão de 8 cordas:
+  name: violão de 8 cordas
+bases eletrônicas:
+  name: bases eletrônicas
+percussaria:
+  name: percussaria
+que é uma mistura de percussão:
+  name: que é uma mistura de percussão
+flautas:
+  name: flautas
+vocais:
+  name: vocais
+acordeão:
+  name: acordeão
+batera:
+  name: batera
+piano elétrico:
+  name: piano elétrico
+triângulo:
+  name: triângulo
+instrumentos especiais.:
+  name: instrumentos especiais.
+guitarra.:
+  name: guitarra.
+baixo.:
+  name: baixo.
+viola 12 cordas:
+  name: viola 12 cordas
+clarinetas:
+  name: clarinetas
+percussão/bateria:
+  name: percussão/bateria
+trombone baixo:
+  name: trombone baixo
+tuba:
+  name: tuba
+sax tenor/flauta/sax soprano:
+  name: sax tenor/flauta/sax soprano
+trompete /flugelhorn:
+  name: trompete /flugelhorn
+fagote:
+  name: fagote
+oboé:
+  name: oboé
+viola caipira:
+  name: viola caipira
+violões:
+  name: violões
+sintetizadores:
+  name: sintetizadores
+monome:
+  name: monome
+violoncello:
+  name: violoncello
+guitarra baiana:
+  name: guitarra baiana
+violão 10 cordas:
+  name: violão 10 cordas

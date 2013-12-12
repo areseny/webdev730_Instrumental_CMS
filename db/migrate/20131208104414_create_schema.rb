@@ -41,13 +41,14 @@ class CreateSchema < ActiveRecord::Migration
       t.string     :type,         null: false
       t.string     :slug,         null: false
       t.text       :description,  null: false
+      t.boolean    :visible,      null: false, default: false
       t.text       :factsheet
       t.integer    :legacy_id
       t.timestamps
     end
     add_index :events, :artist_id
-    add_index :events, [:artist_id, :date, :type], unique: true
-    add_index :events, [:artist_id, :slug], unique: true
+    add_index :events, [:date, :type], unique: true
+    add_index :events, :slug, unique: true
 
     create_table :songs do |t|
       t.belongs_to :playlistable,  null: false, polymorphic: true
