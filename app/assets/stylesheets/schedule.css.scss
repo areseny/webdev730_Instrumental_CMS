@@ -1,0 +1,47 @@
+@import "mixins";
+
+.home-schedule {
+  display: table;
+  .home-tv-schedule {
+    display: table-cell;
+    width: 50%;
+    padding-right: 12.5px;
+  }
+  .home-site-schedule {
+    display: table-cell;
+    width: 50%;
+    padding-left: 12.5px;
+  }
+}
+
+.home-tv-schedule .block {
+  min-height: 370px;
+  h3 {
+    color: $orange;
+    font: 16px Aaux Pro Bold;
+    text-align: center;
+    margin: 0 0 15px 0;
+  }
+  img {
+    float: left;
+    margin: 0 15px 15px 0;
+  }
+  h4, h5 {
+    clear: both;
+    float: left;
+  }
+  h4 {
+    display: inline-block;
+    margin: 0 0 15px 0;
+    color: $orange;
+    font: 20px Aaux Pro Bold;
+  }
+  h5 {
+    display: inline-block;
+    margin: 0;
+    padding: 5px;
+    color: white;
+    background: $orange;
+    font: 16px Aaux Pro Bold;
+  }
+}

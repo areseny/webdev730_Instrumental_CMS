@@ -20,4 +20,9 @@ class Event < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def self.next_debut
+    order("debuts_at").where("debuts_at >= ?", Date.current).first ||
+      order("debuts_at desc").first
+  end
 end

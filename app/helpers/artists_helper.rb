@@ -11,6 +11,12 @@ module ArtistsHelper
               width: artist.banner_width, height: artist.banner_height)
   end
 
+  def artist_thumbnail(artist)
+    image_tag(artist.thumbnail.url,
+              title: artist.name, alt: artist.name, class: 'round',
+              width: 200, height: 200)
+  end
+
   def artist_instruments(artist)
     artist_details(artist.instruments, "Instrumentos")
   end

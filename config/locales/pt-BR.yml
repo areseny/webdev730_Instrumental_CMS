@@ -173,9 +173,11 @@ pt-BR:
     formats:
       month: "%B de %Y"
       brief: "%d/%m/%y"
+
   time:
     formats:
       time: "%H:%M"
+      brief: "%d/%m, %H:%M"
 
   slugs:
     show: show
