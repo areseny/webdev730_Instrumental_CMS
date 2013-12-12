@@ -12,23 +12,24 @@ class Artist < ActiveRecord::Base
   has_many :genres, through: :songs
   has_and_belongs_to_many :instruments
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
-  scope :visible, -> { where(id: Event.pluck(:artist_id)) }
-  scope :current, -> { where(id: Event.current.uniq.pluck(:artist_id)) }
-  scope :legacy, -> { where(id: Event.legacy.uniq.pluck(:artist_id)) }
+
+  scope :visible, -> { joins(:events).where(events:{ visible: true }).uniq }
+  scope :current, -> { joins(:events).where.not(events:{ type: Event::LegacyTypes }).uniq }
+  scope :legacy,  -> { joins(:events).where(events:{ type: Event::LegacyTypes }).uniq }
 
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
 
   def site_events
-    events.visible.site.last_first
+    events.site.visible.sorted
   end
 
   def tv_events
-    events.visible.tv.last_first
+    events.tv.visible.sorted
   end
 
   def legacy_events
-    events.visible.legacy.last_first
+    events.legacy.visible.sorted
   end
 
   def to_param

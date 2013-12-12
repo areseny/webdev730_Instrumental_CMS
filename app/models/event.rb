@@ -1,11 +1,17 @@
 class Event < ActiveRecord::Base
   belongs_to :artist, inverse_of: :events
-  scope :site, -> { where(type: %w(Show Interview VideoChat)) }
-  scope :tv, -> { where(type: %w(TvShow SoundCheck)) }
-  scope :current, -> { where.not(type: %w(LegacyShow LegacyTvShow)) }
-  scope :legacy, -> { where(type: %w(LegacyShow LegacyTvShow)) }
+  before_create :set_sort_order
+
+  SiteTypes   = %w(Show Interview VideoChat)
+  TvTypes     = %w(TvShow SoundCheck)
+  LegacyTypes = %w(LegacyShow LegacyTvShow)
+
+  scope :site,    -> { where(type: SiteTypes) }
+  scope :tv,      -> { where(type: TvTypes) }
+  scope :current, -> { where.not(type: LegacyTypes) }
+  scope :legacy,  -> { where(type: LegacyTypes) }
   scope :visible, -> { where(visible: true) }
-  scope :last_first, -> { order("date desc") }
+  scope :sorted,  -> { order("sort_order, date desc") }
 
   def video_thumbnail
     video.small_thumbnail if video
@@ -30,5 +36,19 @@ class Event < ActiveRecord::Base
   def self.next_debut
     order("debuts_at").where("debuts_at >= ?", Date.current).first ||
       order("debuts_at desc").first
+  end
+
+  private
+
+  def set_sort_order
+    self.sort_order = case type
+    when "Show" then 1
+    when "Interview" then 2
+    when "VideoChat" then 3
+    when "SoundCheck" then 4
+    when "TvShow" then 5
+    when "LegacyTvShow" then 6
+    when "LegacyShow" then 7
+    end
   end
 end
