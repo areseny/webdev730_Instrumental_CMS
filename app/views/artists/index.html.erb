@@ -1,3 +1,5 @@
+<% title t(".title") %>
+
 <% cache [:artists_list, @artists.maximum(:updated_at)] do %>
 <div class="artists-sidebar">
   <div class="block search-filters">

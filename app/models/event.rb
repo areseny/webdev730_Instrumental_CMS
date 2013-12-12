@@ -23,6 +23,10 @@ class Event < ActiveRecord::Base
     slug
   end
 
+  def article_title
+    artist.name + " | " + self.class.model_name.human
+  end
+
   def self.next_debut
     order("debuts_at").where("debuts_at >= ?", Date.current).first ||
       order("debuts_at desc").first

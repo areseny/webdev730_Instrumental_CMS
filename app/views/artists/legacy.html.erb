@@ -1,3 +1,5 @@
+<% title t(".title") %>
+
 <% cache [:artists_legacy_list, @artists.maximum(:updated_at)] do %>
 <div class="block-title artists-legacy-title">
   <h1><%= t ".title" %></h1>
