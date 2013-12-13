@@ -1,4 +1,4 @@
 zeus: zeus start
 guard: bundle exec guard
-web: zeus s -p 5100
+web: sleep 1 && zeus s -p 5100
 # bundle exec unicorn -p 5100 -c ./config/unicorn.rb
