@@ -5,7 +5,7 @@
     <div class="site-feed">
       <h2>Ultimas atualizações <i class="icon-rss-sign"></i></h2>
       <ul>
-        <% Event.visible.last_first.limit(8).each do |event| %>
+        <% Event.visible.sorted.limit(8).each do |event| %>
         <li>
           <span><%= l event.date, format: :brief %></span>
           <%= link_to event_feed_description(event), artist_event_path(event.artist, event) %>
