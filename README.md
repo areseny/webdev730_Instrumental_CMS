@@ -44,3 +44,4 @@ heroku config:add TZ="America/Sao_Paulo"
 - Remove stuff from Heroku's slug compilation
 - Configure Facebook App correctly on final domain
 - Optimize cache and queries
+- Neverending scroll on artist list

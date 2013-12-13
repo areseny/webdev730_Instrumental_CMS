@@ -37,7 +37,7 @@ class Artist < ActiveRecord::Base
   end
 
   def self.list(letter = nil)
-    list = current.order(:first_letter)
+    list = current.visible.order(:first_letter, :sort_name)
     letter = "~" if letter == "_"
     list = list.where(first_letter: letter) if letter
     list
