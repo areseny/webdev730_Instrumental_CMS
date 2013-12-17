@@ -5,13 +5,13 @@
   .home-tv-schedule {
     display: table-cell;
     vertical-align: top;
-    width: 50%;
+    width: 100%;
     padding-right: 12.5px;
   }
   .home-site-schedule {
     display: table-cell;
     vertical-align: top;
-    width: 50%;
+    min-width: 440px;
     padding-left: 12.5px;
   }
 }
