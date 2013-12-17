@@ -39,6 +39,35 @@
   }
 }
 
+.home-tv-schedule-feed {
+  margin: 0px 15px;
+  padding: 30px 25px 25px 25px;
+  background: $orange image-url("home-schedule-tv-background.png") repeat-x;
+  color: white;
+  @include border-radius(0, 0, 5px, 5px);
+  h4 {
+    margin: 0;
+    font: bold 14px Arial;
+  }
+  > ul {
+    padding: 0px;
+    > li {
+      list-style: none;
+      span {
+        font: 13px Aaux Pro Bold;
+        display: inline-block;
+        &:after {
+          content: "|";
+          padding: 0 5px;
+        }
+      }
+      & + li {
+        padding-top: 2px;
+      }
+    }
+  }
+}
+
 .schedule-tabs {
   margin: -10px 5px 0 5px;
   display: table;
