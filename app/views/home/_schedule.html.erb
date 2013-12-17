@@ -16,32 +16,29 @@
   </div>
   <% end -%>
 
-  <div class="home-site-schedule">
-    <h2>
-      No palco do Sesc Consolação e ao vivo na Internet
-      <span>Toda segunda-feira, às 19h</span>
-      <span>Veja a programação do mês de Janeiro</span>
-    </h2>
-    <% schedule = [
-      Artist.find_by_slug!("andre-geraissati"),
-      Artist.find_by_slug!("leo-mitrulis"),
-      Artist.find_by_slug!("nectar-do-groove"),
-      Artist.find_by_slug!("jaiz-in-4"),
-    ]
-    %>
+  <div class="home-site-schedule tabstrip">
+    <div class="home-site-schedule-title">
+      <h2>No palco do Sesc Consolação e ao vivo na Internet</h2>
+      <h3>Toda segunda-feira, às 19h</h3>
+    </div>
+    <% schedule = Show.next_shows %>
     <div class="schedule-tabs">
       <nav>
-        <% schedule.each do |artist| %>
-        <a href="#<%= artist.slug %>"><%= artist.name %> <span>06/01</span></a>
+        <% schedule.each_with_index do |show, i| %>
+        <%= home_schedule_tab(show, i == 1) %>
         <% end -%>
       </nav>
     </div>
-    <% schedule.each do |artist| %>
-    <div class="schedule-tab" id="<%= artist.slug %>">
-      <%= artist_thumbnail(artist) %>
-      <h5><%= artist.name %></h5>
-      <%= markdown artist.description %>
-    </div>
+    <% schedule.each_with_index do |show, i| %>
+    <%= home_schedule_panel(show, i == 1) do %>
+      <div class="schedule-tab-thumb">
+        <%= artist_thumbnail(show.artist) %>
+        <h5><%= show.artist.name %></h5>
+      </div>
+      <div class="schedule-tab-description">
+        <%= markdown show.description %>
+      </div>
+    <% end -%>
     <% end -%>
   </div>
 

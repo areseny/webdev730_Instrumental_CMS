@@ -4,13 +4,97 @@
   display: table;
   .home-tv-schedule {
     display: table-cell;
+    vertical-align: top;
     width: 50%;
     padding-right: 12.5px;
   }
   .home-site-schedule {
     display: table-cell;
+    vertical-align: top;
     width: 50%;
     padding-left: 12.5px;
+  }
+}
+
+.home-site-schedule-title {
+  height: 170px;
+  background: $cyan image-url("events-list-site-background.jpg") repeat-x bottom;
+  @include border-radius(5px, 5px, 0, 0);
+  color: white;
+  margin: 0 10px;
+  font-family: Aaux Pro Light;
+  h2 {
+    background: image-url("events-list-site-icon.png") no-repeat 25px 30px;
+    margin: 0;
+    padding: 25px 25px 25px 79px;
+    font-size: 18px;
+  }
+  h3 {
+    margin: 0 0 25px 0;
+    padding: 15px 0;
+    background-color: #1c3a3c;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+  }
+}
+
+.schedule-tabs {
+  margin: -10px 5px 0 5px;
+  display: table;
+  .schedule-tab {
+    display: table-cell;
+    vertical-align: top;
+    width: 104px;
+    height: 112px;
+    padding: 10px 10px 10px 18px;
+    background-image: image-url("home-schedule-tab-background.png");
+
+    &.schedule-tab-selected {
+      background-image: none;
+      background-color: white;
+      @include border-radius(5px, 5px, 0, 0);
+    }
+
+    a {
+      color: $cyan;
+      font: bold 14px Arial;
+      text-decoration: none;
+      background: image-url("schedule-tab-bg-h.png") repeat-y;
+      h5 { margin: 15px 0 5px 0; }
+      small {
+        display: inline-block;
+        background: $cyan;
+        color: white;
+        padding: 5px;
+        margin-top: 5px;
+        font: 12px Aaux Pro Bold;
+      }
+    }
+
+  }
+}
+
+.schedule-tab-panel {
+  background: white;
+  margin: 0;
+  padding: 25px;
+  display: table;
+  @include border-radius(5px, 5px, 5px, 5px);
+
+  .schedule-tab-thumb {
+    display: table-cell;
+    vertical-align: top;
+    h5 {
+      margin: 5px 0 0 0;
+      color: $cyan;
+      font: 15px Aaux Pro Bold;
+    }
+  }
+  .schedule-tab-description {
+    display: table-cell;
+    vertical-align: top;
+    padding-left: 25px;
   }
 }
 

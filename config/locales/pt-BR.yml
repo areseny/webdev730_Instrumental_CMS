@@ -173,6 +173,7 @@ pt-BR:
     formats:
       month: "%B de %Y"
       brief: "%d/%m/%y"
+      tiny: "%d/%m"
 
   time:
     formats:
