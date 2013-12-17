@@ -11267,8 +11267,19 @@ show-memoria-em-15-marco-2000:
   type: LegacyShow
   slug: show-memoria-em-15-marco-2000
   visible: true
-show-em-13-janeiro-2013:
-  date: 2013-01-13
+show-em-06-janeiro-2014:
+  date: 2014-01-06
+  description: A trajetória de André Geraissati é uma das mais emblemáticas da música
+    instrumental brasileira. Embora envolvido com música desde os Anos 60, Geraissati
+    surgiu para o grande público no final dos Anos 70, com o Grupo D’Alma e desde
+    a década de 1980 vem trabalhando em carreira solo, dirigindo e produzindo diversos
+    artistas como Egberto Gismonti, Hermeto Pascoal e Zimbo Trio.
+  artist: andre-geraissati
+  type: Show
+  slug: show-em-06-janeiro-2014
+  visible: false
+show-em-13-janeiro-2014:
+  date: 2014-01-13
   description: Em seu segundo trabalho autoral, Leo Mitrulis traz composições inspiradas
     por praças e lugares especiais da cidade de São Paulo. Leituras instrumentais
     da "Praça da República", "Praça do Pôr do Sol", "Praça Benedito Calixto", "Vila
@@ -11276,10 +11287,10 @@ show-em-13-janeiro-2013:
     a um verdadeiro passeio musical pela metrópole.
   artist: leo-mitrulis
   type: Show
-  slug: show-em-13-janeiro-2013
+  slug: show-em-13-janeiro-2014
   visible: false
-show-em-20-janeiro-2013:
-  date: 2013-01-20
+show-em-20-janeiro-2014:
+  date: 2014-01-20
   description: 'Criado em meados de 2006, na cidade de João Pessoa (PB), o grupo traz
     uma sonoridade que passeia por diversos estilos musicais tendo sempre o jazz como
     pano de fundo. Trafega por ritmos e estilos diferentes como: baião, afrobeat,
@@ -11287,10 +11298,10 @@ show-em-20-janeiro-2013:
     improvisação e cores em forma de som.'
   artist: nectar-do-groove
   type: Show
-  slug: show-em-20-janeiro-2013
+  slug: show-em-20-janeiro-2014
   visible: false
-show-em-27-janeiro-2013:
-  date: 2013-01-27
+show-em-27-janeiro-2014:
+  date: 2014-01-27
   description: Criado pelo trombonista Roney Stela, o grupo mostra diversidade de
     estilos aliando técnica à espontaneidade musical nos arranjos e solos. Suas apresentações
     tem ocorrido nos mais diferentes palcos passando por teatros, centros culturais
@@ -11298,5 +11309,5 @@ show-em-27-janeiro-2013:
     música instrumental até composições próprias.
   artist: jaiz-in-4
   type: Show
-  slug: show-em-27-janeiro-2013
+  slug: show-em-27-janeiro-2014
   visible: false
