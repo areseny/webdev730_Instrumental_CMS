@@ -29,7 +29,7 @@ module LayoutHelper
   def footer_sesctv_link
     title = t('links.sesctv.title')
     url = t('links.sesctv.url')
-    image = image_tag("footer-logo-sesctv.jpg", size: '119x28', alt: title)
+    image = image_tag("footer-logo-sesctv.jpg", size: '69x21', alt: title)
     link_to image, url, target: '_blank', title: title
   end
 
