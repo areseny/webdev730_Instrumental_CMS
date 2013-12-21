@@ -1,0 +1,20 @@
+<header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Instrumental SESC Brasil", admin_root_path, class: 'navbar-brand' %>
+    </div>
+    <nav class="collapse navbar-collapse navbar-ex" role="navigation">
+      <% if authenticated? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to glyphicon(:off, "Sair"), admin_logoff_path, method: :delete %></li>
+      </ul>
+      <% end %>
+    </nav>
+  </div>
+</header>
+

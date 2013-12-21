@@ -25,4 +25,14 @@ InstrumentalSescBrasil::Application.routes.draw do
   get 'auth/:provider/callback' => 'oauth#callback'
   get 'auth/failure' => 'oauth#failure'
 
+  namespace :admin, path: 'ueber', as: :admin do
+
+    root to: 'home#dashboard'
+
+    get    'login' => 'authentication#login_form', as: :login
+    post   'login' => 'authentication#login'
+    delete 'logoff' => 'authentication#logoff'
+
+  end
+
 end

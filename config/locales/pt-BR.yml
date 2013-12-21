@@ -104,6 +104,9 @@ pt-BR:
 
         Entraremos em contato assim que possível.
 
+    admin:
+      login_failure: Usuário desconhecido ou senha inválida
+
   links:
     twitter:
       url: "https://twitter.com/instsescbrasil"

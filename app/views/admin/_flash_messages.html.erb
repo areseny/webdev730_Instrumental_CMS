@@ -1,0 +1,8 @@
+<div class="flash-messages">
+  <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key %>">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <%= markdown_t "flash.#{message}" %>
+    </div>
+  <% end -%>
+</div>

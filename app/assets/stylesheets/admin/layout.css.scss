@@ -1,0 +1,17 @@
+body {
+  padding-top: 70px;
+}
+
+p + p {
+  margin-bottom: 0px;
+}
+
+.glyphicon {
+  margin-right: 6px;
+}
+
+.login-form {
+  width: 400px;
+  margin: 0px auto;
+  @media screen and (max-width: 440px) { width: 280px; }
+}

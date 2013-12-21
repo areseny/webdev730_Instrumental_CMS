@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html id="top">
+<head>
+  <title>Instrumental SESC Brasil - Área Administrativa</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+  <%= stylesheet_link_tag    "admin", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+  <%= render "live_reload" if Rails.env.development? %>
+</head>
+<body>
+
+  <%= render "header" %>
+
+  <div class="container">
+    <%= render "flash_messages" %>
+    <%= yield %>
+  </div>
+
+</body>
+</html>

@@ -38,6 +38,10 @@ heroku config:add TZ="America/Sao_Paulo"
 # Disqus:
 heroku config:add DISQUS_SHORTNAME=instrumentalsescbrasil
 heroku config:add DISQUS_BASEURL=http://instrumentalsescbrasil.org.br
+
+# Admin area access:
+heroku config:add ADMIN_USERNAME=xxx
+heroku config:add ADMIN_PASSWORD=yyy
 ```
 
 ## TODO
