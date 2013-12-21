@@ -19,6 +19,9 @@
     <%= render "event_list", type: :site, events: @artist.site_events %>
     <%= render "event_list", type: :tv, events: @artist.tv_events %>
     <%= render "event_list", type: :legacy, events: @artist.legacy_events %>
+    <div class="whiteblock">
+      <%= disqus_comments(@artist) %>
+    </div>
   </div>
   <div class="artist-sidebar">
     <%= render "playlist", artist: @artist %>

@@ -6,6 +6,9 @@ ol.video-nav {
   margin: 0px;
   padding: 0px;
 
+  height: 600px;
+  overflow-y: scroll;
+
   a { text-decoration: none; }
 
   > li {
