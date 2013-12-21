@@ -34,6 +34,10 @@ heroku config:add FACEBOOK_APP_ID=xxx
 
 # TimeZone:
 heroku config:add TZ="America/Sao_Paulo"
+
+# Disqus:
+heroku config:add DISQUS_SHORTNAME=instrumentalsescbrasil
+heroku config:add DISQUS_BASEURL=http://instrumentalsescbrasil.org.br
 ```
 
 ## TODO

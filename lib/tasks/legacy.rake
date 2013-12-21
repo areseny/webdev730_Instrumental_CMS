@@ -380,6 +380,37 @@ namespace :db do
       end
     end
 
+    # Generates the file tmp/comments.xml containing comment data to be exported to Disqus
+    task :export_comments do
+      require 'dotenv'
+      Dotenv.load
+      Rake::Task["environment"].execute
+      comments = legacy_sql("SELECT * from ut_Commentary")
+      dump = comments.group_by{ |r| [r['Area'], r['AreaID']] }
+      dump = dump.map do |(area, id), comments|
+        article =
+          case area
+          when 1 then Interview.find_by_legacy_id(id)
+          when 2 then Show.find_by_legacy_id(id)
+          when 3 then nil # ??? (11 comentários órfãos)
+          when 4 then VideoChat.find_by_legacy_id(id)
+          end
+        [article, comments] if article
+      end
+      view = ActionView::Base.new(File.dirname(__FILE__))
+      view.extend(Rails.application.helpers)
+      def view.gmt(time)
+        time.utc.strftime("%Y-%m-%d %H:%M:%S")
+      end
+      def view.domain
+        ENV['DOMAIN'] || "instrumentalsescbrasil.org.br"
+      end
+      view.instance_variable_set :@data, dump.compact
+      result = view.render(template: 'comments', format: 'rss')
+      File.open("db/seeds/comments.xml", 'w') { |f| f.write(result) }
+      puts "Arquivo db/seeds/comments.xml gerado"
+    end
+
     private
 
     def update_seeds(data)

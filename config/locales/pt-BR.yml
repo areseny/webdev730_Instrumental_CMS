@@ -155,6 +155,11 @@ pt-BR:
         Equipe Instrumental SESC Brasil
         %URL%
 
+
+  disqus:
+    noscript: |-
+      Para exibir os comentários, é necessário [habilitar o JavaScript](http://www.enable-javascript.com/pt/) no seu navegador.
+
   activerecord:
     models:
       show: Show

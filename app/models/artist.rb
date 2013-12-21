@@ -36,6 +36,14 @@ class Artist < ActiveRecord::Base
     slug
   end
 
+  def disqus_title
+    "Artista: #{name}"
+  end
+
+  def disqus_identifier
+    slug
+  end
+
   def self.list(letter = nil)
     list = current.visible.order(:first_letter, :sort_name)
     letter = "~" if letter == "_"

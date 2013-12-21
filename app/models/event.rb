@@ -41,6 +41,14 @@ class Event < ActiveRecord::Base
     artist.name + " | " + self.class.model_name.human
   end
 
+  def disqus_title
+    "#{self.class.model_name.human}: #{artist.name} (#{I18n.l(date, format: :month)})"
+  end
+
+  def disqus_identifier
+    "#{artist.slug}/#{slug}"
+  end
+
   def self.next_debut
     order("debuts_at").where("debuts_at >= ?", Date.current).first ||
       order("debuts_at desc").first
