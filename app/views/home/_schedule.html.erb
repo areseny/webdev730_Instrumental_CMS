@@ -1,7 +1,7 @@
 <div class="home-schedule">
 
   <% cache [:home_tv_schedule, Date.current] do %>
-  <% debut = Event.next_debut %>
+  <% if debut = Event.next_debut %>
   <div class="home-tv-schedule">
     <div class="events-list-title events-list-title-tv">
       <h2>Programação no canal SescTV</h2>
@@ -26,6 +26,7 @@
     </div>
     <% end -%>
   </div>
+  <% end -%>
   <% end -%>
 
   <div class="home-site-schedule tabstrip">

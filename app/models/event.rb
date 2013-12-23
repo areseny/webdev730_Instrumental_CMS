@@ -50,8 +50,10 @@ class Event < ActiveRecord::Base
   end
 
   def self.next_debut
-    order("debuts_at").where("debuts_at >= ?", Date.current).first ||
-      order("debuts_at desc").first
+    where.not(debuts_at: nil)
+      .order("debuts_at")
+      .where("debuts_at >= ?", Date.current).first ||
+      where.not(debuts_at: nil).order("debuts_at desc").first
   end
 
   private
