@@ -8,10 +8,14 @@
     </div>
     <div class="block">
       <h3>Próxima estréia do palco para a televisão</h3>
-      <%= artist_thumbnail(debut.artist) %>
-      <h4><%= debut.artist.name %></h4>
-      <h5><span><%= l debut.debuts_at, format: :brief %></span></h5>
-      <%= markdown debut.artist.description %>
+      <div class="debut-image">
+        <%= artist_thumbnail(debut.artist) %>
+        <h4><%= debut.artist.name %></h4>
+        <h5><span><%= l debut.debuts_at, format: :brief %></span></h5>
+      </div>
+      <div class="debut-description">
+        <%= markdown debut.artist.description %>
+      </div>
     </div>
     <% if schedule_day = TvScheduleItem.current_or_last_day %>
     <div class="home-tv-schedule-feed">
