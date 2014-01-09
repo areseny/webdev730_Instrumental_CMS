@@ -45,7 +45,7 @@ class Artist < ActiveRecord::Base
   end
 
   def dates
-    events.pluck('distinct date')
+    events.order(:date).pluck('distinct date')
   end
 
   def self.list(letter = nil)
