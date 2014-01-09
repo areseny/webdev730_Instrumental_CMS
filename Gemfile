@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'dedent'
 gem 'fb-channel-file'
+gem 'will_paginate-bootstrap'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'

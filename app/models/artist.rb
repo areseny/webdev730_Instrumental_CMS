@@ -44,6 +44,10 @@ class Artist < ActiveRecord::Base
     slug
   end
 
+  def dates
+    events.pluck('distinct date')
+  end
+
   def self.list(letter = nil)
     list = current.visible.order(:first_letter, :sort_name)
     letter = "~" if letter == "_"

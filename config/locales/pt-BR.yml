@@ -196,3 +196,7 @@ pt-BR:
     sound_check: programa-passagem-de-som
     legacy_tv_show: programa-instrumental-memoria
     legacy_show: show-memoria
+
+  will_paginate:
+    previous_label: Anterior
+    next_label: Próxima
