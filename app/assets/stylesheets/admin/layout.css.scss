@@ -26,3 +26,22 @@ p + p {
   @include border-radius(2px, 2px, 2px, 2px);
   margin-right: 8px;
 }
+
+.columns {
+  display: table;
+}
+
+.column {
+  display: table-cell;
+  vertical-align: top;
+  & + .column {
+    padding-left: 20px;
+  }
+  &.column-full {
+    width: 100%;
+  }
+}
+
+.round {
+  @include border-radius(10px, 10px, 10px, 10px);
+}

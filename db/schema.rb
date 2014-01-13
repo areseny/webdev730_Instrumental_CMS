@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212221304) do
+ActiveRecord::Schema.define(version: 20140113013751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,15 +104,17 @@ ActiveRecord::Schema.define(version: 20131212221304) do
   add_index "events", ["sort_order"], name: "index_events_on_sort_order", using: :btree
 
   create_table "features", force: true do |t|
-    t.integer  "featurable_id",                        null: false
-    t.string   "featurable_type",                      null: false
-    t.text     "description_override"
-    t.boolean  "enabled",              default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "title",                         null: false
+    t.string  "url",                           null: false
+    t.integer "priority",      default: 0,     null: false
+    t.text    "description",                   null: false
+    t.string  "banner",                        null: false
+    t.integer "banner_width",                  null: false
+    t.integer "banner_height",                 null: false
+    t.boolean "enabled",       default: false, null: false
   end
 
-  add_index "features", ["enabled"], name: "index_features_on_enabled", using: :btree
+  add_index "features", ["enabled", "priority"], name: "index_features_on_enabled_and_priority", using: :btree
 
   create_table "gallery_images", force: true do |t|
     t.integer  "artist_id",              null: false

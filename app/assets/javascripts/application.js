@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.jcarousel
+//= require jquery.jcarousel-autoscroll
 //= require_tree .

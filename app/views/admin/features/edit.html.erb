@@ -1,0 +1,43 @@
+<legend>Editar destaque: <%= @feature.title %></legend>
+<%= form_for [:admin, @feature], html: { class: 'form-horizontal' } do |f| %>
+
+  <%= f.horizontal_group :title, :text_field,
+                         :autofocus => true,
+                         :placeholder => "Título de referência" %>
+  <%= f.horizontal_group :url, :text_field,
+                         :placeholder => "URL do link do destaque" %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="alert alert-warning">
+        <i class="glyphicon glyphicon-warning-sign"></i>
+        <strong>ATENÇÃO</strong>: Cuidado ao utilizar URLs externas, lembre que será publicado na home do site!!
+      </div>
+    </div>
+  </div>
+
+  <%= f.horizontal_group :priority, :number_field, control_size: 'col-sm-2' %>
+
+  <%= f.horizontal_group :description, :text_area,
+                         :placeholder => 'Texto do destaque em Markdown',
+                         :rows => 8 %>
+
+  <div class="form-group <%= 'has-error' if @feature.errors[:banner].any? %>">
+    <%= f.label :banner, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.file_field :banner %><br />
+      <%= image_tag @feature.banner.url, width: @feature.banner_width / 2, height: @feature.banner_height / 2, class: 'round' %>
+    </div>
+  </div>
+
+  <%= f.horizontal_check_box  :enabled, "Destaque Habilitado" %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Alterar", class: 'btn btn-primary' %>
+      <%= link_to "Remover", [:admin, @feature],
+                  :method => :delete,
+                  :class => 'btn btn-danger',
+                  :confirm => "Tem certeza que deseja remover esse destaque?" %>
+    </div>
+  </div>
+<% end -%>

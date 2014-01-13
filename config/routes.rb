@@ -33,6 +33,7 @@ InstrumentalSescBrasil::Application.routes.draw do
     post   'login' => 'authentication#login'
     delete 'logoff' => 'authentication#logoff'
 
+    resources :features, except: :show
     resources :artists, only: [:index, :edit]
 
   end

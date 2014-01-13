@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   # GET /
   def index
-    @feature = Feature.enabled.first
+    @features = Feature.enabled
   end
 
   # GET /projeto

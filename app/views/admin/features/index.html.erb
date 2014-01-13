@@ -1,0 +1,28 @@
+<div style="margin-bottom: 15px;">
+  <%= link_to "Criar destaque", new_admin_feature_path, class: 'btn btn-primary' %>
+</div>
+<div class="list-group">
+  <% @features.each do |feature| %>
+    <%= link_to edit_admin_feature_path(feature), class: 'list-group-item' do %>
+      <div class="columns columns-full">
+        <div class="column">
+          <%= image_tag feature.banner.url,
+                        style: 'width: 200px; height: auto;' %>
+        </div>
+        <div class="column column-full">
+          <% if feature.enabled %>
+            <div class="alert alert-success" style="float: right; padding: 5px 10px;">
+              <i class="glyphicon glyphicon-ok"></i> Habilitado
+            </div>
+          <% else %>
+            <div class="alert alert-danger" style="float: right; padding: 5px 10px;">
+              <i class="glyphicon glyphicon-ban-circle"></i> Desabilitado
+            </div>
+          <% end -%>
+          <h4><%= feature.title %></h4>
+          <%= content_tag :pre, feature.description.truncate(200) %>
+        </div>
+      </div>
+    <% end -%>
+  <% end -%>
+</div>

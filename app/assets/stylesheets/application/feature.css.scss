@@ -1,5 +1,24 @@
 @import "mixins";
 
+.feature {
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.feature-sidebar {
+  position: absolute;
+  top: 35px;
+  right: 0px;
+  width: 340px;
+}
+
+.feature-title {
+  display: inline-block;
+  margin: 0 0 10px 0;
+  color: white;
+  font: 40px Aaux Pro Light;
+}
+
 .main-feature-block {
   h1 {
     color: $cyan;
@@ -14,9 +33,27 @@
   }
   a {
     text-decoration: none;
-    &:hover { text-decoration: underline; }
   }
   .autoscroll {
     max-height: 360px;
+  }
+}
+
+.feature-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  height: 500px;
+  > ul {
+    position: relative;
+    overflow: auto;
+    width: 20000em;
+    padding: 0px;
+    > li {
+      list-style: none;
+      float: left;
+      width: 900px;
+      height: 500px;
+    }
   }
 }

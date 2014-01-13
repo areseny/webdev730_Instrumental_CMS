@@ -1,0 +1,31 @@
+<div class="feature">
+  <div class="feature-carousel">
+    <ul>
+      <% features.each do |feature| %>
+      <%= content_tag :li, :data => {
+                        :description => markdown(feature.description),
+                        :title => feature.title
+                      } do %>
+        <%= link_to feature.url, title: feature.title do %>
+          <%= image_tag feature.banner.url,
+                        :class => 'round',
+                        :title => feature.title,
+                        :width => feature.banner_width,
+                        :height => feature.banner_height,
+                        :alt => feature.title %>
+        <% end -%>
+      <% end -%>
+      <% end -%>
+    </ul>
+  </div>
+  <div class="feature-sidebar">
+    <div class="block main-feature-block">
+      <%= link_to features[0].url, title: features[0].title do %>
+        <h1 id="feature-carousel-title"><%= features[0].title %></h1>
+        <div id="feature-carousel-description">
+          <%= markdown features[0].description %>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

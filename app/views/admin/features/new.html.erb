@@ -1,0 +1,30 @@
+<legend>Criar novo destaque</legend>
+<%= form_for [:admin, @feature], html: { class: 'form-horizontal' } do |f| %>
+
+  <%= f.horizontal_group :title, :text_field,
+                         :autofocus => true,
+                         :placeholder => "Título do destaque" %>
+  <%= f.horizontal_group :url, :text_field,
+                         :placeholder => "URL do link do destaque" %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="alert alert-warning">
+        <i class="glyphicon glyphicon-warning-sign"></i>
+        <strong>ATENÇÃO</strong>: Cuidado ao utilizar URLs externas, lembre que será publicado na home do site!!
+      </div>
+    </div>
+  </div>
+
+  <%= f.horizontal_group :description, :text_area,
+                         :placeholder => 'Texto do destaque em Markdown',
+                         :rows => 8 %>
+
+  <%= f.horizontal_group :banner, :file_field %>
+  <%= f.horizontal_check_box  :enabled, "Destaque Habilitado" %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Criar", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end -%>

@@ -176,6 +176,16 @@ pt-BR:
   attributes:
     name: Nome
     email: E-mail
+    enabled: Habilitado
+    url: URL
+
+  activerecord:
+    attributes:
+      feature:
+        title: Título
+        description: Texto
+        banner: Imagem
+        priority: Ordenação
 
   date:
     formats:

@@ -12,6 +12,7 @@
       <% if authenticated? %>
       <ul class="nav navbar-nav">
         <li><%= link_to glyphicon(:music, "Artistas"), admin_artists_path %></li>
+        <li><%= link_to glyphicon(:picture, "Destaques"), admin_features_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to glyphicon(:off, "Sair"), admin_logoff_path, method: :delete %></li>
