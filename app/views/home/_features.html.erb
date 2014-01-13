@@ -1,3 +1,5 @@
+<% cache "home-page-features", expires_in: 15.minutes do %>
+<% if features.any? %>
 <div class="feature">
   <div class="feature-carousel">
     <ul>
@@ -29,3 +31,5 @@
     </div>
   </div>
 </div>
+<% end -%>
+<% end -%>
