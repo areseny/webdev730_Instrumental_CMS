@@ -7,6 +7,7 @@
       <h2>Programação no canal SescTV</h2>
     </div>
     <div class="block">
+      <%= link_to artist_event_path(debut.artist, debut) do %>
       <h3>Próxima estréia do palco para a televisão</h3>
       <div class="debut-image">
         <%= artist_thumbnail(debut.artist) %>
@@ -16,6 +17,7 @@
       <div class="debut-description">
         <%= markdown debut.artist.description %>
       </div>
+      <% end -%>
     </div>
     <% if schedule_day = TvScheduleItem.current_or_last_day %>
     <div class="home-tv-schedule-feed">
