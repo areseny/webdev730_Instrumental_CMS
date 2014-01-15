@@ -1,0 +1,82 @@
+- Admin Area
+  - Login/Logoff                                 ✓
+  - Lista de Artistas por Nome                   ✓
+  - Lista de Artistas por Data                   ✓
+  - Artista Novo/Editar
+    - Dados
+    - Imagens/Galeria
+    - Shows/Músicas (memória tbm)
+    - Entrevistas/Perguntas
+    - Bate-Papos/Perguntas
+    - Programa Instrumental
+    - Programa Passagem de Som
+    - Programa Instrumental Memória
+  - Destaques da Home
+    - Cadastrar                                  ✓
+    - Editar / Remover                           ✓
+  - YouTube
+    - Artistas pré-existentes / confirmar
+    - Artistas novos / cadastrar
+    - Conflitos (explicar)
+    - Última atualização / atualizar agora
+  - Conteúdo
+    - Home Page
+      - Textos
+      - Programação SescTV
+      - Próximas estréias
+    - Geral (textos/links/imagens)
+    - Página Artistas
+    - Página Memória
+    - Sobre o Programa
+    - Formulário de Contato
+    - Política de Privacidade
+  - Newsletter
+    - Lista de cadastrados
+    - Baixar CSV
+    - Texto Mensagem
+  - Contato
+    - Lista de mensagens
+
+- Home Page
+  - Lista de Artistas
+  - Top 10
+  - PDF programação completa
+
+- Lista de Artistas
+  - Filtrar por instrumento
+  - Filtrar por gênero
+
+- Perfil Artista
+  - Galeria
+  - Layout social boxes
+
+- Página genérica de evento
+  - Compartilhe esse vídeo
+  - Conteúdo relacionado
+  - Box de artistas
+
+- Busca
+  - Resultados
+  - Filtrar por instrumento
+  - Filtrar por gênero
+
+- Transmissão ao Vivo
+
+- Na TV
+
+- Layout alternativo passagem de som
+
+- Playlists
+
+- Rádio Instrumental
+
+- RSS
+  - Feed últimas atualizações
+  - Link social buttons RSS
+
+- Google Analytics
+
+- Página show (tbm memória)
+  - pensar (?)
+  - Destaques instrumento
+  - Destaques gênero
