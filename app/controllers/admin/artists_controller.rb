@@ -22,7 +22,8 @@ class Admin::ArtistsController < AdminController
 
   def artist_params
     params.require(:artist)
-          .permit(:name, :description, :instrument_names)
+          .permit(:name, :description, :instrument_names,
+                  :facebook_page, :twitter_widget_id)
   end
 
 

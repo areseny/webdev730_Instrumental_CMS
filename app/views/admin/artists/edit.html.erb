@@ -10,6 +10,10 @@
   <%= f.horizontal_group :instrument_names, :text_field,
                          :class => "instruments-tokenfield",
                          :placeholder => "Digite o nome do instrumento e pressione TAB" %>
+  <%= f.horizontal_group :facebook_page, :text_field,
+                         :placeholder => "URL do artista no Facebook para embed" %>
+  <%= f.horizontal_group :twitter_widget_id, :text_field,
+                         :placeholder => "ID do widget do Twitter do artista para embed" %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

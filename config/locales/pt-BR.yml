@@ -185,6 +185,8 @@ pt-BR:
     enabled: Habilitado
     url: URL
     instrument_names: Instrumentos
+    facebook_page: Facebook
+    twitter_widget_id: Twitter (Widget ID)
 
   date:
     formats:
