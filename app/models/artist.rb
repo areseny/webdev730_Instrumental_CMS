@@ -66,7 +66,7 @@ class Artist < ActiveRecord::Base
   def set_instruments_before_saving
     if @instrument_names
       instruments.clear
-      self.instruments = @instrument_names.split(",").map do |n|
+      self.instruments = @instrument_names.downcase.split(",").map do |n|
         Instrument.where(name: n).first_or_initialize
       end
     end
