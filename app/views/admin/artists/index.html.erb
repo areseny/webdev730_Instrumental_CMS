@@ -10,7 +10,7 @@
     <tr>
       <td>
         <%= image_tag(artist.thumbnail, size: '32x32', class: 'artist-list-thumb') %>
-        <%= link_to artist.name, edit_admin_artist_path(artist) %>
+        <%= link_to artist.name, admin_artist_path(artist) %>
       </td>
       <td>
         <%= artist.dates.map{ |d| l(d, format: :brief) }.to_sentence %>

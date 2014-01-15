@@ -35,7 +35,7 @@ InstrumentalSescBrasil::Application.routes.draw do
 
     get 'instruments' => 'instruments#index', :format => :json
     resources :features, except: :show
-    resources :artists, only: [:index, :edit, :update]
+    resources :artists
 
   end
 

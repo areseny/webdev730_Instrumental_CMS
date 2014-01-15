@@ -4,6 +4,10 @@ class Admin::ArtistsController < AdminController
     @artists = Artist.page(params[:page]).order(:first_letter, :sort_name)
   end
 
+  def show
+    @artist = Artist.find_by_slug!(params[:id])
+  end
+
   def edit
     @artist = Artist.find_by_slug!(params[:id])
   end
@@ -11,11 +15,18 @@ class Admin::ArtistsController < AdminController
   def update
     @artist = Artist.find_by_slug!(params[:id])
     if @artist.update_attributes(artist_params)
-      flash[:success] = "Artista alterado com sucesso!"
-      redirect_to admin_artists_path
+      flash[:success] = "admin.artists.update"
+      redirect_to admin_artist_path(@artist)
     else
       render :edit
     end
+  end
+
+  def destroy
+    @artist = Artist.find_by_slug!(params[:id])
+    @artist.destroy!
+    flash[:success] = "admin.artists.destroy"
+    redirect_to admin_artists_path
   end
 
   private

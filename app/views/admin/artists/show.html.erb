@@ -1,0 +1,23 @@
+<%= image_tag(@artist.thumbnail.url, class: 'round pull-left', style: 'margin: 0 20px 20px 0') %>
+<h3><%= @artist.name %></h3>
+<%= markdown @artist.description %>
+<hr style="clear: left;" />
+<div style="margin-left: 220px;">
+
+  <%= link_to edit_admin_artist_path(@artist), class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-pencil"></i> Editar
+  <% end -%>
+  <%= link_to admin_artists_path, class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-list"></i> Voltar à lista
+  <% end -%>
+
+  <%= link_to(
+        admin_artist_path(@artist),
+        :method => :delete,
+        :class => "btn btn-danger pull-right",
+        :confirm => "Tem certeza que deseja remover o artista: #{@artist.name} ?\n\n" +
+                    "ATENÇÃO: isto apagará também todos os eventos associados.") do %>
+    <i class="glyphicon glyphicon-trash"></i> Remover
+  <% end -%>
+
+</div>

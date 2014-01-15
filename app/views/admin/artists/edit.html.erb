@@ -16,8 +16,12 @@
                          :placeholder => "ID do widget do Twitter do artista para embed" %>
 
   <div class="form-group">
+    <hr />
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Alterar", class: 'btn btn-primary' %>
+      <%= link_to "Cancelar", admin_artist_path(@artist), class: 'btn btn-primary' %>
+      <%= f.button class: 'btn btn-success' do %>
+        <i class="glyphicon glyphicon-ok"></i> Atualizar
+      <% end -%>
     </div>
   </div>
 

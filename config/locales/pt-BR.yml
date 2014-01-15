@@ -107,6 +107,10 @@ pt-BR:
     admin:
       login_failure: Usuário desconhecido ou senha inválida
 
+      artists:
+        destroy: Artista removido do site com sucesso!
+        update: Dados do artista alterados com sucesso!
+
   links:
     twitter:
       url: "https://twitter.com/instsescbrasil"
@@ -183,6 +187,7 @@ pt-BR:
     name: Nome
     email: E-mail
     enabled: Habilitado
+    description: Descrição
     url: URL
     instrument_names: Instrumentos
     facebook_page: Facebook
