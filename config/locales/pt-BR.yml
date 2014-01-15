@@ -172,20 +172,18 @@ pt-BR:
       sound_check: Programa Passagem de Som
       legacy_tv_show: Programa Instrumental
       legacy_show: Show
-
-  attributes:
-    name: Nome
-    email: E-mail
-    enabled: Habilitado
-    url: URL
-
-  activerecord:
     attributes:
       feature:
         title: Título
         description: Texto
         banner: Imagem
         priority: Ordenação
+
+  attributes:
+    name: Nome
+    email: E-mail
+    enabled: Habilitado
+    url: URL
 
   date:
     formats:
