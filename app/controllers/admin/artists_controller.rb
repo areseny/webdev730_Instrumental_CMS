@@ -22,7 +22,7 @@ class Admin::ArtistsController < AdminController
 
   def artist_params
     params.require(:artist)
-          .permit(:name, :description)
+          .permit(:name, :description, :instrument_names)
   end
 
 

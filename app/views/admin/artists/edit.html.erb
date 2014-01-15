@@ -7,6 +7,9 @@
   <%= f.horizontal_group :description, :text_area,
                          :placeholder => 'Descrição do artista em Markdown',
                          :rows => 8 %>
+  <%= f.horizontal_group :instrument_names, :text_field,
+                         :class => "instruments-tokenfield",
+                         :placeholder => "Digite o nome do instrumento e pressione TAB" %>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">

@@ -3,7 +3,9 @@ class FormBuilder < ActionView::Helpers::FormBuilder
   def horizontal_group(field, method, options = {})
     classes = %w(form-group)
     control_size = options[:control_size] || 'col-sm-10'
-    control = send(method, field, options.merge(class: 'form-control'))
+    control_classes = options.delete(:class).try(:split, ' ') || []
+    control_classes << 'form-control'
+    control = send(method, field, options.merge(:class => control_classes.join(' ')))
     if object.errors[field].any?
       classes << "has-error"
       help_block = h.simple_format(object.errors.full_messages_for(field)[0])

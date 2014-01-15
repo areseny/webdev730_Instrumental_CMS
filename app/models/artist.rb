@@ -54,4 +54,24 @@ class Artist < ActiveRecord::Base
     list = list.where(first_letter: letter) if letter
     list
   end
+
+  def instrument_names
+    instruments.map(&:name).join(",")
+  end
+
+  def instrument_names=(value)
+    @instrument_names = value
+  end
+
+  def set_instruments_before_saving
+    if @instrument_names
+      instruments.clear
+      self.instruments = @instrument_names.split(",").map do |n|
+        Instrument.where(name: n).first_or_initialize
+      end
+    end
+  end
+  private :set_instruments_before_saving
+  before_save :set_instruments_before_saving
+
 end
