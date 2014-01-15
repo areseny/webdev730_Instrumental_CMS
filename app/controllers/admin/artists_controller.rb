@@ -8,4 +8,22 @@ class Admin::ArtistsController < AdminController
     @artist = Artist.find_by_slug!(params[:id])
   end
 
+  def update
+    @artist = Artist.find_by_slug!(params[:id])
+    if @artist.update_attributes(artist_params)
+      flash[:success] = "Artista alterado com sucesso!"
+      redirect_to admin_artists_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def artist_params
+    params.require(:artist)
+          .permit(:name, :description)
+  end
+
+
 end

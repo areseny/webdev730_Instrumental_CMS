@@ -1,0 +1,17 @@
+<legend>Editar artista: <%= @artist.name %></legend>
+<%= form_for [:admin, @artist], html: { class: 'form-horizontal' } do |f| %>
+
+  <%= f.horizontal_group :name, :text_field,
+                         :autofocus => true,
+                         :placeholder => "Nome do artista" %>
+  <%= f.horizontal_group :description, :text_area,
+                         :placeholder => 'Descrição do artista em Markdown',
+                         :rows => 8 %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Alterar", class: 'btn btn-primary' %>
+    </div>
+  </div>
+
+<% end -%>
