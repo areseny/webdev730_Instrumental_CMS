@@ -28,7 +28,7 @@ class Admin::FeaturesController < AdminController
       flash[:success] = "Destaque alterado com sucesso!"
       redirect_to admin_features_path
     else
-      render :new
+      render :edit
     end
   end
 
