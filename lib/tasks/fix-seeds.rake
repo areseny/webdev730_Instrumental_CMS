@@ -20,9 +20,10 @@ namespace :db do
       artist["slug"] = slug
       artist["sort_name"] = sort_name
       artist["first_letter"] = first_letter
-      (row[:gallery] || []).each do |img|
+      (row[:gallery] || []).each_with_index do |img, index|
         img.stringify_keys!
         img["artist"] = slug
+        img["position"] = index + 1
         gallery_images[img['image']] = img
       end
       artist["instruments"] = []
