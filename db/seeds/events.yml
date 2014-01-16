@@ -10308,18 +10308,6 @@ bate-papo-em-21-janeiro-2013:
   type: VideoChat
   slug: bate-papo-em-21-janeiro-2013
   visible: true
-show-em-28-janeiro-2013:
-  legacy_id: 304
-  date: 2013-01-28
-  description: O projeto tem como objetivo levar ao publico a fusão de instrumentos
-    como piano, teclado, violino, violão, contra-baixo elétrico, percuteria eletrônica,
-    guitarra baiana midi e bandolim, além de uma variedade de ritmos. Com Ney Marques
-    (bandolim), José Antonio Almeida (piano), Luiz Rabello (percussão), Cassio Poletto
-    (violino), Bosco Fonseca (baixo) e Beto Abbatepaulo (violão).
-  artist: bandolim-eletrico
-  type: Show
-  slug: show-em-28-janeiro-2013
-  visible: false
 bate-papo-em-28-janeiro-2013:
   legacy_id: 291
   date: 2013-01-28
