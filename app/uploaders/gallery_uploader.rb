@@ -21,6 +21,16 @@ class GalleryUploader < CarrierWave::Uploader::Base
   end
   process :store_geometry
 
+  version :thumb do
+    process convert: 'jpg'
+    process :resize_to_fill => [63, 63]
+  end
+
+  version :preview do
+    process convert: 'jpg'
+    process :resize_to_fill => [200, 200]
+  end
+
   private
 
   def md5
