@@ -5,7 +5,9 @@
     <%= f.label :banner, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.file_field :banner %><br />
+      <% if @artist.banner? %>
       <%= image_tag @artist.banner.url, width: @artist.banner_width / 2, height: @artist.banner_height / 2, class: 'round' %>
+      <% end -%>
     </div>
   </div>
 
@@ -13,7 +15,9 @@
     <%= f.label :thumbnail, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
       <%= f.file_field :thumbnail %><br />
+      <% if @artist.thumbnail? %>
       <%= image_tag @artist.thumbnail.url, size: '200x200', class: 'round' %>
+      <% end -%>
     </div>
   </div>
 
