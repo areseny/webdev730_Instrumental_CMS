@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  belongs_to :viewable, inverse_of: :video, polymorphic: true
+  belongs_to :viewable, polymorphic: true
   has_many :timecodes, dependent: :delete_all
 
   def url

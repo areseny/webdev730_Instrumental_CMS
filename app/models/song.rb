@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   include Viewable
-  belongs_to :playlistable, polymorphic: true, inverse_of: :songs
+  belongs_to :playlistable, polymorphic: true
   delegate :artist, to: :playlistable
   has_and_belongs_to_many :genres
   has_many :band_members, dependent: :destroy
