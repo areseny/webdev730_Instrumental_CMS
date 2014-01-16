@@ -1,6 +1,33 @@
-<%= image_tag(@artist.thumbnail.url, class: 'round pull-left', style: 'margin: 0 20px 20px 0') %>
-<h3><%= @artist.name %></h3>
-<%= markdown @artist.description %>
+<div class="columns">
+  <div class="column">
+    <%= image_tag(@artist.thumbnail.url, class: 'round') %>
+  </div>
+  <div class="column">
+    <h3 style="margin-top: 0"><%= @artist.name %></h3>
+    <%= markdown @artist.description %>
+    <% @artist.events.visible.pluck('distinct date').each do |date| %>
+      <legend>Data: <%= l date %></legend>
+      <ul class="list-group">
+        <% @artist.events.visible.where(date: date).sorted.each do |event| %>
+          <li class='list-group-item'>
+            <div class="columns">
+              <div class="column">
+                <%= image_tag(event.video_thumbnail, class: 'round') %>
+              </div>
+              <div class="column">
+                <h4><%= event.class.model_name.human %></h4>
+                <%= link_to "Editar", edit_admin_event_path(event),
+                            :class => 'btn btn-primary' %>
+              </div>
+            </div>
+          </li>
+        <% end -%>
+      </ul>
+    <% end -%>
+  </div>
+</div>
+
+
 <hr style="clear: left;" />
 <div style="margin-left: 220px;">
 
@@ -20,7 +47,7 @@
         :class => "btn btn-danger pull-right",
         :confirm => "Tem certeza que deseja remover o artista: #{@artist.name} ?\n\n" +
                     "ATENÇÃO: isto apagará também todos os eventos associados.") do %>
-    <i class="glyphicon glyphicon-trash"></i> Remover
+    <i class="glyphicon glyphicon-trash"></i> Remover o Artista
   <% end -%>
 
 </div>

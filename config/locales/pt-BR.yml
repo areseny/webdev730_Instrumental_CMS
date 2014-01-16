@@ -111,6 +111,9 @@ pt-BR:
         destroy: Artista removido do site com sucesso!
         update: Dados do artista alterados com sucesso!
 
+      events:
+        update: Dados do evento alterados com sucesso!
+
   links:
     twitter:
       url: "https://twitter.com/instsescbrasil"

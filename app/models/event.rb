@@ -45,6 +45,10 @@ class Event < ActiveRecord::Base
     "#{self.class.model_name.human}: #{artist.name} (#{I18n.l(date, format: :month)})"
   end
 
+  def title
+    "#{self.class.model_name.human} com #{artist.name} em #{I18n.l(date, format: :brief)}"
+  end
+
   def disqus_identifier
     "#{artist.slug}/#{slug}"
   end

@@ -40,6 +40,7 @@ InstrumentalSescBrasil::Application.routes.draw do
         get :images
       end
     end
+    resources :events, only: [:edit, :update]
 
   end
 
