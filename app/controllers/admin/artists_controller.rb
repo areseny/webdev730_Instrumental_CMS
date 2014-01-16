@@ -8,6 +8,10 @@ class Admin::ArtistsController < AdminController
     @artist = Artist.find_by_slug!(params[:id])
   end
 
+  def images
+    @artist = Artist.find_by_slug!(params[:id])
+  end
+
   def edit
     @artist = Artist.find_by_slug!(params[:id])
   end
@@ -34,7 +38,8 @@ class Admin::ArtistsController < AdminController
   def artist_params
     params.require(:artist)
           .permit(:name, :description, :instrument_names,
-                  :facebook_page, :twitter_widget_id)
+                  :facebook_page, :twitter_widget_id,
+                  :banner, :thumbnail)
   end
 
 

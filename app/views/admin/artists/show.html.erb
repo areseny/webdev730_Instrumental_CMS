@@ -7,6 +7,9 @@
   <%= link_to edit_admin_artist_path(@artist), class: 'btn btn-primary' do %>
     <i class="glyphicon glyphicon-pencil"></i> Editar
   <% end -%>
+  <%= link_to images_admin_artist_path(@artist), class: 'btn btn-primary' do %>
+    <i class="glyphicon glyphicon-picture"></i> Imagens
+  <% end -%>
   <%= link_to admin_artists_path, class: 'btn btn-primary' do %>
     <i class="glyphicon glyphicon-list"></i> Voltar à lista
   <% end -%>
