@@ -124,6 +124,11 @@ describe YoutubeParser do
     parser.date.should == Date.new(2013, 1, 28)
   end
 
+  it "detects the event's date with extra spaces" do
+    parser = parse(description: "Arranca-rabo que ocorreu no Teatro da Esquina dia 28/01/2013 \n")
+    parser.date.should == Date.new(2013, 1, 28)
+  end
+
   it "won't detect invalid dates" do
     parser = parse(description: "Show que ocorreu no Teatro da Esquina dia 28/40/2013")
     parser.date.should be_nil

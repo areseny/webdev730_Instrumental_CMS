@@ -123,7 +123,7 @@ class YoutubeParser
   end
 
   DatePattern =
-    /que\s+ocorreu.+dia\s+(\d{2}\/\d{2}\/\d{4})$/i
+    /que\s+ocorreu.+dia\s+(\d{2}\/\d{2}\/\d{4})\s*$/i
 
   def date_match
     @date_match ||= DatePattern.match(full_description)
