@@ -3,7 +3,10 @@ require 'dotenv/tasks'
 namespace :videos do
 
   # Sync video information with YouTube
-  task :sync => [:dotenv, :environment] do
+  task :sync do
+    require 'dotenv'
+    Dotenv.load
+    Rake::Task["environment"].execute
     Video.transaction do
       parsed_videos.each do |parsed_video|
         video = Video.where(youtube_id: parsed_video[:video_id]).first_or_initialize

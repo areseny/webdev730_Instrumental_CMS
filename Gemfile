@@ -23,6 +23,7 @@ gem 'rmagick'
 gem 'dedent'
 gem 'fb-channel-file'
 gem 'will_paginate-bootstrap'
+gem 'dotenv', require: false
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
@@ -42,7 +43,6 @@ group :development do
   gem 'guard-livereload'
   gem 'letter_opener'
   gem 'awesome_print'
-  gem 'dotenv', require: false
   gem 'tiny_tds', require: false
 end
 
