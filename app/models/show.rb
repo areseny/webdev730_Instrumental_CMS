@@ -3,8 +3,8 @@ class Show < Event
 
   def self.next_shows
     d = Date.current
-    previous_show = where("date < ?", d).order("date desc").first
     next_shows = where("date >= ?", d).order("date").limit(3).to_a
-    next_shows.unshift(previous_show)
+    previous_shows = where("date < ?", d).order("date desc").limit(4 - next_shows.length).to_a
+    previous_shows + next_shows
   end
 end
