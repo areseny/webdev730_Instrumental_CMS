@@ -10,8 +10,10 @@ module VideoHelper
         members: members,
         video_id: video_id
       }
-    else
+    elsif event.video
       data = { video_id: event.video.youtube_id }
+    else
+      data = {}
     end
     content_tag(:div, nil, id: "player", class: "video-player", data: data)
   end
