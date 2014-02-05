@@ -13,11 +13,11 @@ pt-BR:
       tune_info: |-
         ### Sintonize o SESC TV
 
-        Oi TV, canal 29
-        Digital Satélite B3 - freq: 3768v
-        Internet - [Asssista online](http://www.sescsp.org.br/online/videos/32_SESCTV+AO+VIVO#/content=sobre "Assista Online")
-
-        Para outras localidades [clique aqui](http://www.sesctv.org.br/comosintonizar.cfm "Como sintonizar o SESC TV")
+        Canal 59, da Net, nas cidades do
+        Rio de Janeiro e São Paulo
+        Canal 138, da Oi TV
+        Ou consulte sua operadora.
+        Assista também online em [sesctv.org.br/aovivo](http://sesctv.org.br/aovivo)
 
   home:
     privacy:
@@ -116,7 +116,7 @@ pt-BR:
 
   links:
     twitter:
-      url: "https://twitter.com/instsescbrasil"
+      url: "https://twitter.com/sesctv"
       title: "Entre em contato através do Twitter"
     facebook:
       url: "https://www.facebook.com/SescTV"
