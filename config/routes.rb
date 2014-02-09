@@ -11,6 +11,7 @@ InstrumentalSescBrasil::Application.routes.draw do
     collection do
       get 'letra/:letter', letter: /[A-aZ-z_]/, action: :index, as: :letter
       get :legacy, path: 'memoria'
+      get :export
     end
     resources :events, only: [:show], path: ""
   end
