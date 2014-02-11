@@ -3,7 +3,7 @@
 
     <% cache [:site_feed_list, Event.maximum(:updated_at)] do %>
     <div class="site-feed">
-      <h2>Ultimas atualizações <i class="icon-rss-sign"></i></h2>
+      <h2>Ultimas atualizações <i class="fa fa-rss-square"></i></h2>
       <ul>
         <% Event.visible.sorted.limit(8).each do |event| %>
         <li>
