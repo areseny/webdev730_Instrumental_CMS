@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.jcarousel
-//= require jquery.jcarousel-autoscroll
-//= require_tree ./application
+//= require typeahead
+//= require bootstrap
+//= require bootstrap-tokenfield
+//= require_tree ./admin

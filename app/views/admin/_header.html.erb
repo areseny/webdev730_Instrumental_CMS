@@ -1,24 +1,17 @@
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <%= link_to "Instrumental SESC Brasil", admin_root_path, class: 'navbar-brand' %>
-    </div>
-    <nav class="collapse navbar-collapse navbar-ex" role="navigation">
-      <% if authenticated? %>
-      <ul class="nav navbar-nav">
-        <li><%= link_to glyphicon(:music, "Artistas"), admin_artists_path %></li>
-        <li><%= link_to glyphicon(:picture, "Destaques"), admin_features_path %></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to glyphicon(:off, "Sair"), admin_logoff_path, method: :delete %></li>
-      </ul>
-      <% end %>
-    </nav>
+    </button>
+    <%= link_to "Instrumental SESC Brasil", admin_root_path, class: 'navbar-brand' %>
   </div>
-</header>
 
+  <% if authenticated? %>
+  <ul class="nav navbar-top-links navbar-right">
+    <li><%= link_to fa_icon('power-off', "Sair"), admin_logoff_path, method: :delete %></li>
+  </ul>
+  <% end -%>
+</nav>

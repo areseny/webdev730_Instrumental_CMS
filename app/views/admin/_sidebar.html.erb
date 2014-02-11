@@ -1,0 +1,11 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav" id="side-menu">
+      <li>
+        <%= link_to fa_icon(:dashboard, "Painel de Controle", fixed: true), admin_root_path %>
+      </li>
+      <li><%= link_to fa_icon(:music, "Artistas", fixed: true), admin_artists_path %></li>
+      <li><%= link_to fa_icon('picture-o', "Destaques", fixed: true), admin_features_path %></li>
+    </ul>
+  </div>
+</nav>
