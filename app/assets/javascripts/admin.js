@@ -15,4 +15,6 @@
 //= require typeahead
 //= require bootstrap
 //= require bootstrap-tokenfield
+//= require jquery.metisMenu
+//= require jquery.dataTables
 //= require_tree ./admin

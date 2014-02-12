@@ -1,23 +1,20 @@
 <h1 class="page-header">Cadastro de Artistas</h1>
-<table class="table table-striped table-condensed table-hover">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Datas</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @artists.each do |artist| %>
-    <tr>
-      <td>
-        <%= image_tag(artist.thumbnail, size: '32x32', class: 'artist-list-thumb') %>
-        <%= link_to artist.name, admin_artist_path(artist) %>
-      </td>
-      <td>
-        <%= artist.dates.map{ |d| l(d, format: :brief) }.to_sentence %>
-      </td>
-    </tr>
-    <% end -%>
-  </tbody>
-</table>
-<%= bootstrap_pager @artists %>
+<div class="panel panel-default">
+  <div class="panel-heading">Artistas cadastrados no site</div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed table-hover" id="artists-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Datas</th>
+            <th>Instrumentos</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

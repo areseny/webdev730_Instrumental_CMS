@@ -40,6 +40,9 @@ InstrumentalSescBrasil::Application.routes.draw do
       member do
         get :images
       end
+      collection do
+        get :datatable, :format => :json
+      end
     end
     resources :events, only: [:edit, :update]
 
