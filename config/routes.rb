@@ -42,6 +42,7 @@ InstrumentalSescBrasil::Application.routes.draw do
       end
       collection do
         get :datatable, :format => :json
+        get :typeahead, :format => :json
       end
     end
 
@@ -54,6 +55,10 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :import, :on => :collection
       post :import, :on => :collection, action: :upload
       post :clear, :on => :collection
+    end
+
+    resources :schedule_items do
+      get :datatable, :on => :collection, :format => :json
     end
 
     resources :events, only: [:edit, :update]

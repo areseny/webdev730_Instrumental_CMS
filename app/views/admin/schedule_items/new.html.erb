@@ -1,0 +1,67 @@
+<% @home_page_menu_active = true %>
+<h1 class="page-header">Home Page - Agenda de Shows</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Criar novo item de agenda</div>
+  <div class="panel-body">
+
+    <% if @schedule_item.errors.any? %>
+      <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">×</a>
+        <%= fa_icon 'warning-sign', "Por favor preencha todos os campos corretamente" %>
+      </div>
+    <% end -%>
+
+    <%= form_for [:admin, @schedule_item], html: { class: 'form-horizontal', autocomplete: 'off' } do |f| %>
+
+      <div class="form-group">
+        <%= f.label :date, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <div class='input-group date' id='date_datepicker' style="width: 200px;">
+            <%= f.text_field :date,
+                             :class => 'form-control', :autofocus => true,
+                             :value => l(@schedule_item.date, format: :input)  %>
+            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="artist-search" class="col-sm-2 control-label">Artista</label>
+        <div class="col-sm-10">
+          <%= text_field_tag(
+                :artist_search, @schedule_item.artist.try(:name),
+                :class => 'artist-select form-control',
+                :data => {
+                  :target_id => "#schedule_item_artist_id",
+                  :target_description => "#schedule_item_description"
+                },
+                :placeholder => "Digite uma parte do nome do artista para selecionar") %>
+          <%= f.hidden_field :artist_id %>
+        </div>
+      </div>
+
+      <%= f.horizontal_group :description, :text_area,
+                             :placeholder => "Selecione um artista ou digite uma descrição alternativa",
+                             :rows => 8 %>
+
+      <div class="form-group">
+        <hr />
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.button type: 'submit', class: 'btn btn-success' do %>
+            <%= fa_icon :save, "Salvar" %>
+          <% end -%>
+          <%= link_to admin_schedule_items_path, class: 'btn btn-default' do %>
+            <i class="glyphicon glyphicon-list"></i> Voltar à lista
+          <% end -%>
+        </div>
+      </div>
+    <% end -%>
+
+  </div>
+</div>
+<script type="text/javascript">
+  jQuery(function ($) {
+    $('#date_datepicker').datetimepicker({
+      pickTime: false
+    });
+  });
+</script>

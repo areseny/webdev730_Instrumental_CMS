@@ -42,30 +42,35 @@
   </div>
   <% end -%>
 
+  <% cache "schedule-items-homepage-#{Date.current.to_s}", skip_digest: true do %>
   <div class="home-site-schedule tabstrip">
     <div class="home-site-schedule-title">
       <h2>No palco do Sesc Consolação e ao vivo na Internet</h2>
       <h3>Toda segunda-feira, às 19h</h3>
     </div>
-    <% schedule = Show.next_shows %>
+    <%
+      items = ScheduleItem.current_items
+      closest = closest_schedule_item(items)
+    %>
     <div class="schedule-tabs">
       <nav>
-        <% schedule.each_with_index do |show, i| %>
-        <%= home_schedule_tab(show, i == 1) %>
+        <% items.each do |item| %>
+          <%= home_schedule_tab(item, closest == item) %>
         <% end -%>
       </nav>
     </div>
-    <% schedule.each_with_index do |show, i| %>
-    <%= home_schedule_panel(show, i == 1) do %>
-      <div class="schedule-tab-thumb">
-        <%= artist_thumbnail(show.artist) %>
-        <h5><%= show.artist.name %></h5>
-      </div>
-      <div class="schedule-tab-description">
-        <%= markdown show.description %>
-      </div>
-    <% end -%>
+    <% items.each do |item| %>
+      <%= home_schedule_panel(item, closest == item) do %>
+        <div class="schedule-tab-thumb">
+          <%= artist_thumbnail(item.artist) %>
+          <h5><%= item.artist.name %></h5>
+        </div>
+        <div class="schedule-tab-description">
+          <%= markdown item.description %>
+        </div>
+      <% end -%>
     <% end -%>
   </div>
+  <% end -%>
 
 </div>

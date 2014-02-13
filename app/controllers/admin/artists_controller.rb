@@ -7,6 +7,10 @@ class Admin::ArtistsController < AdminController
     @artists = Artist.order(:first_letter, :sort_name).to_a
   end
 
+  def typeahead
+    @artists = Artist.order(:first_letter, :sort_name)
+  end
+
   def show
     @artist = Artist.find_by_slug!(params[:id])
   end

@@ -124,6 +124,11 @@ pt-BR:
         no_import: Nenhum registro foi importado. Verifique o formato da planilha.
         clear: Dados apagados com sucesso
 
+      schedule_items:
+        create: Item de agenda criado com sucesso
+        destroy: Item de agenda removido com sucesso
+        update: Dados do item de agenda atualizados com sucesso
+
   links:
     twitter:
       url: "https://twitter.com/sesctv"
@@ -208,12 +213,14 @@ pt-BR:
     debuts_at: Data/hora da estréia
     show: Show
     description_override: Descrição
+    date: Data
 
   date:
     formats:
       month: "%B de %Y"
       brief: "%d/%m/%y"
       tiny: "%d/%m"
+      input: "%d/%m/%Y"
 
   time:
     formats:
