@@ -11,6 +11,7 @@
  *= require_self
  *= require bootstrap-tokenfield
  *= require tokenfield-typeahead
+ *= require bootstrap-datetimepicker
  *= require sb-admin
  *= require_tree ./admin
  */

@@ -38,6 +38,8 @@ GEM
     atomic (1.1.14)
     awesome_print (1.2.0)
     bcrypt-ruby (3.0.1)
+    bootstrap3-datetimepicker-rails (2.1.30)
+      momentjs-rails (~> 2.5.0)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -138,6 +140,8 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.2)
     minitest (4.7.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.8.2)
     multipart-post (1.2.0)
     net-scp (1.1.2)
@@ -264,6 +268,7 @@ DEPENDENCIES
   asset_sync
   awesome_print
   bcrypt-ruby (~> 3.0.0)
+  bootstrap3-datetimepicker-rails (~> 2.1.30)
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
@@ -282,6 +287,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   memcachier
+  momentjs-rails (~> 2.5.0)
   omniauth
   omniauth-google-oauth2
   omniauth-soundcloud

@@ -33,6 +33,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unf'
 gem 'asset_sync'
 
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
+
 group :production do
   gem 'rails_12factor'
 end

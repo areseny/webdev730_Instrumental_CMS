@@ -15,6 +15,10 @@
 //= require typeahead
 //= require bootstrap
 //= require bootstrap-tokenfield
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/pt-br
+//= require locales/bootstrap-datetimepicker.pt
 //= require jquery.metisMenu
 //= require jquery.dataTables
 //= require sb-admin
