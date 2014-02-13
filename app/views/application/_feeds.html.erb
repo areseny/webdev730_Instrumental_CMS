@@ -15,23 +15,22 @@
     </div>
     <% end -%>
 
-    <% cache [:schedule_feed_list, Date.current, TvScheduleItem.maximum(:updated_at)] do %>
-    <div class="schedule-feed">
-      <h2>Programação SescTV</h2>
-      <% schedule_day = TvScheduleItem.current_or_last_day %>
-      <% if schedule_day %>
-      <h3><%= l schedule_day, format: :short %></h3>
-      <ul>
-        <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
-        <li>
-          <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
-        </li>
+    <% cache "tv-schedule-footer-feed-#{Date.current.to_s}", skip_digest: true do %>
+      <div class="schedule-feed">
+        <h2>Programação SescTV</h2>
+        <% if schedule_day = TvScheduleItem.current_or_last_day %>
+          <h3><%= l schedule_day, format: :short %></h3>
+          <ul>
+            <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
+            <li>
+              <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
+            </li>
+            <% end -%>
+          </ul>
         <% end -%>
-      </ul>
-      <% end -%>
-      <a href="http://www.sesctv.org.br/programacao.cfm"
-         target="_blank" class="btn-green">programação completa</a>
-    </div>
+        <a href="http://www.sesctv.org.br/programacao.cfm"
+           target="_blank" class="btn-green">programação completa</a>
+      </div>
     <% end -%>
 
   </div>

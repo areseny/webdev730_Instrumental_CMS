@@ -119,6 +119,11 @@ pt-BR:
         destroy: Destaque removido com sucesso
         update: Dados do destaque atualizados com sucesso
 
+      tv_schedule_items:
+        import: Dados importados com sucesso
+        no_import: Nenhum registro foi importado. Verifique o formato da planilha.
+        clear: Dados apagados com sucesso
+
   links:
     twitter:
       url: "https://twitter.com/sesctv"

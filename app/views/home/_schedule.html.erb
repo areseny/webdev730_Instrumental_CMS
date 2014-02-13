@@ -24,17 +24,19 @@
       </div>
     <% end -%>
 
-    <% if schedule_day = TvScheduleItem.current_or_last_day %>
-    <div class="home-tv-schedule-feed">
-      <h4>Veja a programação para o dia <%= l schedule_day, format: :short %></h4>
-      <ul>
-        <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
-        <li>
-          <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
-        </li>
-        <% end -%>
-      </ul>
-    </div>
+    <% cache "tv-schedule-homepage-current-item-#{Date.current.to_s}", skip_digest: true do %>
+      <% if schedule_day = TvScheduleItem.current_or_last_day %>
+        <div class="home-tv-schedule-feed">
+          <h4>Veja a programação para o dia <%= l schedule_day, format: :short %></h4>
+          <ul>
+            <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
+            <li>
+              <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
+            </li>
+            <% end -%>
+          </ul>
+        </div>
+      <% end -%>
     <% end -%>
 
   </div>

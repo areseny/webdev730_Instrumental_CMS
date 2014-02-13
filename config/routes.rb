@@ -49,6 +49,13 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :datatable, :on => :collection, :format => :json
     end
 
+    resources :tv_schedule_items, :only => [:index] do
+      get :datatable, :on => :collection, :format => :json
+      get :import, :on => :collection
+      post :import, :on => :collection, action: :upload
+      post :clear, :on => :collection
+    end
+
     resources :events, only: [:edit, :update]
 
     resources :shows, only: [] do
