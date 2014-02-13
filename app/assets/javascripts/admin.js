@@ -17,4 +17,5 @@
 //= require bootstrap-tokenfield
 //= require jquery.metisMenu
 //= require jquery.dataTables
+//= require sb-admin
 //= require_tree ./admin
