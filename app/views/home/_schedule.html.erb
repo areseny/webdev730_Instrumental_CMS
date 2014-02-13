@@ -1,24 +1,29 @@
 <div class="home-schedule">
 
-  <% cache [:home_tv_schedule, Date.current] do %>
-  <% if debut = Event.next_debut %>
+  <% cache "tv-schedule-homepage", skip_digest: true do %>
   <div class="home-tv-schedule">
     <div class="events-list-title events-list-title-tv">
       <h2>Programação no canal SescTV</h2>
     </div>
-    <div class="block">
-      <%= link_to artist_event_path(debut.artist, debut) do %>
-      <h3>Próxima estréia do palco para a televisão</h3>
-      <div class="debut-image">
-        <%= artist_thumbnail(debut.artist) %>
-        <h4><%= debut.artist.name %></h4>
-        <h5><span><%= l debut.debuts_at, format: :brief %></span></h5>
+
+    <% cache "tv-features-homepage", skip_digest: true do %>
+      <div class="block">
+        <% if @tv_feature = TvFeature.current %>
+          <%= link_to artist_event_path(@tv_feature.show.artist, @tv_feature.show) do %>
+            <h3>Próxima estréia do palco para a televisão</h3>
+            <div class="debut-image">
+              <%= artist_thumbnail(@tv_feature.artist) %>
+              <h4><%= @tv_feature.artist.name %></h4>
+              <h5><span><%= l @tv_feature.debuts_at, format: :brief %></span></h5>
+            </div>
+            <div class="debut-description">
+              <%= markdown @tv_feature.description %>
+            </div>
+          <% end -%>
+        <% end -%>
       </div>
-      <div class="debut-description">
-        <%= markdown debut.artist.description %>
-      </div>
-      <% end -%>
-    </div>
+    <% end -%>
+
     <% if schedule_day = TvScheduleItem.current_or_last_day %>
     <div class="home-tv-schedule-feed">
       <h4>Veja a programação para o dia <%= l schedule_day, format: :short %></h4>
@@ -31,8 +36,8 @@
       </ul>
     </div>
     <% end -%>
+
   </div>
-  <% end -%>
   <% end -%>
 
   <div class="home-site-schedule tabstrip">

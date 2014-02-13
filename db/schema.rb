@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113013751) do
+ActiveRecord::Schema.define(version: 20140212014322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,6 +182,16 @@ ActiveRecord::Schema.define(version: 20140113013751) do
   end
 
   add_index "timecodes", ["video_id", "seconds"], name: "index_timecodes_on_video_id_and_seconds", using: :btree
+
+  create_table "tv_features", force: true do |t|
+    t.datetime "debuts_at",   null: false
+    t.integer  "show_id",     null: false
+    t.text     "description", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tv_features", ["debuts_at"], name: "index_tv_features_on_debuts_at", using: :btree
 
   create_table "tv_schedule_items", force: true do |t|
     t.datetime "starts_at",   null: false

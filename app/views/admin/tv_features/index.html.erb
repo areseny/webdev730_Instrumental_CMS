@@ -1,0 +1,45 @@
+<% @home_page_menu_active = true %>
+<h1 class="page-header">Home Page - Estréias no SescTV</h1>
+<div style="margin-bottom: 15px;">
+  <a class="btn btn-primary" href="/ueber/tv_features/new">Criar estréia</a>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Lista de destaques cadastrados</div>
+  <div class="panel-body">
+    <div class="alert alert-info">
+      <i class="fa fa-info-circle"></i>
+      Apenas o destaque mais próximo da data atual é exibido na home page
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed table-hover" id="tv-features-table">
+        <thead>
+          <tr>
+            <th>Estréia em</th>
+            <th>Artista</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+jQuery(function($) {
+
+  $("#tv-features-table").dataTable({
+    "bProcessing": true,
+    "bAutoWidth": false,
+    "sAjaxSource": "/ueber/tv_features/datatable.json",
+    "aoColumns": [
+      { "iDataSort":  3, "sWidth": "120px" },
+      { "sWidth": "200px" },
+      { "bSortable": false },
+      { "bVisible": false }
+    ],
+    "aaSorting": [[0,'desc']]
+  });
+
+});
+</script>

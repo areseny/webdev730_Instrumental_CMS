@@ -44,7 +44,16 @@ InstrumentalSescBrasil::Application.routes.draw do
         get :datatable, :format => :json
       end
     end
+
+    resources :tv_features, :except => [:show] do
+      get :datatable, :on => :collection, :format => :json
+    end
+
     resources :events, only: [:edit, :update]
+
+    resources :shows, only: [] do
+      get :typeahead, :on => :collection, :format => :json
+    end
 
   end
 

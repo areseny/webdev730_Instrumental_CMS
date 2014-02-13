@@ -5,6 +5,16 @@
         <%= link_to fa_icon(:dashboard, "Painel de Controle", fixed: true), admin_root_path %>
       </li>
       <li><%= link_to fa_icon(:music, "Artistas", fixed: true), admin_artists_path %></li>
+      <% if @home_page_menu_active %>
+      <li class="active">
+      <% else %>
+      <li>
+      <% end -%>
+        <a href="#"><%= fa_icon(:home, "Home Page", fixed: true) %><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level collapse">
+          <li><%= link_to fa_icon('picture-o', "Estréias SescTV", fixed: true), admin_tv_features_path %></li>
+        </ul>
+      </li>
       <li><%= link_to fa_icon('picture-o', "Destaques", fixed: true), admin_features_path %></li>
     </ul>
     <%= render "flash_messages" %>

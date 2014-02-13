@@ -114,6 +114,11 @@ pt-BR:
       events:
         update: Dados do evento alterados com sucesso!
 
+      tv_features:
+        create: Destaque criado com sucesso
+        destroy: Destaque removido com sucesso
+        update: Dados do destaque atualizados com sucesso
+
   links:
     twitter:
       url: "https://twitter.com/sesctv"
@@ -195,6 +200,9 @@ pt-BR:
     instrument_names: Instrumentos
     facebook_page: Facebook
     twitter_widget_id: Twitter (Widget ID)
+    debuts_at: Data/hora da estréia
+    show: Show
+    description_override: Descrição
 
   date:
     formats:
@@ -206,6 +214,8 @@ pt-BR:
     formats:
       time: "%H:%M"
       brief: "%d/%m, %H:%M"
+      list: "%d/%m/%Y, %H:%M"
+      input: "%d/%m/%Y %H:%M"
 
   slugs:
     show: show
