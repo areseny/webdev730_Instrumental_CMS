@@ -4,7 +4,7 @@ module VideoHelper
     if event.playlist?
       playlist = event.songs.map{ |s| s.video.youtube_id }
       members = event.songs.map{ |s| band_members_as_sentence(s.band_members) }
-      video_id = params[:videoId].in?(playlist) ? params[:videoId] : playlist.first
+      video_id = params[:videoId].in?(playlist) ? params[:videoId] : playlist.last
       data = {
         playlist: playlist,
         members: members,
