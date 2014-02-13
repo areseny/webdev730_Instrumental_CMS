@@ -20,7 +20,7 @@ InstrumentalSescBrasil::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Admin area assets
-  config.assets.precompile += %w(admin.css)
+  config.assets.precompile += %w(admin.css admin.js)
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
