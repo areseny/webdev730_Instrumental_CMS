@@ -10,9 +10,9 @@ namespace :videos do
     Video.transaction do
       parsed_videos.each do |parsed_video|
         video = Video.where(youtube_id: parsed_video[:video_id]).first_or_initialize
+        parser = YoutubeParser.new(title: parsed_video[:title],
+                                   description: parsed_video[:description])
         if video.new_record?
-          parser = YoutubeParser.new(title: parsed_video[:title],
-                                     description: parsed_video[:description])
           event_type = parser.match_type.to_s.classify
           event_type = "LegacyShow" if event_type == "Show" && parser.date.year <= 2004
           artist = Artist.find_by_name(parser.artist_name)
@@ -44,7 +44,7 @@ namespace :videos do
           small_thumbnail: thumbnails['default'],
         }
         video.timecodes.clear
-        video.timecodes = (parsed_video[:timecodes] || []).map do |seconds, description|
+        video.timecodes = (parser.timecodes || []).map do |seconds, description|
           Timecode.new(seconds: seconds, description: description)
         end
         if video.new_record?
