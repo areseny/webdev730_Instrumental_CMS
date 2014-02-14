@@ -51,6 +51,7 @@ namespace :videos do
           event = Event.where(type: event_type, date: parser.date)
                        .first_or_create!(artist: artist,
                                          description: parser.description,
+                                         factsheet: parser.factsheet,
                                          slug: generate_event_slug(parser.date, event_type))
           if event_type == "Show" || event_type == "LegacyShow"
             song = Song.create!(playlistable: event,
@@ -69,7 +70,9 @@ namespace :videos do
           else
             video.viewable = event
           end
-          event.update_attributes!(visible: true)
+          event.update_attributes!(description: parser.description,
+                                   factsheet: parser.factsheet,
+                                   visible: true)
         end
         video.save!
       end
