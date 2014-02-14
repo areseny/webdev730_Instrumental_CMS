@@ -57,10 +57,10 @@ namespace :videos do
             song = Song.create!(playlistable: event,
                                 title: parser.song_title,
                                 composer: parser.composer_name)
-            song.genres << (parsed_video[:genres] || []).map do |genre_name|
+            song.genres << (parser.genres || []).map do |genre_name|
               Genre.where(name: genre_name).first_or_create!
             end
-            (parsed_video[:band_members] || []).each do |name, instrument_names|
+            (parser.band_members || []).each do |name, instrument_names|
               instruments = instrument_names.map do |instrument_name|
                 Instrument.where(name: instrument_name).first_or_create!
               end
