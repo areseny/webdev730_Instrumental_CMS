@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :artist, inverse_of: :events
-  before_create :set_sort_order
+  before_save :set_sort_order
 
   SiteTypes   = %w(Show Interview VideoChat)
   TvTypes     = %w(TvShow SoundCheck)
@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   scope :current, -> { where.not(type: LegacyTypes) }
   scope :legacy,  -> { where(type: LegacyTypes) }
   scope :visible, -> { where(visible: true) }
-  scope :sorted,  -> { order("sort_order, date desc") }
+  scope :sorted,  -> { order("date desc, sort_order asc") }
 
   def video_thumbnail
     video.small_thumbnail if video
