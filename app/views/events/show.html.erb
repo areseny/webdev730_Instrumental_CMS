@@ -5,14 +5,14 @@
   <small><%= l @event.date, format: :long %></small>
 </div>
 <div class="whiteblock grid">
-  <div class="col-70">
+  <div class="col col-70">
     <div class="event-main">
       <%= video_player(@event) %>
       <%= markdown @event.description %>
       <%= render "band_members", show: @event if @event.playlist? %>
     </div>
   </div>
-  <div class="col-30">
+  <div class="col col-30">
     <div class="event-sidebar">
       <%= render "timecodes", video: @event.video if @event.timecoded? %>
       <%= render "playlist", show: @event if @event.playlist? %>
@@ -22,12 +22,12 @@
 </div>
 
 <div class="grid">
-  <div class="col-60">
+  <div class="col col-60">
     <div class="whiteblock">
       <%= disqus_comments(@event) %>
     </div>
   </div>
-  <div class="col-40">
+  <div class="col col-40">
     <% # TODO: Related content %>
   </div>
 </div>
