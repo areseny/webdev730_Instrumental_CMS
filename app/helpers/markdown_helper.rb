@@ -1,7 +1,7 @@
 module MarkdownHelper
 
   def markdown(text)
-    raw redcarpet.render(text)
+    raw redcarpet.render(text) if text
   end
 
   def markdown_t(*args)
