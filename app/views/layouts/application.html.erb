@@ -11,6 +11,7 @@
   <%= recaptcha_meta_tags %>
   <%= youtube_meta_tags %>
   <%= render "live_reload" if Rails.env.development? %>
+  <%= yield(:head) %>
 </head>
 <body>
 

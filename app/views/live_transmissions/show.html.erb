@@ -1,5 +1,15 @@
 <% title "AO VIVO: #{@transmission.artist.name}" %>
+
 <% cache @transmission do %>
+
+  <% content_for :head do %>
+    <%= meta_tags({
+      "og:title" => "Ao Vivo: #{@transmission.artist.name} | Instrumental SESC Brasil",
+      "og:description" => @transmission.description,
+      "og:image" => @transmission.artist.thumbnail
+      }) %>
+  <% end -%>
+
 <div class="block-title">
   <h2>AO VIVO | <%= @transmission.artist.name %></h2>
 </div>
