@@ -26,9 +26,6 @@ heroku config:add RECAPTCHA_PRIVATE_KEY=yyy
 # Configure e-mail delivery:
 heroku config:add EMAIL_HOST=instrumentalsescbrasil.org.br
 
-# Airbrake error monitoring:
-heroku config:add AIRBRAKE_KEY=xxx
-
 # Facebook API:
 heroku config:add FACEBOOK_APP_ID=xxx
 
