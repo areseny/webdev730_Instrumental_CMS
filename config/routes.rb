@@ -5,6 +5,9 @@ InstrumentalSescBrasil::Application.routes.draw do
   controller :home do
     get :about_us, path: "projeto"
     get :privacy, path: "privacidade"
+    get :live, path: "aovivo"
+    get :live_status, :format => :json
+    resources :live_transmissions, :only => [:show], :path => "aovivo"
   end
 
   resources :artists, path: 'artistas', only: [:index, :show] do
@@ -66,6 +69,11 @@ InstrumentalSescBrasil::Application.routes.draw do
     resources :shows, only: [] do
       get :typeahead, :on => :collection, :format => :json
     end
+
+    resources :live_transmissions, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
+    end
+    resource :live_transmission_settings, :only => [:edit, :update]
 
   end
 

@@ -129,6 +129,14 @@ pt-BR:
         destroy: Item de agenda removido com sucesso
         update: Dados do item de agenda atualizados com sucesso
 
+      live_transmissions:
+        create: Transmissão ao vivo criada com sucesso
+        destroy: Transmissão ao vivo removida com sucesso
+        update: Dados da transmissão ao vivo atualizados com sucesso
+
+      live_transmission_settings:
+        update: Configurações de transmissão ao vivo atualizadas!
+
   links:
     twitter:
       url: "https://twitter.com/sesctv"
@@ -200,6 +208,9 @@ pt-BR:
         description: Texto
         banner: Imagem
         priority: Ordenação
+      live_transmission_settings:
+        starts_at: Início
+        ends_at: Término
 
   attributes:
     name: Nome
@@ -214,6 +225,7 @@ pt-BR:
     show: Show
     description_override: Descrição
     date: Data
+    band_members: Formação
 
   date:
     formats:

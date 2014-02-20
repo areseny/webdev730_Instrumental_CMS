@@ -1,0 +1,68 @@
+@import "_mixins";
+
+.live-description {
+  margin-top: 15px;
+}
+
+.next-live-transmissions {
+  h3 {
+    background-color: $orange;
+    color: white;
+    font: 18px Aaux Pro Regular;
+    margin: 0 0 15px 0;
+    padding: 2px 15px;
+  }
+  > ul {
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+
+    > li {
+      list-style: none;
+      float: left;
+      width: 25%;
+      min-height: 95px;
+      & + li {
+       background: image-url("live-divider.jpg") no-repeat top left 5px;
+       padding-left: 22px;
+      }
+
+      > span {
+        color: white;
+        background-color: $cyan;
+        display: inline-block;
+        font: 16px Aaux Pro Bold;
+        padding: 2px 10px;
+        margin-right: 10px;
+      }
+      > h4 {
+        display: inline-block;
+        margin: 0;
+        color: $cyan;
+        font: 18px Aaux Pro Bold;
+        max-width: 140px;
+      }
+    }
+  }
+}
+
+.alert-live {
+  @include  border-radius(0px, 0px, 10px, 10px);
+  background: $orange image-url("top-shadow.png") top repeat-x;
+  color: white;
+  font: 16px Aaux Pro Bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px 0 12px 0;
+  margin: 0 20px;
+  display: none;
+  a { margin-left: 15px; text-decoration: none; }
+
+  .alert-inverse {
+    @include  border-radius(5px, 5px, 5px, 5px);
+    color: $orange;
+    background-color: white;
+    padding: 0 20px;
+    margin-left: 30px;
+  }
+}

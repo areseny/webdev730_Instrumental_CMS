@@ -13,4 +13,14 @@ class HomeController < ApplicationController
   def privacy
   end
 
+  def live
+    if @transmission = LiveTransmission.current
+      redirect_to @transmission
+    end
+  end
+
+  def live_status
+    render :json => LiveTransmission.live_status
+  end
+
 end

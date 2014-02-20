@@ -1,0 +1,49 @@
+<% title "AO VIVO: #{@transmission.artist.name}" %>
+<% cache @transmission do %>
+<div class="block-title">
+  <h2>AO VIVO | <%= @transmission.artist.name %></h2>
+</div>
+<div class="block">
+  <div class="grid">
+    <div class="col" style="width: 640px;">
+      <iframe width="640" height="385"
+        src="http://cdn.livestream.com/embed/instrumentalsesc?layout=4&amp;height=385&amp;width=640&amp;autoplay=false" style="border:0;outline:0" frameborder="0" scrolling="no">
+      </iframe>
+      <iframe width="640" height="200" src="http://cdn.livestream.com/embed/instrumentalsesc?layout=6&amp;height=640&amp;width=200&amp;showTimestamp=true" style="border:0;outline:0; margin-top: 25px;" frameborder="0" scrolling="no" bgcolor="#ffffff"></iframe>
+    </div>
+    <div class="col" style="width: 270px;">
+      <%= artist_thumbnail(@transmission.artist) %>
+      <div class="live-description">
+        <%= markdown(@transmission.description) %>
+      </div>
+      <div class="band-members">
+        <h3>Formação</h3>
+        <%= markdown(@transmission.band_members) %>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="share-buttons">
+  <span>Compartilhe este vídeo</span>
+  <%= twitter_share_button(@transmission.twitter_text) %>
+  <%= facebook_share_button %>
+  <%= google_plus_share_button %>
+  <%= email_share_button(@transmission.email_subject, @transmission.email_body) %>
+</nav>
+<% end -%>
+
+<% cache "live-transmissions-next-list-#{Date.current.to_s}", skip_digest: true do %>
+  <% if @next_transmissions.any? %>
+  <div class="block next-live-transmissions">
+    <h3>Próximas Apresentações</h3>
+    <ul>
+      <% @next_transmissions.each do |transmission| %>
+        <li>
+          <span><%= l(transmission.date, format: :tiny) %></span>
+          <h4><%= transmission.artist.name %></h4>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+  <% end -%>
+<% end -%>

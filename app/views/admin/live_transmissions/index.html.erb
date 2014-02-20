@@ -1,0 +1,42 @@
+<h1 class="page-header">Transmissões ao Vivo</h1>
+<div style="margin-bottom: 15px;">
+  <%= link_to "Criar transmissão", new_admin_live_transmission_path, :class => 'btn btn-primary' %>
+  <%= link_to fa_icon("cog", "Configurações"), edit_admin_live_transmission_settings_path, :class => "btn btn-default" %>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Lista das transmissões</div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed table-hover" id="live-transmissions-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Artista</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+jQuery(function($) {
+
+  $("#live-transmissions-table").dataTable({
+    "bProcessing": true,
+    "bAutoWidth": false,
+    "sAjaxSource": "/ueber/live_transmissions/datatable.json",
+    "aoColumns": [
+      { "iDataSort":  3, "sWidth": "120px" },
+      { "sWidth": "200px" },
+      { "bSortable": false },
+      { "bVisible": false }
+    ],
+    "aaSorting": [[0,'desc']]
+  });
+
+});
+
+</script>

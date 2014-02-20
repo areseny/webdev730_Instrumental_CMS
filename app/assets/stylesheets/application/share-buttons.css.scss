@@ -1,0 +1,39 @@
+@import "mixins";
+
+.share-buttons {
+  @include border-radius(0, 0, 10px, 10px);
+  margin: 0 50px 25px 50px;
+  padding: 15px 25px;
+  background-color: black;
+  color: #646464;
+  font: 18px Aaux Pro bold;
+  display: inline-block;
+
+  span, a {
+    display: inline-block;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+  }
+  a {
+    text-indent: -9999px;
+    margin-left: 15px;
+  }
+
+  .share-twitter {
+    width: 97px;
+    background: image-url("share-twitter.png") no-repeat center;
+  }
+  .share-facebook {
+    width: 112px;
+    background: image-url("share-facebook.png") no-repeat center;
+  }
+  .share-google-plus {
+    width: 141px;
+    background: image-url("share-google-plus.png") no-repeat center;
+  }
+  .share-email {
+    width: 103px;
+    background: image-url("share-email.png") no-repeat center;
+  }
+}

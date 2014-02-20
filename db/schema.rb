@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213062337) do
+ActiveRecord::Schema.define(version: 20140219235601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,24 @@ ActiveRecord::Schema.define(version: 20140213062337) do
   end
 
   add_index "instruments", ["name"], name: "index_instruments_on_name", unique: true, using: :btree
+
+  create_table "live_transmission_settings", force: true do |t|
+    t.time     "starts_at",  null: false
+    t.time     "ends_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "live_transmissions", force: true do |t|
+    t.date     "date",         null: false
+    t.integer  "artist_id",    null: false
+    t.text     "description",  null: false
+    t.text     "band_members"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "live_transmissions", ["date"], name: "index_live_transmissions_on_date", using: :btree
 
   create_table "schedule_items", force: true do |t|
     t.date     "date",        null: false
