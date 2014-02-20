@@ -16,6 +16,8 @@ class HomeController < ApplicationController
   def live
     if @transmission = LiveTransmission.current
       redirect_to @transmission
+    else
+      redirect_to root_path
     end
   end
 
