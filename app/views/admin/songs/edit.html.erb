@@ -1,0 +1,4 @@
+<h1 class="page-header">Música: <%= @song.title %></h1>
+<%= admin_panel("Dados da música") do %>
+  <%= render "admin_form", :model => @song, :scope => @show, :attributes => %w(title composer video) %>
+<% end -%>

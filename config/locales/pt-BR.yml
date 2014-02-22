@@ -134,6 +134,11 @@ pt-BR:
         destroy: Show removido com sucesso
         update: Dados do show atualizados com sucesso
 
+      songs:
+        destroy: Música removida com sucesso
+        update: Dados da música atualizados com sucesso
+        reorder: Ordem das músicas atualizada com sucesso
+
       live_transmissions:
         create: Transmissão ao vivo criada com sucesso
         destroy: Transmissão ao vivo removida com sucesso
@@ -207,7 +212,12 @@ pt-BR:
       sound_check: Programa Passagem de Som
       legacy_tv_show: Programa Instrumental
       legacy_show: Show
+      song: Música
     attributes:
+      song:
+        title: Nome
+        composer: Compositor
+        video: YouTube
       feature:
         title: Título
         description: Texto

@@ -1,0 +1,21 @@
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ul.sortable li {
+  list-style: none;
+}
+
+ul.sortable li.placeholder {
+  position: relative;
+}
+
+ul.example li.placeholder:before {
+  position: absolute;
+}

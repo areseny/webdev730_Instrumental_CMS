@@ -6,7 +6,13 @@
       description =
         image_tag(show.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
         show.description
-      [date, show.artist.name, show.songs.count, description, show.date.to_time.to_i].to_json
+      total_songs = show.songs.count
+      if total_songs > 0
+        songs_link = link_to("#{total_songs} músicas", admin_show_songs_path(show))
+      else
+        songs_link = content_tag(:span, "Nenhuma")
+      end
+      [date, show.artist.name, songs_link, description, show.date.to_time.to_i].to_json
     end.join(',')) %>
   ]
 }

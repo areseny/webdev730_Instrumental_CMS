@@ -69,6 +69,9 @@ InstrumentalSescBrasil::Application.routes.draw do
     resources :shows, except: [:show] do
       get :datatable, :on => :collection, :format => :json
       get :typeahead, :on => :collection, :format => :json
+      resources :songs, :except => :show do
+        post :reorder, :on => :collection
+      end
     end
 
     resources :live_transmissions, except: [:show] do

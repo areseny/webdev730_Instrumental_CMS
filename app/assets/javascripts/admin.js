@@ -21,5 +21,6 @@
 //= require locales/bootstrap-datetimepicker.pt
 //= require jquery.metisMenu
 //= require jquery.dataTables
+//= require jquery-sortable
 //= require sb-admin
 //= require_tree ./admin

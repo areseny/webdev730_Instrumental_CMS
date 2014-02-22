@@ -7,6 +7,9 @@ class Song < ActiveRecord::Base
   has_many :instruments, -> { uniq }, through: :band_members, inverse_of: :songs
   acts_as_list scope: [:playlistable_type, :playlistable_id]
 
+  validates :title, :presence => true
+  validates :composer, :presence => true
+
   def video_thumbnail
     video.small_thumbnail if video
   end

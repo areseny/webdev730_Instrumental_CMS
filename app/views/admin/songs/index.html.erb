@@ -1,0 +1,45 @@
+<h1 class="page-header"><%= @show.disqus_title %></h1>
+<%= admin_panel("Lista ordenada de músicas") do %>
+
+  <%= form_tag reorder_admin_show_songs_path(@show), class: 'form-horizontal' do %>
+
+    <ul class="list-group sortable" id="sortable-songs">
+      <% @songs.each do |song| %>
+        <li class="list-group-item">
+          <i class="fa fa-arrows" style="float: left; margin-right: 10px; cursor: pointer;"></i>
+          <%= link_to song.title, edit_admin_show_song_path(@show, song) %>
+          <%= hidden_field_tag "songs[][id]", song.id %>
+          <%= hidden_field_tag "songs[][position]", song.position, :class => "song-position" %>
+        </li>
+      <% end -%>
+    </ul>
+
+    <div class="form-group">
+      <hr />
+      <div class="col-sm-12">
+        <%= button_tag type: 'submit', class: 'btn btn-success' do %>
+          <%= fa_icon :save, "Salvar alterações de ordenação" %>
+        <% end -%>
+        <%= link_to admin_shows_path, :class => 'btn btn-default' do %>
+          <i class="glyphicon glyphicon-list"></i> Voltar à lista
+        <% end -%>
+      </div>
+    </div>
+
+  <% end -%>
+
+<% end -%>
+
+<script>
+jQuery(function($) {
+  $("#sortable-songs").sortable({
+    onDrop: function  (item, container, _super) {
+      var i = 0;
+      $(".song-position").each(function() {
+        $(this).val(i++);
+      });
+      _super(item);
+    },
+  });
+});
+</script>

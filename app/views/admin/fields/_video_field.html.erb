@@ -1,0 +1,5 @@
+<% if form.object.video %>
+  <%= link_to form.object.video.try(:url), :target => "_blank" do %>
+    <%= image_tag form.object.video_thumbnail, :class => 'round' %>
+  <% end -%>
+<% end -%>
