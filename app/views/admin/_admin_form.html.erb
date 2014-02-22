@@ -35,7 +35,7 @@
         <%= link_to [:admin, model], :class => "btn btn-danger",
                     :method => :delete,
                     :style => "margin-left: 25px;",
-                    :confirm => "Tem certeza que deseja apagar o #{model.class.model_name.human.downcase}?" do %>
+                    :data => { :confirm => "Tem certeza que deseja apagar o #{model.class.model_name.human.downcase}?" } do %>
           <%= fa_icon 'trash-o', "Apagar" %>
         <% end -%>
       <% end -%>
