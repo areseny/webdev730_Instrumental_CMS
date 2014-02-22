@@ -1,7 +1,7 @@
 <% if show.songs.any? %>
 <h3>Músicas</h3>
 <ol class="video-nav">
-  <% show.songs.order("position desc").each do |song| %>
+  <% show.songs.ordered.each do |song| %>
   <li>
     <%= link_to "#", data: { video_id: song.video.youtube_id } do %>
       <h4><%= song.title %></h4>

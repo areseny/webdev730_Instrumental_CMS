@@ -57,6 +57,7 @@ namespace :videos do
             song = Song.create!(playlistable: event,
                                 title: parser.song_title,
                                 composer: parser.composer_name)
+            song.move_to_top
             song.genres << (parser.genres || []).map do |genre_name|
               Genre.where(name: genre_name).first_or_create!
             end

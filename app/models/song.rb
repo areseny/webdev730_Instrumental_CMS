@@ -10,6 +10,8 @@ class Song < ActiveRecord::Base
   validates :title, :presence => true
   validates :composer, :presence => true
 
+  scope :ordered, -> { order(:position) }
+
   def video_thumbnail
     video.small_thumbnail if video
   end
