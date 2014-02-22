@@ -35,6 +35,22 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
+  def admin_field(attribute, options = nil)
+    column = object.class.columns_hash[attribute.to_s]
+    options ||= {}
+    if column
+      h.render("admin/fields/#{column.type}_field",
+               :form => self, :attribute => attribute, :options => options)
+    else
+      if association = object.class.reflect_on_association(attribute.to_sym)
+        h.render("admin/fields/#{association.name}_field",
+                 :form => self, :attribute => attribute, :options => options)
+      else
+        h.content_tag(:span, "Unknown attribute: #{attribute}")
+      end
+    end
+  end
+
 private
   def h
     @template

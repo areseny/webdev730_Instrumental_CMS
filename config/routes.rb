@@ -66,7 +66,8 @@ InstrumentalSescBrasil::Application.routes.draw do
 
     resources :events, only: [:edit, :update]
 
-    resources :shows, only: [] do
+    resources :shows, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
       get :typeahead, :on => :collection, :format => :json
     end
 

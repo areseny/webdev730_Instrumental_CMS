@@ -1,0 +1,9 @@
+<h1 class="page-header"><%= @show.disqus_title %></h1>
+<%= admin_panel("Dados do show") do %>
+  <%= render "admin_form", :model => @show, :attributes => %w(date artist description),
+             :field_options => {
+                :description => {
+                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                }
+             } %>
+<% end -%>

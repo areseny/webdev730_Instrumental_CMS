@@ -1,0 +1,6 @@
+<div class='input-group date input-datepicker' style="width: 200px;">
+  <%= form.text_field attribute,
+        options.reverse_merge(:class => 'form-control',
+                              :value => l(form.object.send(attribute), format: :input)) %>
+  <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+</div>

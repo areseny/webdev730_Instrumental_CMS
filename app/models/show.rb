@@ -7,4 +7,5 @@ class Show < Event
     previous_shows = where("date < ?", d).order("date desc").limit(4 - next_shows.length).to_a
     previous_shows.reverse + next_shows
   end
+
 end

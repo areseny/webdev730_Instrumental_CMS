@@ -14,4 +14,11 @@ module AdminHelper
     will_paginate(collection, renderer: BootstrapPagination::Rails, class: 'pull-right')
   end
 
+  def admin_panel(title, &block)
+    content = capture(&block)
+    header = content_tag(:div, title, :class => "panel-heading")
+    body = content_tag(:div, capture(&block), :class => "panel-body")
+    content_tag(:div, header + body, :class => "panel panel-default")
+  end
+
 end

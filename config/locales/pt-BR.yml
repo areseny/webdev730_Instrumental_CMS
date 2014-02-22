@@ -129,6 +129,11 @@ pt-BR:
         destroy: Item de agenda removido com sucesso
         update: Dados do item de agenda atualizados com sucesso
 
+      shows:
+        create: Show criado com sucesso
+        destroy: Show removido com sucesso
+        update: Dados do show atualizados com sucesso
+
       live_transmissions:
         create: Transmissão ao vivo criada com sucesso
         destroy: Transmissão ao vivo removida com sucesso
@@ -226,6 +231,7 @@ pt-BR:
     description_override: Descrição
     date: Data
     band_members: Formação
+    artist: Artista
 
   date:
     formats:

@@ -1,0 +1,11 @@
+<%= text_field_tag(
+      form.object.class.model_name.singular + "_artist",
+      form.object.artist.try(:name),
+      options.reverse_merge(
+        :class => 'artist-select form-control',
+        :data => {
+          :target_id => "##{form.object.class.model_name.singular}_artist_id",
+          :target_description => "##{form.object.class.model_name.singular}_description"
+        },
+        :placeholder => "Digite uma parte do nome do artista para selecionar")) %>
+<%= form.hidden_field :artist_id %>

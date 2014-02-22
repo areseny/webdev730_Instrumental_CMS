@@ -1,6 +1,5 @@
 class Event < ActiveRecord::Base
   belongs_to :artist, inverse_of: :events
-  before_save :set_sort_order
 
   SiteTypes   = %w(Show Interview VideoChat)
   TvTypes     = %w(TvShow SoundCheck)
@@ -12,6 +11,11 @@ class Event < ActiveRecord::Base
   scope :legacy,  -> { where(type: LegacyTypes) }
   scope :visible, -> { where(visible: true) }
   scope :sorted,  -> { order("date desc, sort_order asc") }
+
+  validates :date, :presence => true,
+                   :uniqueness => { :scope => :type }
+  validates :artist, :presence => true
+  validates :description, :presence => true
 
   def video_thumbnail
     video.small_thumbnail if video
@@ -73,4 +77,12 @@ class Event < ActiveRecord::Base
     when "LegacyShow" then 7
     end
   end
+  before_save :set_sort_order
+
+  def generate_event_slug
+    date_slug = I18n.l(date, format: "%d-%B-%Y")
+    self.slug ||= I18n.t("slugs.#{type.underscore}") + "-em-" + date_slug.parameterize
+  end
+  before_create :generate_event_slug
+
 end

@@ -1,0 +1,13 @@
+<% cache "shows-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@shows.map do |show|
+      date = link_to l(show.date, format: :brief), edit_admin_show_path(show)
+      description =
+        image_tag(show.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
+        show.description
+      [date, show.artist.name, show.songs.count, description, show.date.to_time.to_i].to_json
+    end.join(',')) %>
+  ]
+}
+<% end -%>
