@@ -9,7 +9,11 @@
     </ul>
   </div>
 <% end -%>
-<%= form_for [:admin, model], html: { class: 'form-horizontal', autocomplete: 'off' } do |f| %>
+
+<% scope = local_assigns[:scope] %>
+
+<%= form_for [:admin, scope, model].compact,
+             :html => { class: 'form-horizontal', autocomplete: 'off' } do |f| %>
 
   <% field_options = local_assigns[:field_options] || {} %>
 
@@ -28,11 +32,13 @@
       <%= f.button type: 'submit', class: 'btn btn-success' do %>
         <%= fa_icon :save, "Salvar" %>
       <% end -%>
-      <%= link_to [:admin, model.class.model_name.route_key], :class => 'btn btn-default' do %>
+      <%= link_to [:admin, scope, model.class.model_name.route_key].compact,
+                  :class => 'btn btn-default' do %>
         <i class="glyphicon glyphicon-list"></i> Voltar à lista
       <% end -%>
       <% if model.persisted? %>
-        <%= link_to [:admin, model], :class => "btn btn-danger",
+        <%= link_to [:admin, scope, model].compact,
+                    :class => "btn btn-danger",
                     :method => :delete,
                     :style => "margin-left: 25px;",
                     :data => { :confirm => "Tem certeza que deseja apagar o #{model.class.model_name.human.downcase}?" } do %>
