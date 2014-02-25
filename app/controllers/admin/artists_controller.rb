@@ -26,6 +26,7 @@ class Admin::ArtistsController < AdminController
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
+      invalidate_cache
       flash[:success] = "admin.artists.create"
       redirect_to admin_artist_path(@artist)
     else
@@ -61,6 +62,10 @@ class Admin::ArtistsController < AdminController
           .permit(:name, :description, :instrument_names,
                   :facebook_page, :twitter_widget_id,
                   :banner, :thumbnail)
+  end
+
+  def invalidate_cache
+    expire_fragment("artists-list")
   end
 
 end

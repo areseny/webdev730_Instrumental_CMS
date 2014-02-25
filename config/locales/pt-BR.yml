@@ -110,6 +110,7 @@ pt-BR:
       artists:
         destroy: Artista removido do site com sucesso!
         update: Dados do artista alterados com sucesso!
+        create: Artista criado com sucesso!
 
       events:
         update: Dados do evento alterados com sucesso!
