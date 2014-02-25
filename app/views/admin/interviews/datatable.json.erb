@@ -1,0 +1,13 @@
+<% cache "interviews-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@interviews.map do |interview|
+      date = link_to l(interview.date, format: :brief), edit_admin_interview_path(interview)
+      description =
+        image_tag(interview.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
+        interview.description
+      [date, interview.artist.name, description, interview.date.to_time.to_i].to_json
+    end.join(',')) %>
+  ]
+}
+<% end -%>

@@ -74,6 +74,10 @@ InstrumentalSescBrasil::Application.routes.draw do
       end
     end
 
+    resources :interviews, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
+    end
+
     resources :live_transmissions, except: [:show] do
       get :datatable, :on => :collection, :format => :json
     end

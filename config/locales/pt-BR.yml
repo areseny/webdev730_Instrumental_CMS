@@ -135,6 +135,11 @@ pt-BR:
         destroy: Show removido com sucesso
         update: Dados do show atualizados com sucesso
 
+      interviews:
+        create: Entrevista criada com sucesso
+        destroy: Entrevista removida com sucesso
+        update: Dados da entrevista atualizados com sucesso
+
       songs:
         destroy: Música removida com sucesso
         update: Dados da música atualizados com sucesso
@@ -227,6 +232,8 @@ pt-BR:
       live_transmission_settings:
         starts_at: Início
         ends_at: Término
+      interview:
+        timecodes_text: Perguntas
 
   attributes:
     name: Nome
