@@ -74,4 +74,26 @@ class Artist < ActiveRecord::Base
   private :set_instruments_before_saving
   before_save :set_instruments_before_saving
 
+  def generate_artist_slug
+    candidate = the_slug = name.parameterize
+    counter = 1
+    while self.class.exists?(slug: candidate)
+      counter += 1
+      candidate = "#{the_slug}-#{counter}"
+    end
+    self.slug = candidate
+  end
+  before_create :generate_artist_slug
+
+  def set_sort_name
+    self.sort_name ||= name.gsub(/^(a|as|o|os|à|\d+)?\s/i, "").camelize
+  end
+  before_create :set_sort_name
+
+  def set_first_letter
+    self.first_letter ||= I18n.transliterate(name)[0].downcase.gsub(/[^a-z]/, "~")
+  end
+  before_create :set_first_letter
+
+
 end

@@ -19,6 +19,20 @@ class Admin::ArtistsController < AdminController
     @artist = Artist.find_by_slug!(params[:id])
   end
 
+  def new
+    @artist = Artist.new
+  end
+
+  def create
+    @artist = Artist.new(artist_params)
+    if @artist.save
+      flash[:success] = "admin.artists.create"
+      redirect_to admin_artist_path(@artist)
+    else
+      render :new
+    end
+  end
+
   def edit
     @artist = Artist.find_by_slug!(params[:id])
   end
@@ -48,6 +62,5 @@ class Admin::ArtistsController < AdminController
                   :facebook_page, :twitter_widget_id,
                   :banner, :thumbnail)
   end
-
 
 end

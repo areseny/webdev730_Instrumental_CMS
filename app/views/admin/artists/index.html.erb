@@ -1,4 +1,7 @@
 <h1 class="page-header">Cadastro de Artistas</h1>
+<div style="margin-bottom: 15px;">
+  <%= link_to "Criar artista", new_admin_artist_path, class: 'btn btn-primary' %>
+</div>
 <div class="panel panel-default">
   <div class="panel-heading">Artistas cadastrados no site</div>
   <div class="panel-body">
@@ -18,3 +21,21 @@
     </div>
   </div>
 </div>
+<script>
+jQuery(function($) {
+
+  $("#artists-table").dataTable({
+    "bProcessing": true,
+    "bAutoWidth": false,
+    "sAjaxSource": "/ueber/artists/datatable.json",
+    "aoColumns": [
+      { "iDataSort":  4, "sWidth": "200px" },
+      { "sWidth": "120px" },
+      { "sWidth": "120px" },
+      { "bSortable": false },
+      { "bVisible": false }
+    ]
+  });
+
+});
+</script>

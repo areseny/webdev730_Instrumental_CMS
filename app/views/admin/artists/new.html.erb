@@ -1,0 +1,5 @@
+<h1 class="page-header">Criar novo artista</h1>
+<%= admin_panel("Dados do artista") do %>
+  <%= render "admin_form",
+        :model => @artist, :attributes => %w(name description) %>
+<% end -%>
