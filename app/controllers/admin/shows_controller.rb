@@ -58,8 +58,6 @@ class Admin::ShowsController < AdminController
 
   def invalidate_cache
     expire_fragment("shows-datatable")
-    expire_fragment("shows-homepage-#{Date.current.to_s}")
   end
-
 
 end
