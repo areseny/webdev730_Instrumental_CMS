@@ -86,6 +86,10 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :datatable, :on => :collection, :format => :json
     end
 
+    resources :legacy_tv_shows, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
+    end
+
     resources :sound_checks, except: [:show] do
       get :datatable, :on => :collection, :format => :json
     end
