@@ -1,6 +1,10 @@
 class Admin::SongsController < AdminController
   before_filter do
-    @show = Show.find_by_slug!(params[:show_id])
+    if params[:show_id]
+      @show = Show.find_by_slug!(params[:show_id])
+    else
+      @show = LegacyShow.find_by_slug!(params[:legacy_show_id])
+    end
   end
 
   def index
@@ -15,7 +19,7 @@ class Admin::SongsController < AdminController
       end
     end
     flash[:success] = "admin.songs.reorder"
-    redirect_to admin_show_songs_path(@show)
+    redirect_to_index
   end
 
   def edit
@@ -27,7 +31,7 @@ class Admin::SongsController < AdminController
     if @song.update_attributes(song_params)
       invalidate_cache
       flash[:success] = "admin.songs.update"
-      redirect_to admin_show_songs_path(@show)
+      redirect_to_index
     else
       render :edit
     end
@@ -38,7 +42,7 @@ class Admin::SongsController < AdminController
     @song.destroy!
     invalidate_cache
     flash[:success] = "admin.songs.destroy"
-    redirect_to admin_show_songs_path(@show)
+    redirect_to_index
   end
 
   private
@@ -49,6 +53,14 @@ class Admin::SongsController < AdminController
   end
 
   def invalidate_cache
+  end
+
+  def redirect_to_index
+    if @show.is_a?(LegacyShow)
+      redirect_to admin_legacy_show_songs_path(@show)
+    else
+      redirect_to admin_show_songs_path(@show)
+    end
   end
 
 end

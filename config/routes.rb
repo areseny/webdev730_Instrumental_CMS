@@ -74,6 +74,13 @@ InstrumentalSescBrasil::Application.routes.draw do
       end
     end
 
+    resources :legacy_shows, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
+      resources :songs, :except => :show do
+        post :reorder, :on => :collection
+      end
+    end
+
     resources :interviews, except: [:show] do
       get :datatable, :on => :collection, :format => :json
     end
