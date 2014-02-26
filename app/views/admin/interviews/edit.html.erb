@@ -2,7 +2,7 @@
 <%= admin_panel("Dados da entrevista") do %>
   <% if @interview.video %>
     <%= render "admin_form", :model => @interview,
-               :attributes => %w(date artist description timecodes_text),
+               :attributes => %w(date artist description timecodes_text video),
                :field_options => {
                   :description => {
                     :placeholder => "Selecione um artista ou digite uma descrição alternativa"

@@ -238,7 +238,6 @@ pt-BR:
       song:
         title: Nome
         composer: Compositor
-        video: YouTube
       feature:
         title: Título
         description: Texto
@@ -266,6 +265,7 @@ pt-BR:
     band_members: Formação
     artist: Artista
     factsheet: Ficha técnica
+    video: YouTube
 
   date:
     formats:

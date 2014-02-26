@@ -2,7 +2,7 @@
 <%= admin_panel("Dados do bate-papo") do %>
   <% if @video_chat.video %>
     <%= render "admin_form", :model => @video_chat,
-               :attributes => %w(date artist description timecodes_text),
+               :attributes => %w(date artist description timecodes_text video),
                :field_options => {
                   :description => {
                     :placeholder => "Selecione um artista ou digite uma descrição alternativa"

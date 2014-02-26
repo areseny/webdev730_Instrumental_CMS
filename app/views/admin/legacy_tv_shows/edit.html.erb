@@ -1,7 +1,7 @@
 <h1 class="page-header">Programa Instrumental Memória: <%= @legacy_tv_show.artist.try(:name) %></h1>
 <%= admin_panel("Dados do programa") do %>
   <%= render "admin_form", :model => @legacy_tv_show,
-             :attributes => %w(date artist description factsheet),
+             :attributes => %w(date artist description factsheet video),
              :field_options => {
                 :description => {
                   :placeholder => "Selecione um artista ou digite uma descrição alternativa"
