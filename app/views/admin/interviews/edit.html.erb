@@ -1,14 +1,24 @@
 <h1 class="page-header">Entrevista: <%= @interview.artist.try(:name) %></h1>
 <%= admin_panel("Dados da entrevista") do %>
-  <%= render "admin_form", :model => @interview,
-             :attributes => %w(date artist description timecodes_text),
-             :field_options => {
-                :description => {
-                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
-                },
-                :timecodes_text => {
-                  :type => :text,
-                  :placeholder => "Uma pergunta por linha, no formato: MM:SS <texto>"
-                }
-             } %>
+  <% if @interview.video %>
+    <%= render "admin_form", :model => @interview,
+               :attributes => %w(date artist description timecodes_text),
+               :field_options => {
+                  :description => {
+                    :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                  },
+                  :timecodes_text => {
+                    :type => :text,
+                    :placeholder => "Uma pergunta por linha, no formato: MM:SS <texto>"
+                  }
+               } %>
+  <% else -%>
+    <%= render "admin_form", :model => @interview,
+               :attributes => %w(date artist description),
+               :field_options => {
+                  :description => {
+                    :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                  }
+               } %>
+  <% end -%>
 <% end -%>
