@@ -1,0 +1,10 @@
+<h1 class="page-header">Programa Instrumental: <%= @tv_show.artist.try(:name) %></h1>
+<%= admin_panel("Dados da entrevista") do %>
+  <%= render "admin_form", :model => @tv_show,
+             :attributes => %w(date artist description factsheet),
+             :field_options => {
+                :description => {
+                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                }
+             } %>
+<% end -%>

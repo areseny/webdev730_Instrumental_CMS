@@ -145,6 +145,11 @@ pt-BR:
         destroy: Bate-papo removido com sucesso
         update: Dados do bate-papo atualizados com sucesso
 
+      tv_shows:
+        create: Programa criado com sucesso
+        destroy: Programa removido com sucesso
+        update: Dados do programa atualizados com sucesso
+
       songs:
         destroy: Música removida com sucesso
         update: Dados da música atualizados com sucesso
@@ -255,6 +260,7 @@ pt-BR:
     date: Data
     band_members: Formação
     artist: Artista
+    factsheet: Ficha técnica
 
   date:
     formats:
