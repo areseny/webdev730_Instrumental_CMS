@@ -78,6 +78,10 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :datatable, :on => :collection, :format => :json
     end
 
+    resources :video_chats, except: [:show] do
+      get :datatable, :on => :collection, :format => :json
+    end
+
     resources :live_transmissions, except: [:show] do
       get :datatable, :on => :collection, :format => :json
     end

@@ -1,0 +1,9 @@
+<h1 class="page-header">Criar novo bate-papo</h1>
+<%= admin_panel("Dados do bate-papo") do %>
+  <%= render "admin_form", :model => @video_chat, :attributes => %w(date artist description),
+             :field_options => {
+                :description => {
+                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                }
+             } %>
+<% end -%>

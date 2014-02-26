@@ -140,6 +140,11 @@ pt-BR:
         destroy: Entrevista removida com sucesso
         update: Dados da entrevista atualizados com sucesso
 
+      video_chats:
+        create: Bate-papo criado com sucesso
+        destroy: Bate-papo removido com sucesso
+        update: Dados do bate-papo atualizados com sucesso
+
       songs:
         destroy: Música removida com sucesso
         update: Dados da música atualizados com sucesso

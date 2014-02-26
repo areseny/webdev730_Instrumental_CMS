@@ -1,0 +1,13 @@
+<% cache "video-chats-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@video_chats.map do |video_chat|
+      date = link_to l(video_chat.date, format: :brief), edit_admin_video_chat_path(video_chat)
+      description =
+        image_tag(video_chat.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
+        video_chat.description
+      [date, video_chat.artist.name, description, video_chat.date.to_time.to_i].to_json
+    end.join(',')) %>
+  ]
+}
+<% end -%>

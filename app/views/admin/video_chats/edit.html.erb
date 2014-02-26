@@ -1,0 +1,24 @@
+<h1 class="page-header">Bate-papo: <%= @video_chat.artist.try(:name) %></h1>
+<%= admin_panel("Dados do bate-papo") do %>
+  <% if @video_chat.video %>
+    <%= render "admin_form", :model => @video_chat,
+               :attributes => %w(date artist description timecodes_text),
+               :field_options => {
+                  :description => {
+                    :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                  },
+                  :timecodes_text => {
+                    :type => :text,
+                    :placeholder => "Uma pergunta por linha, no formato: MM:SS <texto>"
+                  }
+               } %>
+  <% else -%>
+    <%= render "admin_form", :model => @video_chat,
+               :attributes => %w(date artist description),
+               :field_options => {
+                  :description => {
+                    :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                  }
+               } %>
+  <% end -%>
+<% end -%>

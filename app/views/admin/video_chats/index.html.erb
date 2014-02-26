@@ -1,0 +1,40 @@
+<h1 class="page-header">Bate-Papos</h1>
+<div style="margin-bottom: 15px;">
+  <%= link_to fa_icon(:plus, "Criar novo bate-papo"), new_admin_video_chat_path, :class => "btn btn-primary" %>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Bate-papos cadastradas</div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed table-hover" id="shows-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Artista</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+jQuery(function($) {
+
+  $("#shows-table").dataTable({
+    "bProcessing": true,
+    "bAutoWidth": false,
+    "sAjaxSource": "/ueber/video_chats/datatable.json",
+    "aoColumns": [
+      { "iDataSort":  3, "sWidth": "150px" },
+      { "sWidth": "200px" },
+      { "bSortable": false },
+      { "bVisible": false }
+    ],
+    "aaSorting": [[0,'desc']]
+  });
+
+});
+</script>
