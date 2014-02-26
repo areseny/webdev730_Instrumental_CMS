@@ -1,0 +1,10 @@
+<h1 class="page-header">Programa Passagem de Som: <%= @sound_check.artist.try(:name) %></h1>
+<%= admin_panel("Dados do programa") do %>
+  <%= render "admin_form", :model => @sound_check,
+             :attributes => %w(date artist description factsheet),
+             :field_options => {
+                :description => {
+                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                }
+             } %>
+<% end -%>

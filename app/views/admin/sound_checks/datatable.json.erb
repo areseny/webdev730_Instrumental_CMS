@@ -1,0 +1,13 @@
+<% cache "sound-checks-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@sound_checks.map do |sound_check|
+      date = link_to l(sound_check.date, format: :brief), edit_admin_sound_check_path(sound_check)
+      description =
+        image_tag(sound_check.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
+        sound_check.description
+      [date, sound_check.artist.name, description, sound_check.date.to_time.to_i].to_json
+    end.join(',')) %>
+  ]
+}
+<% end -%>
