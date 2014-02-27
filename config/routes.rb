@@ -6,6 +6,7 @@ InstrumentalSescBrasil::Application.routes.draw do
     get :about_us, path: "projeto"
     get :privacy, path: "privacidade"
     get :live, path: "aovivo"
+    get :search, path: "busca"
     get :live_status, :format => :json
     resources :live_transmissions, :only => [:show], :path => "aovivo"
   end

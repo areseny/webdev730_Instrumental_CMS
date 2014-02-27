@@ -9,6 +9,11 @@ class HomeController < ApplicationController
   def about_us
   end
 
+  # GET /busca?q=....
+  def search
+    @search_term = params[:q]
+  end
+
   # GET /privacidade
   def privacy
   end

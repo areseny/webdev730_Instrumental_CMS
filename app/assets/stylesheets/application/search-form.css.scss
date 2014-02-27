@@ -1,0 +1,28 @@
+.search-form {
+
+  border: 1px solid #b5b5b5;
+  background: image-url("search-background.jpg") repeat-y right;
+
+  /* input[type=text] */
+  .search-form-input {
+    border: none;
+    width: 310px;
+    height: 41px;
+    padding: 0px 15px;
+    font: 14px Arial Narrow;
+    color: black;
+  }
+
+  /* button[type=submit] */
+  .search-form-submit {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    background: image-url("btn-search.png") no-repeat center;
+    width: 55px;
+    height: 41px;
+    text-indent: -999px;
+    cursor: pointer;
+  }
+
+}

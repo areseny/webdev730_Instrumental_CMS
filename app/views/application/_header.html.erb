@@ -1,6 +1,7 @@
 <% cache do %>
 <header>
   <%= header_logo %>
+  <%= render "search_form" %>
   <nav class="nav-header" role="navigation">
     <%= link_to t("artists.index.title"), artists_path %>
     <%= link_to t("artists.legacy.title"), legacy_artists_path %>

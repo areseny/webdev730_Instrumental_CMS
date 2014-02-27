@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require jquery.jcarousel
 //= require jquery.jcarousel-autoscroll
+//= require purl
 //= require_tree ./application
