@@ -1,0 +1,10 @@
+.footer-social a {
+  color: white;
+}
+.search-form .search-form-input {
+  line-height: 41px !important;
+}
+.search-form .search-form-submit {
+  color: transparent;
+  text-transform: capitalize;
+}
