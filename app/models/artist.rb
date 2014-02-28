@@ -9,8 +9,8 @@ class Artist < ActiveRecord::Base
   has_many :legacy_shows
   has_many :songs, through: :shows
   has_many :legacy_songs, through: :legacy_shows, class_name: Song
-  has_many :genres, through: :songs
   has_and_belongs_to_many :instruments
+  has_and_belongs_to_many :genres
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
   include Searchable
 
@@ -68,6 +68,14 @@ class Artist < ActiveRecord::Base
     @instrument_names = value
   end
 
+  def genre_names
+    genres.map(&:name).join(",")
+  end
+
+  def genre_names=(value)
+    @genre_names = value
+  end
+
   def search_title
     name
   end
@@ -99,6 +107,16 @@ class Artist < ActiveRecord::Base
     end
   end
   before_save :set_instruments_before_saving
+
+  def set_genres_before_saving
+    if @genre_names
+      genres.clear
+      self.genres = @genre_names.downcase.split(",").map do |n|
+        Genre.where(name: n).first_or_initialize
+      end
+    end
+  end
+  before_save :set_genres_before_saving
 
   def generate_artist_slug
     candidate = the_slug = name.parameterize

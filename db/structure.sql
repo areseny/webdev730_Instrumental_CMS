@@ -79,6 +79,16 @@ CREATE TABLE artists (
 
 
 --
+-- Name: artists_genres; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE artists_genres (
+    artist_id integer NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+--
 -- Name: artists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1316,3 +1326,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140228000704');
 INSERT INTO schema_migrations (version) VALUES ('20140228031621');
 
 INSERT INTO schema_migrations (version) VALUES ('20140228042036');
+
+INSERT INTO schema_migrations (version) VALUES ('20140228054332');
