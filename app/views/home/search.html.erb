@@ -1,6 +1,6 @@
 <% title t(".title") %>
 
-<% cache cache_key, expires_in: 30.seconds do %>
+<% cache cache_key, expires_in: 5.minutes do %>
 
 <div class="search-results-sidebar">
   <div class="block search-filters">
@@ -68,7 +68,7 @@
 
     <% if @artist_results.any? %>
       <h2>Artistas</h2>
-      <%= render "artists_table", artists: artist_results.map(&:searchable) %>
+      <%= render "artists_table", artists: @artist_results.map(&:searchable) %>
     <% end -%>
 
     <% if @show_results.any? %>
