@@ -16,4 +16,13 @@ module Playlistable
   def video
     songs.first.try :video
   end
+
+  def views
+    videos.sum(:views)
+  end
+
+  def comments
+    videos.sum(:comments)
+  end
+
 end

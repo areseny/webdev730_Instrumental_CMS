@@ -108,6 +108,10 @@ class Artist < ActiveRecord::Base
     "Artist"
   end
 
+  def update_view_count!
+    update_attributes!(view_count: events.sum(&:views))
+  end
+
   private
 
   def set_instruments_before_saving
