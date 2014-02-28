@@ -39,11 +39,10 @@ InstrumentalSescBrasil::Application.routes.draw do
     delete 'logoff' => 'authentication#logoff'
 
     get 'instruments' => 'instruments#index', :format => :json
+    get 'genres' => 'genres#index', :format => :json
+
     resources :features, except: :show
-    resources :artists do
-      member do
-        get :images
-      end
+    resources :artists, :except => :show do
       collection do
         get :datatable, :format => :json
         get :typeahead, :format => :json

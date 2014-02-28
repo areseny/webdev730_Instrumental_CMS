@@ -262,6 +262,7 @@ pt-BR:
     description: Descrição
     url: URL
     instrument_names: Instrumentos
+    genre_names: Gêneros
     facebook_page: Facebook
     twitter_widget_id: Twitter (Widget ID)
     debuts_at: Data/hora da estréia

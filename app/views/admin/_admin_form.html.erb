@@ -32,6 +32,9 @@
       <%= f.button type: 'submit', class: 'btn btn-success' do %>
         <%= fa_icon :save, "Salvar" %>
       <% end -%>
+      <% if local_assigns[:extra_buttons] %>
+        <%= raw local_assigns[:extra_buttons].join %>
+      <% end -%>
       <%= link_to [:admin, scope, model.class.model_name.route_key].compact,
                   :class => 'btn btn-default' do %>
         <i class="glyphicon glyphicon-list"></i> Voltar à lista

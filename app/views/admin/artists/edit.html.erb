@@ -1,35 +1,33 @@
 <h1 class="page-header"><%= @artist.name %></h1>
-<div class="panel panel-default">
-  <div class="panel-heading">Editar dados do artista</div>
-  <div class="panel-body">
-
-    <%= form_for [:admin, @artist], html: { class: 'form-horizontal' } do |f| %>
-
-      <%= f.horizontal_group :name, :text_field,
-                             :autofocus => true,
-                             :placeholder => "Nome do artista" %>
-      <%= f.horizontal_group :description, :text_area,
-                             :placeholder => 'Descrição do artista em Markdown',
-                             :rows => 8 %>
-      <%= f.horizontal_group :instrument_names, :text_field,
-                             :class => "instruments-tokenfield",
-                             :placeholder => "Digite o nome do instrumento e pressione TAB" %>
-      <%= f.horizontal_group :facebook_page, :text_field,
-                             :placeholder => "URL do artista no Facebook para embed" %>
-      <%= f.horizontal_group :twitter_widget_id, :text_field,
-                             :placeholder => "ID do widget do Twitter do artista para embed" %>
-
-      <div class="form-group">
-        <hr />
-        <div class="col-sm-offset-2 col-sm-10">
-          <%= link_to "Cancelar", admin_artist_path(@artist), class: 'btn btn-primary' %>
-          <%= f.button class: 'btn btn-success' do %>
-            <i class="glyphicon glyphicon-ok"></i> Atualizar
-          <% end -%>
-        </div>
-      </div>
-
-    <% end -%>
-
-  </div>
-</div>
+<%= admin_panel("Dados do artista") do %>
+  <%= render "admin_form", :model => @artist,
+             :attributes => %w(name description instrument_names genre_names
+                               banner thumbnail
+                               facebook_page twitter_widget_id),
+             :field_options => {
+                :name => { :autofocus => true },
+                :instrument_names => { :class => "instruments-tokenfield" },
+                :genre_names => { :class => "genres-tokenfield" },
+                :description => {
+                  :placeholder => "Selecione um artista ou digite uma descrição alternativa"
+                }
+             } %>
+<% end -%>
+<script>
+jQuery(function($) {
+  $(".instruments-tokenfield").tokenfield({
+    typeahead: {
+      name: 'instruments',
+      ttl_ms: 5000,
+      prefetch: '/ueber/instruments.json'
+    }
+  });
+  $(".genres-tokenfield").tokenfield({
+    typeahead: {
+      name: 'genres',
+      ttl_ms: 5000,
+      prefetch: '/ueber/genres.json'
+    }
+  });
+});
+</script>

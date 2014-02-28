@@ -1,7 +1,7 @@
 json.cache! "artists-list" do
   json.aaData do
     json.array! @artists do |artist|
-      name = link_to(artist.name, [:admin, artist])
+      name = link_to(artist.name, edit_admin_artist_path(artist))
       dates = artist.dates.map{ |d| l(d, format: :brief) }.to_sentence
       instruments = artist.instruments.map(&:name).join(", ")
       description =

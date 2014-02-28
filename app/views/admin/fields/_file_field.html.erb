@@ -1,0 +1,7 @@
+<%= form.file_field attribute %><br />
+<% if form.object.send("#{attribute}?") %>
+  <%= image_tag form.object.send(attribute).url,
+                width: form.object.send("#{attribute}_width") / 2,
+                height: form.object.send("#{attribute}_height") / 2,
+                class: 'round' %>
+<% end -%>

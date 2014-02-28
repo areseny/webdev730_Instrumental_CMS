@@ -11,14 +11,6 @@ class Admin::ArtistsController < AdminController
     @artists = Artist.order(:first_letter, :sort_name)
   end
 
-  def show
-    @artist = Artist.find_by_slug!(params[:id])
-  end
-
-  def images
-    @artist = Artist.find_by_slug!(params[:id])
-  end
-
   def new
     @artist = Artist.new
   end
@@ -28,7 +20,7 @@ class Admin::ArtistsController < AdminController
     if @artist.save
       invalidate_cache
       flash[:success] = "admin.artists.create"
-      redirect_to admin_artist_path(@artist)
+      redirect_to admin_artists_path
     else
       render :new
     end
@@ -42,7 +34,7 @@ class Admin::ArtistsController < AdminController
     @artist = Artist.find_by_slug!(params[:id])
     if @artist.update_attributes(artist_params)
       flash[:success] = "admin.artists.update"
-      redirect_to admin_artist_path(@artist)
+      redirect_to admin_artists_path
     else
       render :edit
     end
@@ -59,7 +51,7 @@ class Admin::ArtistsController < AdminController
 
   def artist_params
     params.require(:artist)
-          .permit(:name, :description, :instrument_names,
+          .permit(:name, :description, :instrument_names, :genre_names,
                   :facebook_page, :twitter_widget_id,
                   :banner, :thumbnail)
   end

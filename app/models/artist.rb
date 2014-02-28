@@ -21,6 +21,14 @@ class Artist < ActiveRecord::Base
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
 
+  def thumbnail_width
+    200
+  end
+
+  def thumbnail_height
+    200
+  end
+
   def site_events
     events.site.visible.sorted
   end
