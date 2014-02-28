@@ -1,7 +1,7 @@
 root = exports ? this
 
 createPlayer = ->
-  videoId = $("#player").data("videoId")
+  videoId = $.url().param("video_id") || $("#player").data("videoId")
   origin = $('meta[name=youtube-origin]').attr("content")
   autoplay = $('meta[name=youtube-autoplay]').attr("content")
   if videoId
