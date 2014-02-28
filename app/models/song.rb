@@ -11,8 +11,10 @@ class Song < ActiveRecord::Base
   validates :composer, :presence => true
 
   scope :ordered, -> { order(:position) }
+  scope :top, -> (size) { joins(:video).order("videos.views desc").limit(size) }
 
   def video_thumbnail
     video.small_thumbnail if video
   end
+
 end

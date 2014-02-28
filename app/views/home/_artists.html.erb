@@ -1,0 +1,35 @@
+<% cache "home-artists", :expires_in => 30.minutes do %>
+<div class="block home-artists">
+  <div class="home-artists-list">
+    <%= link_to "ver todos os artistas", artists_path, :class => "btn-orange" %>
+    <h2>Lista de Artistas</h2>
+    <%= render "artists_table", artists: Artist.visible.random(4), :row_size => 4 %>
+  </div>
+  <div class="top-ten">
+    <h2>Top 10</h2>
+    <div class="top-ten-list">
+      <h3>Artistas</h3>
+      <% Artist.visible.top(10).each_with_index.to_a.in_groups_of(5) do |artists| %>
+        <ul>
+          <% artists.each do |artist, i| %>
+            <li><strong><%= i + 1 %>. </strong><%= link_to artist.name, artist %></li>
+          <% end -%>
+        </ul>
+      <% end -%>
+    </div>
+    <div class="top-ten-list">
+      <h3>Músicas</h3>
+      <% Song.top(10).each_with_index.to_a.in_groups_of(5) do |songs| %>
+        <ul>
+          <% songs.each do |song, i| %>
+            <li><strong><%= i + 1 %>. </strong>
+            <%= link_to song.title, artist_event_path(
+                                      song.artist, song.playlistable,
+                                      :video_id => song.video.youtube_id) %></li>
+          <% end -%>
+        </ul>
+      <% end -%>
+    </div>
+  </div>
+</div>
+<% end -%>

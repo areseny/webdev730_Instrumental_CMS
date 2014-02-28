@@ -213,3 +213,64 @@ ul.video-stats {
   margin-top: 25px !important;
   }
 }
+
+.home-artists {
+  margin-top: 50px;
+  h2 {
+    color: $cyan;
+    font: 40px Aaux Pro Light;
+    margin: 0;
+  }
+  .home-artists-list {
+    border: 1px solid #ccc;
+    @include border-radius(5px, 5px, 5px, 5px);
+    padding: 25px;
+    .btn-orange {
+      float: right;
+    }
+  }
+  .top-ten {
+    h2 { margin: 15px 0; }
+  }
+}
+
+.top-ten {
+  overflow: auto;
+  .top-ten-list {
+    width: 455px;
+    display: inline-block;
+    float: left;
+    @include border-radius(5px, 5px, 5px, 5px);
+    background: black;
+    color: white;
+    padding: 15px;
+    overflow: auto;
+
+    & + .top-ten-list {
+      margin-left: 20px;
+    }
+    h3 {
+      color: $cyan;
+      margin: 0 0 15px 0;
+      font: 16px AAux Pro Bold;
+    }
+    ul {
+      display: inline-block;
+      width: 50%;
+      float: left;
+      padding: 0;
+      margin: 0;
+      li {
+        list-style: none;
+        white-space: nowrap;
+        overflow: hidden;
+        a { text-decoration: none; }
+        strong {
+          font: 15px Aaux Pro Light;
+          width: 20px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

@@ -21,6 +21,8 @@ class Artist < ActiveRecord::Base
   scope :legacy, -> {
     where("id in (select artist_id from events where type in (?))", Event::LegacyTypes)
   }
+  scope :random,  -> (size) { order("RANDOM()").limit(size) }
+  scope :top,     -> (size) { order("view_count desc").limit(size) }
 
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
