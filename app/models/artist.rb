@@ -14,9 +14,13 @@ class Artist < ActiveRecord::Base
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
   include Searchable
 
-  scope :visible, -> { joins(:events).where(events:{ visible: true }).uniq }
-  scope :current, -> { joins(:events).where.not(events:{ type: Event::LegacyTypes }).uniq }
-  scope :legacy,  -> { joins(:events).where(events:{ type: Event::LegacyTypes }).uniq }
+  scope :visible, -> { where("id in (select artist_id from events where visible = 't')") }
+  scope :current, -> {
+    where("id in (select artist_id from events where type not in (?))", Event::LegacyTypes)
+  }
+  scope :legacy, -> {
+    where("id in (select artist_id from events where type in (?))", Event::LegacyTypes)
+  }
 
   mount_uploader :banner, BannerUploader
   mount_uploader :thumbnail, ThumbnailUploader
