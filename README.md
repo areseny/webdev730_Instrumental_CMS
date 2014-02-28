@@ -16,7 +16,7 @@ heroku config:add FOG_PROVIDER=AWS
 heroku config:add FOG_REGION=sa-east-1
 heroku config:add ASSET_SYNC_GZIP_COMPRESSION=true
 heroku config:add ASSET_SYNC_MANIFEST=false
-heroku config:add ASSET_SYNC_EXISTING_REMOTE_FILES=keep
+heroku config:add ASSET_SYNC_EXISTING_REMOTE_FILES=delete
 heroku config:add CLOUDFRONT_DOMAIN=xxx.cloudfront.net
 
 # Configure recaptcha:
