@@ -1,0 +1,14 @@
+<ul class="videos-list">
+  <% events.each do |event| %>
+  <li>
+    <%= link_to artist_event_path(event.artist, event) do %>
+      <%= image_tag(event.video_thumbnail) %>
+      <h4><%= event.send(local_assigns[:title_method] || :human_name) %></h4>
+      <ul class="video-stats">
+        <li><%= event.views %> Visualizações</li>
+        <li><%= event.comments %> Comentários</li>
+      </ul>
+    <% end -%>
+  </li>
+  <% end -%>
+</ul>

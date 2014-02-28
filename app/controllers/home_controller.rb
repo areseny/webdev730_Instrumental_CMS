@@ -12,6 +12,10 @@ class HomeController < ApplicationController
   # GET /busca?q=....
   def search
     @search_term = params[:q]
+    @search = SearchResult.for(@search_term, search_params)
+    @artist_results = @search.artists.limit(15)
+    @show_results = @search.shows.limit(9)
+    @more_results = @search.more.limit(25)
   end
 
   # GET /privacidade
@@ -29,5 +33,16 @@ class HomeController < ApplicationController
   def live_status
     render :json => LiveTransmission.live_status
   end
+
+  private
+
+  def search_params
+    params.permit(:instrument_id, :genre_id)
+  end
+
+  def cache_key
+    ["search-results", params.permit(:q, :instrument_id, :genre_id)]
+  end
+  helper_method :cache_key
 
 end

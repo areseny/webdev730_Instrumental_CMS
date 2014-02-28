@@ -1,1 +1,94 @@
 <% title t(".title") %>
+
+<% cache cache_key, expires_in: 30.seconds do %>
+
+<div class="search-results-sidebar">
+  <div class="block search-filters">
+    <h2><%= t ".filters" %></h2>
+    <%
+      instrument = Instrument.find_by_id(params[:instrument_id])
+      genre = Genre.find_by_id(params[:genre_id])
+    %>
+
+    <% if instrument %>
+      <h3><%= t ".filter_by_instrument" %></h3>
+      <p>
+        <strong><%= instrument.name.capitalize %></strong>
+        <%= link_to "[x]", params.merge(instrument_id: nil) %>
+      </p>
+    <% else -%>
+      <% instruments = @search.instruments_list %>
+      <% if instruments.any? %>
+        <h3><%= t ".filter_by_instrument" %></h3>
+        <ul class="filter-list">
+        <% instruments.each do |id, name, count| %>
+          <li><%= link_to "#{name.capitalize} (#{count})", params.merge(instrument_id: id) %></li>
+        <% end -%>
+        </ul>
+      <% end -%>
+    <% end -%>
+
+    <% if genre %>
+      <h3><%= t ".filter_by_genre" %></h3>
+      <p>
+        <strong><%= genre.name.capitalize %></strong>
+        <%= link_to "[x]", params.merge(genre_id: nil) %>
+      </p>
+    <% else -%>
+      <% genres = @search.genres_list %>
+      <% if genres.any? %>
+        <h3><%= t ".filter_by_genre" %></h3>
+        <ul class="filter-list">
+        <% genres.each do |id, name, count| %>
+          <li><%= link_to "#{name.capitalize} (#{count})", params.merge(genre_id: id) %></li>
+        <% end -%>
+        </ul>
+      <% end -%>
+    <% end -%>
+
+    <% if genre.nil? && instrument.nil? && genres.empty? && instruments.empty? %>
+      <p>Nenhum filtro disponível</p>
+    <% end -%>
+  </div>
+</div>
+
+<div class="search-results-block">
+  <div class="block-title">
+    <h1>Busca</h1>
+  </div>
+  <div class="block">
+    <div class="summary">
+      <h2>Resultados para o termo:</h2>
+      <p><%= @search_term %></p>
+    </div>
+
+    <% if @search.empty? %>
+      <p>Nenhum resultado encontrado.</p>
+    <% end -%>
+
+    <% if @artist_results.any? %>
+      <h2>Artistas</h2>
+      <table class="artists-grid">
+        <%= @artist_results.map(&:searchable).in_groups_of(3, false) do |artists| %>
+        <tr>
+          <% artists.each_with_index do |artist, i| %>
+            <%= content_tag :td, render(artist), class: ('last' if i == 2) %>
+          <% end -%>
+        </tr>
+        <% end -%>
+      </table>
+    <% end -%>
+
+    <% if @show_results.any? %>
+      <h2>Shows</h2>
+      <%= render "videos_list", events: @show_results.map(&:searchable), title_method: :title %>
+    <% end-%>
+
+    <% if @more_results.any? %>
+      <h2>Outros resultados</h2>
+      <%= render "videos_list", events: @more_results.map(&:searchable), title_method: :title %>
+    <% end-%>
+  </div>
+</div>
+
+<% end -%>

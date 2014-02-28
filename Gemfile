@@ -25,6 +25,7 @@ gem 'fb-channel-file'
 gem 'will_paginate-bootstrap'
 gem 'dotenv', require: false
 gem 'roo'
+gem 'pg_search'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'

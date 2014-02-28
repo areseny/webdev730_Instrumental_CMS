@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :artist, inverse_of: :events
+  include Searchable
 
   SiteTypes   = %w(Show Interview VideoChat)
   TvTypes     = %w(TvShow SoundCheck)
@@ -41,16 +42,24 @@ class Event < ActiveRecord::Base
     slug
   end
 
+  def human_name
+    self.class.model_name.human
+  end
+
   def article_title
-    artist.name + " | " + self.class.model_name.human
+    artist.name + " | " + human_name
   end
 
   def disqus_title
-    "#{self.class.model_name.human}: #{artist.name} (#{I18n.l(date, format: :month)})"
+    "#{human_name}: #{artist.name} (#{I18n.l(date, format: :month)})"
   end
 
   def title
-    "#{self.class.model_name.human} com #{artist.name} em #{I18n.l(date, format: :brief)}"
+    "#{human_name} com #{artist.name} em #{I18n.l(date, format: :brief)}"
+  end
+
+  def search_title
+    title
   end
 
   def disqus_identifier
@@ -62,6 +71,10 @@ class Event < ActiveRecord::Base
       .order("debuts_at")
       .where("debuts_at >= ?", Date.current).first ||
       where.not(debuts_at: nil).order("debuts_at desc").first
+  end
+
+  def search_content
+    description
   end
 
   private

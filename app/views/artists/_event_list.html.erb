@@ -5,20 +5,7 @@
   <div class="block events-list events-list-<%= type %>">
     <% events.group_by(&:date).each do |date, events| %>
       <h3><%= l date, format: :month %></h3>
-      <ul class="videos-list">
-        <% events.each do |event| %>
-        <li>
-          <%= link_to artist_event_path(event.artist, event) do %>
-            <%= image_tag(event.video_thumbnail) %>
-            <h4><%= event.class.model_name.human %></h4>
-            <ul class="video-stats">
-              <li><%= event.views %> Visualizações</li>
-              <li><%= event.comments %> Comentários</li>
-            </ul>
-          <% end -%>
-        </li>
-        <% end -%>
-      </ul>
+      <%= render "videos_list", events: events %>
     <% end -%>
   </div>
 <% end -%>

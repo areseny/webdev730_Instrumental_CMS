@@ -67,6 +67,9 @@ pt-BR:
 
     search:
       title: Busca
+      filters: Filtrar Busca
+      filter_by_instrument: Instrumentos
+      filter_by_genre: Gêneros
 
   artists:
     index:

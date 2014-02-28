@@ -12,6 +12,7 @@ class Artist < ActiveRecord::Base
   has_many :genres, through: :songs
   has_and_belongs_to_many :instruments
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
+  include Searchable
 
   scope :visible, -> { joins(:events).where(events:{ visible: true }).uniq }
   scope :current, -> { joins(:events).where.not(events:{ type: Event::LegacyTypes }).uniq }
@@ -22,6 +23,10 @@ class Artist < ActiveRecord::Base
 
   def site_events
     events.site.visible.sorted
+  end
+
+  def visible
+    events.where(visible: true).any?
   end
 
   def tv_events
@@ -63,6 +68,28 @@ class Artist < ActiveRecord::Base
     @instrument_names = value
   end
 
+  def search_title
+    name
+  end
+
+  def search_content
+    description
+  end
+
+  def search_instruments
+    instruments.to_a
+  end
+
+  def search_genres
+    genres.to_a
+  end
+
+  def search_result_type
+    "Artist"
+  end
+
+  private
+
   def set_instruments_before_saving
     if @instrument_names
       instruments.clear
@@ -71,7 +98,6 @@ class Artist < ActiveRecord::Base
       end
     end
   end
-  private :set_instruments_before_saving
   before_save :set_instruments_before_saving
 
   def generate_artist_slug
@@ -94,6 +120,5 @@ class Artist < ActiveRecord::Base
     self.first_letter ||= I18n.transliterate(name)[0].downcase.gsub(/[^a-z]/, "~")
   end
   before_create :set_first_letter
-
 
 end
