@@ -26,6 +26,8 @@ describe "Database Schema" do
                                   instruments: [@drums])
     @lennon.instruments << @vocals
     @lennon.instruments << @guitar
+    @lennon.genres << @rock
+    @lennon.genres << @classic_rock
     @letitbe.genres << @rock
     @letitbe.genres << @classic_rock
   end
