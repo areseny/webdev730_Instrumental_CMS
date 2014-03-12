@@ -3,9 +3,7 @@
   "aaData": [
     <%= raw(@legacy_shows.map do |legacy_show|
       date = link_to l(legacy_show.date, format: :brief), edit_admin_legacy_show_path(legacy_show)
-      description =
-        image_tag(legacy_show.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
-        legacy_show.description
+      description = admin_json_description(legacy_show)
       total_songs = legacy_show.songs.count
       if total_songs > 0
         songs_link = link_to("#{total_songs} músicas", admin_legacy_show_songs_path(legacy_show))

@@ -3,9 +3,7 @@
   "aaData": [
     <%= raw(@live_transmissions.map do |item|
       date = link_to l(item.date, format: :brief), edit_admin_live_transmission_path(item)
-      description =
-        image_tag(item.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
-        item.description
+      description = admin_json_description(item)
       [date, item.artist.name, description, item.date.to_time.to_i].to_json
     end.join(',')) %>
   ]

@@ -21,4 +21,14 @@ module AdminHelper
     content_tag(:div, header + body, :class => "panel panel-default")
   end
 
+  def admin_json_description(object)
+    if object
+      if artist = object.artist
+        image_tag(artist.thumbnail, size: '72x72', class: 'artist-list-thumb') + object.description
+      else
+        object.description
+      end
+    end
+  end
+
 end

@@ -3,9 +3,7 @@
   "aaData": [
     <%= raw(@legacy_tv_shows.map do |legacy_tv_show|
       date = link_to l(legacy_tv_show.date, format: :brief), edit_admin_legacy_tv_show_path(legacy_tv_show)
-      description =
-        image_tag(legacy_tv_show.artist.thumbnail, size: '72x72', class: 'artist-list-thumb') +
-        legacy_tv_show.description
+      description = admin_json_description(legacy_tv_show)
       [date, legacy_tv_show.artist.name, description, legacy_tv_show.date.to_time.to_i].to_json
     end.join(',')) %>
   ]
