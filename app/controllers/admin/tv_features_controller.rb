@@ -53,6 +53,7 @@ class Admin::TvFeaturesController < AdminController
   end
 
   def invalidate_cache
+    expire_fragment("tv-features-datatable")
     expire_fragment("tv-features-homepage")
     expire_fragment("tv-schedule-homepage")
   end

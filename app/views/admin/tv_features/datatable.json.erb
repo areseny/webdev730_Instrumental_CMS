@@ -1,0 +1,11 @@
+<% cache "tv-features-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@tv_features.map do |feature|
+      date = link_to l(feature.debuts_at, format: :list), edit_admin_tv_feature_path(feature)
+      description = admin_json_description(feature)
+      [date, feature.try(:artist).try(:name), description, feature.debuts_at.to_i].to_json
+    end.join(',')) %>
+  ]
+}
+<% end -%>
