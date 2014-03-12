@@ -1,5 +1,5 @@
 class TvFeature < ActiveRecord::Base
-  belongs_to :show, dependent: :delete
+  belongs_to :show
   has_one :artist, through: :show
 
   validates :show, :presence => true

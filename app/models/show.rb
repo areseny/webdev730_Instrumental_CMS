@@ -1,6 +1,8 @@
 class Show < Event
   include Playlistable
 
+  has_many :tv_features, :dependent => :delete_all
+
   def search_content
     content = super
     songs.each do |song|
