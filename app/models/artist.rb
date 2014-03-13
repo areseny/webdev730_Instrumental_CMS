@@ -9,17 +9,20 @@ class Artist < ActiveRecord::Base
   has_many :legacy_shows
   has_many :songs, through: :shows
   has_many :legacy_songs, through: :legacy_shows, class_name: Song
-  has_and_belongs_to_many :instruments
-  has_and_belongs_to_many :genres
   has_many :gallery, class_name: GalleryImage, inverse_of: :artist
   include Searchable
+  include Filterable
 
-  scope :visible, -> { where("id in (select artist_id from events where visible = 't')") }
+  scope :visible, -> {
+    where("artists.id in (select artist_id from events where visible = 't')")
+  }
   scope :current, -> {
-    where("id in (select artist_id from events where type not in (?))", Event::LegacyTypes)
+    where("artists.id in (select artist_id from events where type not in (?))",
+          Event::LegacyTypes)
   }
   scope :legacy, -> {
-    where("id in (select artist_id from events where type in (?))", Event::LegacyTypes)
+    where("artists.id in (select artist_id from events where type in (?))",
+          Event::LegacyTypes)
   }
   scope :random,  -> (size) { order("RANDOM()").limit(size) }
   scope :top,     -> (size) { order("view_count desc").limit(size) }

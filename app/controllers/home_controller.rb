@@ -12,7 +12,10 @@ class HomeController < ApplicationController
   # GET /busca?q=....
   def search
     @search_term = params[:q]
-    @search = SearchResult.for(@search_term, search_params)
+    @search =
+      SearchResult.search(@search_term)
+                  .filtered_by_instrument(params[:instrument_id])
+                  .filtered_by_genre(params[:genre_id])
     @artist_results = @search.artists.limit(15)
     @show_results = @search.shows.limit(9)
     @more_results = @search.more.limit(25)
