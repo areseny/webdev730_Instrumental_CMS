@@ -35,26 +35,26 @@ class FormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def admin_field(attribute, options = nil)
-    if !object.respond_to?(attribute.to_sym)
+  def admin_field(attribute, options = {})
+    attribute_type = options.delete(:type)
+    if attribute_type.nil?
+      if !object.respond_to?(attribute.to_sym)
+        attribute_type = :unknown
+      elsif uploader = object.class.uploaders[attribute.to_sym]
+        attribute_type = :file
+      elsif column = object.class.columns_hash[attribute.to_s]
+        attribute_type = column.type
+      elsif association = object.class.reflect_on_association(attribute.to_sym)
+        attribute_type = association.name
+      else
+        attribute_type = :string
+      end
+    end
+    if attribute_type == :unknown
       h.content_tag(:span, "Unknown attribute: #{attribute}")
     else
-      options ||= {}
-      uploader = object.class.uploaders[attribute.to_sym]
-      if uploader
-        h.render("admin/fields/file_field",
-                 :form => self, :attribute => attribute, :options => options)
-      elsif column = object.class.columns_hash[attribute.to_s]
-          h.render("admin/fields/#{column.type}_field",
-                   :form => self, :attribute => attribute, :options => options)
-      elsif association = object.class.reflect_on_association(attribute.to_sym)
-          h.render("admin/fields/#{association.name}_field",
-                   :form => self, :attribute => attribute, :options => options)
-      else
-        type = options[:type] || "string"
-        h.render("admin/fields/#{type}_field",
-                 :form => self, :attribute => attribute, :options => options)
-      end
+      h.render("admin/fields/#{attribute_type}_field",
+               :form => self, :attribute => attribute, :options => options)
     end
   end
 

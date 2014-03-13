@@ -1,5 +1,6 @@
-<%= form.file_field attribute %><br />
-<% if form.object.send("#{attribute}?") %>
+<%= form.file_field(attribute, options) %>
+<% if form.object.send("#{attribute}?") && form.respond_to?("#{attribute}_width") %>
+  <br />
   <% width = form.object.try("#{attribute}_width") || 100 %>
   <% height = form.object.try("#{attribute}_height") || 100 %>
   <%= image_tag form.object.send(attribute).url,
