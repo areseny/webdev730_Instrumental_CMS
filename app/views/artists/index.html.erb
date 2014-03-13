@@ -1,11 +1,15 @@
 <% title t(".title") %>
 
-<% cache [:artists_list, params[:letter], @artists.maximum(:updated_at)] do %>
+<% cache [:artists_list,
+          params.values_at(:letter, :instrument_id, :genre_id),
+          @artists.maximum(:updated_at)] do %>
+
 <div class="artists-sidebar">
   <div class="block search-filters">
-    <h2><%= t ".filters" %></h2>
+    <h2>Filtrar Busca</h2>
     <h3><%= t ".filter_by_letter" %></h3>
     <%= render "filter_by_letter" %>
+    <%= render "search_filters", :scope => @artists %>
   </div>
 </div>
 
@@ -20,7 +24,9 @@
       <%= artists.in_groups_of(3, false) do |artists| %>
       <tr>
         <% artists.each_with_index do |artist, i| %>
+        <% cache [:artist_list_item, artist] do %>
         <%= content_tag :td, render(artist), class: ('last' if i == 2) %>
+        <% end -%>
         <% end -%>
       </tr>
       <% end -%>

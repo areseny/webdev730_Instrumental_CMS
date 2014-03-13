@@ -1,7 +1,7 @@
 <% ([*'A'..'Z'] << '#').in_groups_of(5, false).each do |letters| %>
   <nav class='letter-nav'>
     <% letters.each do |letter| %>
-      <%= link_to letter, letter_artists_path(letter) %>
+      <%= link_to letter, params.merge(:letter => letter) %>
     <% end -%>
   </nav>
 <% end -%>

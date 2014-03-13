@@ -2,7 +2,10 @@ class ArtistsController < ApplicationController
 
   # GET /artistas(/letra/:letter)
   def index
-    @artists = Artist.list(params[:letter])
+    @artists =
+      Artist.list(params[:letter])
+            .filtered_by_genre(params[:genre_id])
+            .filtered_by_instrument(params[:instrument_id])
   end
 
   def export

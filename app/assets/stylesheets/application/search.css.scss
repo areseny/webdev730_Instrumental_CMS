@@ -1,21 +1,5 @@
 @import 'mixins';
 
-.search-filters {
-  padding: 40px;
-
-  h2 {
-    color: $cyan;
-    font: 40px AAux Pro Light;
-    line-height: 40px;
-    margin: 0 0 10px 0;
-  }
-
-  h3 {
-    color: $orange;
-    font: 18px Aaux Pro Bold;
-  }
-}
-
 .letter-nav {
   a {
     width: 28px;
@@ -60,6 +44,21 @@
   vertical-align: top;
   float: right;
   width: 255px;
+}
+
+.search-filters {
+  padding: 40px;
+
+  h2 {
+    color: $cyan;
+    font: 40px AAux Pro Light;
+    line-height: 40px;
+    margin: 0 0 10px 0;
+  }
+  h3 {
+    color: $orange;
+    font: 18px Aaux Pro Bold;
+  }
 
   a {
     text-decoration: none;

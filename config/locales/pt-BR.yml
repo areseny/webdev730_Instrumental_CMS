@@ -19,6 +19,10 @@ pt-BR:
         Ou consulte sua operadora.
         Assista também online em [sesctv.org.br/aovivo](http://sesctv.org.br/aovivo)
 
+    search_filters:
+      filter_by_instrument: Instrumentos
+      filter_by_genre: Gêneros
+
   home:
     privacy:
       title: Política de Privacidade
@@ -67,9 +71,6 @@ pt-BR:
 
     search:
       title: Busca
-      filters: Filtrar Busca
-      filter_by_instrument: Instrumentos
-      filter_by_genre: Gêneros
 
   artists:
     index:
