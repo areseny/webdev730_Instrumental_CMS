@@ -2,7 +2,7 @@ module Searchable
   extend ActiveSupport::Concern
 
   included do
-    has_one :search_result, as: :searchable
+    has_one :search_result, as: :searchable, dependent: :delete
     after_save :update_search_result
   end
 
