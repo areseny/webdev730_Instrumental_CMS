@@ -70,6 +70,15 @@
         </div>
       <% end -%>
     <% end -%>
+    <% cache "pdf-schedule-homepage-#{Date.current.to_s}", skip_digest: true do %>
+      <% if pdf_schedule = PdfSchedule.current %>
+        <div class="schedule-pdf">
+          <%= link_to pdf_schedule.file.url, :target => "_blank" do %>
+            <%= image_tag("icon-pdf.png", :size => "36x33", :align => :absmiddle) %> Clique para ver a programação completa
+          <% end -%>
+        </div>
+      <% end -%>
+    <% end -%>
   </div>
   <% end -%>
 

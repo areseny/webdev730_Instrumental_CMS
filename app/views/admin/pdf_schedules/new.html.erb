@@ -1,0 +1,9 @@
+<h1 class="page-header">Enviar programação em PDF</h1>
+<%= admin_panel("Dados do arquivo PDF") do %>
+  <%= render "admin_form",
+        :model => @pdf_schedule,
+        :attributes => %w(available_date file),
+        :field_options => {
+          :file => { :accept => 'application/pdf,application/x-pdf' }
+        } %>
+<% end -%>

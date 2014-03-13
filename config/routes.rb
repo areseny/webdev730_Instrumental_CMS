@@ -64,6 +64,10 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :datatable, :on => :collection, :format => :json
     end
 
+    resources :pdf_schedules, only: %w(index new create destroy) do
+      get :datatable, :on => :collection, :format => :json
+    end
+
     resources :events, only: [:edit, :update]
 
     resources :shows, except: [:show] do

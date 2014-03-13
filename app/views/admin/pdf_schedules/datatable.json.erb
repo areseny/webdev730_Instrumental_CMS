@@ -1,0 +1,14 @@
+<% cache "pdf-schedules-datatable", skip_digest: true do %>
+{
+  "aaData": [
+    <%= raw(@pdf_schedules.map do |item|
+          date = l(item.available_date)
+          file_link = link_to(item[:file], item.file.url, :target => "_blank")
+          options_links = link_to(fa_icon('trash-o', "Apagar"),
+            admin_pdf_schedule_path(item), :method => :delete,
+            :confirm => "Deseja realmente remover o arquivo: #{item[:file]}?")
+          [date, file_link, options_links, item.available_date.to_time.to_i].to_json
+        end.join(',')) %>
+  ]
+}
+<% end -%>

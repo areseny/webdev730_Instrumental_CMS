@@ -174,6 +174,10 @@ pt-BR:
       live_transmission_settings:
         update: Configurações de transmissão ao vivo atualizadas!
 
+      pdf_schedules:
+        create: Arquivo enviado com sucesso
+        destroy: Arquivo removido com sucesso
+
   links:
     twitter:
       url: "https://twitter.com/sesctv"
@@ -254,6 +258,9 @@ pt-BR:
         ends_at: Término
       interview:
         timecodes_text: Perguntas
+      pdf_schedule:
+        available_date: Data de publicação
+        file: Arquivo
 
   attributes:
     name: Nome
@@ -277,6 +284,7 @@ pt-BR:
   date:
     formats:
       month: "%B de %Y"
+      date_slug: "%d-%B-%Y"
       brief: "%d/%m/%y"
       tiny: "%d/%m"
       input: "%d/%m/%Y"

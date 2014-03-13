@@ -1,0 +1,40 @@
+<% @home_page_menu_active = true %>
+<h1 class="page-header">Programação em PDF</h1>
+<div style="margin-bottom: 15px;">
+  <%= link_to fa_icon(:upload, "Enviar arquivo de programação"), new_admin_pdf_schedule_path,
+                      :class => "btn btn-primary" %>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Arquivos enviados</div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-condensed table-hover" id="pdf-schedules-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Aquivo</th>
+            <th>Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+jQuery(function($) {
+  $("#pdf-schedules-table").dataTable({
+    "bProcessing": true,
+    "bAutoWidth": false,
+    "sAjaxSource": "/ueber/pdf_schedules/datatable.json",
+    "aoColumns": [
+      { "iDataSort":  3, "sWidth": "150px" },
+      { "bSortable": false },
+      { "bSortable": false },
+      { "bVisible": false }
+    ],
+    "aaSorting": [[0,'desc']]
+  });
+});
+</script>

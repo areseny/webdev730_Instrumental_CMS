@@ -500,6 +500,38 @@ ALTER SEQUENCE live_transmissions_id_seq OWNED BY live_transmissions.id;
 
 
 --
+-- Name: pdf_schedules; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE pdf_schedules (
+    id integer NOT NULL,
+    available_date date NOT NULL,
+    file character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: pdf_schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE pdf_schedules_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pdf_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE pdf_schedules_id_seq OWNED BY pdf_schedules.id;
+
+
+--
 -- Name: schedule_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -866,6 +898,13 @@ ALTER TABLE ONLY live_transmissions ALTER COLUMN id SET DEFAULT nextval('live_tr
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY pdf_schedules ALTER COLUMN id SET DEFAULT nextval('pdf_schedules_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY schedule_items ALTER COLUMN id SET DEFAULT nextval('schedule_items_id_seq'::regclass);
 
 
@@ -1004,6 +1043,14 @@ ALTER TABLE ONLY live_transmission_settings
 
 ALTER TABLE ONLY live_transmissions
     ADD CONSTRAINT live_transmissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pdf_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY pdf_schedules
+    ADD CONSTRAINT pdf_schedules_pkey PRIMARY KEY (id);
 
 
 --
@@ -1183,6 +1230,13 @@ CREATE INDEX index_live_transmissions_on_date ON live_transmissions USING btree 
 
 
 --
+-- Name: index_pdf_schedules_on_available_date; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_pdf_schedules_on_available_date ON pdf_schedules USING btree (available_date);
+
+
+--
 -- Name: index_schedule_items_on_date; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1331,3 +1385,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140228042036');
 INSERT INTO schema_migrations (version) VALUES ('20140228054332');
 
 INSERT INTO schema_migrations (version) VALUES ('20140228071217');
+
+INSERT INTO schema_migrations (version) VALUES ('20140309193856');
