@@ -34,7 +34,7 @@ class Admin::PdfSchedulesController < AdminController
 
   def invalidate_cache
     expire_fragment("pdf-schedules-datatable")
-    expire_fragment("pdf_schedule-homepage")
+    expire_fragment("pdf-schedule-homepage-#{Date.current.to_s}")
     expire_fragment("schedule-items-homepage-#{Date.current.to_s}")
   end
 
