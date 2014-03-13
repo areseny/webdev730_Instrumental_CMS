@@ -110,10 +110,10 @@ class YoutubeParser
       @band_members ||= begin
         array = band_match[1].split("\n").map do |line|
           name, instruments = line.split('-')
-          instruments = instruments.split(/\se\s|,/).map do |instrument|
-            instrument.strip.downcase
+          instruments = instruments.split(/\se\s|,|;|\./).map do |instrument|
+            instrument.strip.downcase.presence
           end
-          [name.strip, instruments]
+          [name.strip, instruments.compact]
         end
         array.sort_by(&:first)
       end
@@ -155,9 +155,8 @@ class YoutubeParser
   def genres
     if genre_match
       @genres ||=
-        genre_match[1].split(',')
-                      .map { |g| g.strip.downcase }
-                      .reject { |g| g.blank? }
+        genre_match[1].split(/\se\s|,|;|\./)
+                      .map { |g| g.strip.downcase.presence }.compact
     else
       @genres ||= []
     end

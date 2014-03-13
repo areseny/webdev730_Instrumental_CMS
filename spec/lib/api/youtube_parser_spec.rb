@@ -102,6 +102,23 @@ describe YoutubeParser do
     ]
   end
 
+  it "ignores punctuation in band member information" do
+    parser = parse description: <<-_.dedent
+      Descrição do evento
+
+      Formação:
+      João - Baixo;
+      Maria - Bateria e Bumbo
+      Pedro - Guitarra, violão; e flauta.
+      Foo bar baz
+    _
+    parser.band_members.should == [
+      ["João", ["baixo"]],
+      ["Maria", ["bateria", "bumbo"]],
+      ["Pedro", ["guitarra", "violão", "flauta"]]
+    ]
+  end
+
   it "orders the parsed band members" do
     parser = parse description: <<-_.dedent
       Descrição do evento
@@ -184,6 +201,17 @@ describe YoutubeParser do
       Baz
     _
     parser.genres.should == ["rock", "samba", "baião"]
+  end
+
+  it "ignores punctuation when detecting genres in the video's description" do
+    parser = parse description: <<-_.dedent
+      Foo bar
+
+      Gêneros: Rock, Samba, Baião; Bolero. e ; Bossa Nova.
+
+      Baz
+    _
+    parser.genres.should == ["rock", "samba", "baião", "bolero", "bossa nova"]
   end
 
   it "skips empty genres" do
