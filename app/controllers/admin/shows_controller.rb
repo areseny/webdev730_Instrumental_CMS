@@ -60,7 +60,6 @@ class Admin::ShowsController < AdminController
     expire_fragment("shows-datatable")
     expire_fragment("tv-features-datatable")
     expire_fragment("tv-features-homepage")
-    expire_fragment("tv-schedule-homepage")
   end
 
 end

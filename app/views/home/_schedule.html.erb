@@ -1,6 +1,5 @@
 <div class="home-schedule">
 
-  <% cache "tv-schedule-homepage", skip_digest: true do %>
   <div class="home-tv-schedule">
     <div class="events-list-title events-list-title-tv">
       <h2>Programação no canal SescTV</h2>
@@ -40,7 +39,6 @@
     <% end -%>
 
   </div>
-  <% end -%>
 
   <% cache "schedule-items-homepage-#{Date.current.to_s}", skip_digest: true do %>
   <div class="home-site-schedule tabstrip">

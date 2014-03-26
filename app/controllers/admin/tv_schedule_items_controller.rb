@@ -33,7 +33,6 @@ class Admin::TvScheduleItemsController < AdminController
   def invalidate_cache
     expire_fragment("tv-schedule-homepage-current-item-#{Date.current.to_s}")
     expire_fragment("tv-schedule-footer-feed-#{Date.current.to_s}")
-    expire_fragment("tv-schedule-homepage")
   end
 
 end
