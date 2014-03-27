@@ -1,6 +1,14 @@
 <% title @event.article_title %>
 
-<% cache @event do %>
+<% cache [@event, @song].compact do %>
+
+<% content_for :head do %>
+  <%= meta_tags({
+    "og:title" => @song.try(:opengraph_title) || @event.title,
+    "og:description" => @event.description,
+    "og:image" => @event.artist.thumbnail
+    }) %>
+<% end -%>
 
 <div class="block-title">
   <h1><%= @event.article_title %></h1>

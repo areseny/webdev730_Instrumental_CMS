@@ -21,4 +21,8 @@ class Song < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
+  def opengraph_title
+    "#{artist.name}: #{title} | Instrumental SESC Brasil"
+  end
+
 end
