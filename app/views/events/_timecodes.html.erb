@@ -1,4 +1,4 @@
-<% if video.timecodes.any? %>
+<% if video && video.timecodes.any? %>
 <h3>Perguntas</h3>
 <ol class="video-nav">
   <% video.timecodes.each do |timecode| %>
