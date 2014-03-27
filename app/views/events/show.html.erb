@@ -12,7 +12,7 @@
     <% else -%>
       <%= meta_properties({
         "og:url" => artist_event_url(@artist, @event),
-        "og:title" => @event.title,
+        "og:title" => "#{@event.title} | Instrumental SESC Brasil",
         "og:description" => @event.description,
         "og:image" => "http:#{@event.artist.thumbnail}"
       }) %>
