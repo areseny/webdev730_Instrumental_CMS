@@ -27,6 +27,13 @@ class ArtistsController < ApplicationController
     @artists = Artist.legacy
   end
 
+  # GET ui/artist.aspx?id=:id
+  def legacy_artist
+    @artist = Artist.where("? = ANY(legacy_ids)", params[:id]).first
+    @artist or raise ActiveRecord::RecordNotFound
+    redirect_to artist_url(@artist), :status => :moved_permanently
+  end
+
   # GET /artistas/:id
   def show
     @artist = Artist.find_by_slug!(params[:id])

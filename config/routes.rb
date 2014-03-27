@@ -22,6 +22,15 @@ InstrumentalSescBrasil::Application.routes.draw do
     end
   end
 
+  legacy_route = lambda { |request|
+    request.params[:id] =~ /^\d{1,7}$/ && request.params[:format] =~ /^aspx$/i
+  }
+
+  get 'ui/show' => 'events#legacy_show', :constraints => legacy_route
+  get 'ui/interview' => 'events#legacy_interview', :constraints => legacy_route
+  get 'ui/videochat' => 'events#legacy_video_chat', :constraints => legacy_route
+  get 'ui/artist' => 'artists#legacy_artist', :constraints => legacy_route
+
   controller :contact_form do
     get :contact_form, path: "contato"
     post :contact, path: "contato"
