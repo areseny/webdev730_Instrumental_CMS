@@ -24,14 +24,18 @@ class GalleryUploader < CarrierWave::Uploader::Base
   version :thumb do
     process convert: 'jpg'
     process :resize_to_fill => [63, 63]
+    def full_filename(for_file)
+      "thumb-#{model[:image]}"
+    end
   end
 
   version :preview do
     process convert: 'jpg'
     process :resize_to_fill => [200, 200]
+    def full_filename(for_file)
+      "preview-#{model[:image]}"
+    end
   end
-
-  private
 
   def md5
     @md5 ||= ::Digest::MD5.file(current_path).hexdigest
