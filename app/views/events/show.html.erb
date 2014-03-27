@@ -1,14 +1,26 @@
 <% title @event.article_title %>
 
-<% cache [@event, @song].compact do %>
-
 <% content_for :head do %>
-  <%= meta_tags({
-    "og:title" => @song.try(:opengraph_title) || @event.title,
-    "og:description" => @event.description,
-    "og:image" => @event.artist.thumbnail
-    }) %>
+  <% cache [:head, @event, @song].compact do %>
+    <% if @song %>
+      <%= meta_properties({
+        "og:url" => artist_event_song_url(@artist, @event, @song),
+        "og:title" => @song.opengraph_title,
+        "og:description" => @event.description,
+        "og:image" => "http:#{@event.artist.thumbnail}"
+      }) %>
+    <% else -%>
+      <%= meta_properties({
+        "og:url" => artist_event_url(@artist, @event),
+        "og:title" => @event.title,
+        "og:description" => @event.description,
+        "og:image" => "http:#{@event.artist.thumbnail}"
+      }) %>
+    <% end -%>
+  <% end -%>
 <% end -%>
+
+<% cache [@event, @song].compact do %>
 
 <div class="block-title">
   <h1><%= @event.article_title %></h1>

@@ -1,14 +1,17 @@
 <% title "AO VIVO: #{@transmission.artist.name}" %>
 
-<% cache @transmission do %>
-
-  <% content_for :head do %>
-    <%= meta_tags({
+<% content_for :head do %>
+  <% cache [:head, @transmission] do %>
+    <%= meta_properties({
+      "og:url" => live_transmission_url(@transmission),
       "og:title" => "Ao Vivo: #{@transmission.artist.name} | Instrumental SESC Brasil",
       "og:description" => @transmission.description,
-      "og:image" => @transmission.artist.thumbnail
+      "og:image" => "http:#{@transmission.artist.thumbnail}"
       }) %>
   <% end -%>
+<% end -%>
+
+<% cache @transmission do %>
 
 <div class="block-title">
   <h2>AO VIVO | <%= @transmission.artist.name %></h2>

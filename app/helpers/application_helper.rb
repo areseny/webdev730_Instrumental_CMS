@@ -13,6 +13,13 @@ module ApplicationHelper
     tags.join.html_safe
   end
 
+  def meta_properties(values = {})
+    tags = values.map do |name, content|
+      tag('meta', property: name, content: content)
+    end
+    tags.join.html_safe
+  end
+
   def definition_list(items, options = {})
     tags = items.map do |key, value|
       content_tag(:dt, key) + content_tag(:dd, value)

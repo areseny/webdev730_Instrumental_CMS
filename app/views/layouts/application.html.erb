@@ -10,12 +10,12 @@
   <%= facebook_meta_tags %>
   <%= recaptcha_meta_tags %>
   <%= youtube_meta_tags %>
+  <%= yield(:head) %>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/iefix.css" />
   <![endif]-->
   <%= render "live_reload" if Rails.env.development? %>
-  <%= yield(:head) %>
 </head>
 <body>
 
