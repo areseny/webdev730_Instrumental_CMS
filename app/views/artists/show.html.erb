@@ -1,5 +1,18 @@
 <% title @artist.name %>
 
+<% content_for :head do %>
+  <% cache [:head, @artist].compact do %>
+    <%= meta_properties({
+      "og:url" => artist_url(@artist),
+      "og:title" => page_title,
+      "og:description" => @artist.description,
+      "og:image" => "http:#{@artist.thumbnail}"
+    }) %>
+  <% end -%>
+<% end -%>
+
+<% cache @artist do %>
+
 <div class="feature">
   <%= artist_banner(@artist) %>
   <div class="feature-sidebar">
@@ -29,3 +42,5 @@
     <%= render "social_plugins", artist: @artist %>
   </div>
 </div>
+
+<% end -%>
