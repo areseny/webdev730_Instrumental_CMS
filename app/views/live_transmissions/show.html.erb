@@ -19,7 +19,14 @@
       <iframe width="640" height="385"
         src="http://cdn.livestream.com/embed/instrumentalsesc?layout=4&amp;height=385&amp;width=640&amp;autoplay=false" style="border:0;outline:0" frameborder="0" scrolling="no">
       </iframe>
-      <iframe  width="640" height="480" src="http://cdn.livestream.com/chat/?shareurl=http://www.livestream.com/instrumentalsescbrasil&amp;channel=instrumentalsescbrasil" style="border:0;outline:0; margin-top: 25px;" frameborder="0" scrolling="no" bgcolor="#ffffff"></iframe>
+      <div class="share-buttons">
+        <span>Compartilhe</span>
+        <%= twitter_share_button(@transmission.twitter_text) %>
+        <%= facebook_share_button %>
+        <%= google_plus_share_button %>
+        <%= email_share_button(@transmission.email_subject, @transmission.email_body) %>
+      </div>
+      <iframe  width="640" height="480" src="http://cdn.livestream.com/chat/?shareurl=http://www.livestream.com/instrumentalsescbrasil&amp;channel=instrumentalsescbrasil" style="border:0;outline:0;" frameborder="0" scrolling="no" bgcolor="#ffffff"></iframe>
     </div>
     <div class="col" style="width: 270px;">
       <%= artist_thumbnail(@transmission.artist) %>
@@ -33,13 +40,6 @@
     </div>
   </div>
 </div>
-<nav class="share-buttons">
-  <span>Compartilhe este vídeo</span>
-  <%= twitter_share_button(@transmission.twitter_text) %>
-  <%= facebook_share_button %>
-  <%= google_plus_share_button %>
-  <%= email_share_button(@transmission.email_subject, @transmission.email_body) %>
-</nav>
 <% end -%>
 
 <% cache "live-transmissions-next-list-#{Date.current.to_s}", skip_digest: true do %>

@@ -1,25 +1,24 @@
 @import "mixins";
 
 .share-buttons {
-  @include border-radius(0, 0, 10px, 10px);
-  margin: 0 50px 25px 50px;
-  padding: 15px 25px;
-  background-color: black;
-  color: #646464;
+  margin: 5px 0 15px 0;
   font: 18px Aaux Pro bold;
-  display: inline-block;
+  display: block;
+  text-align: center;
 
-  span, a {
+  > span {
     display: inline-block;
-    float: left;
     height: 28px;
     line-height: 28px;
+    margin: 0;
   }
   a {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
     text-indent: -9999px;
-    margin-left: 15px;
+    margin-left: 10px;
   }
-
   .share-twitter {
     width: 97px;
     background: image-url("share-twitter.png") no-repeat center;
