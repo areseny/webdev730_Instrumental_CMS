@@ -18,6 +18,14 @@ class Event < ActiveRecord::Base
   validates :artist, :presence => true
   validates :description, :presence => true
 
+  def self.related_content(artist, event = nil)
+    if(event)
+      artist.events.visible.where.not(id: event).sorted
+    else
+      artist.events.visible.sorted
+    end
+  end
+
   def video_thumbnail
     video.small_thumbnail if video
   end

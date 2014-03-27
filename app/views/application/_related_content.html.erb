@@ -1,0 +1,20 @@
+<% events = Event.related_content(@artist, @event) %>
+<% if events.any? %>
+  <div class="block related-content">
+    <h3>Conteúdo Relacionado</h3>
+    <ul>
+      <% events.each do |event| %>
+        <li>
+          <%= link_to artist_event_path(@artist, event) do %>
+            <%= image_tag(event.video_thumbnail, alt: event.title) %>
+            <h4><%= event.human_name %></h4>
+            <p>
+              <%= distance_of_time_in_words(Date.today, event.date) %> atrás<br/>
+              <%= number_with_delimiter event.views %> Visualizações
+            </p>
+          <% end -%>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+<% end -%>

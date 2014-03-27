@@ -1,0 +1,44 @@
+@import 'mixins';
+
+.related-content {
+
+  h3 {
+    background-color: $orange;
+    font: 18px Aaux Pro Regular;
+    margin: 0;
+    padding: 2px 20px;
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  > ul {
+    margin: 0;
+    padding: 0;
+
+    > li {
+      overflow: auto;
+      list-style: none;
+      padding: 20px;
+      font: 12px Arial;
+
+      img {
+        float: left;
+        margin: 0 25px 0 0;
+      }
+
+      h4 {
+        margin: 0 0 5px 0;
+        font-weight: 700;
+      }
+
+      & + li {
+        background: image-url("divider.png") no-repeat top center;
+        padding-top: 26px;
+      }
+    }
+  }
+
+}
