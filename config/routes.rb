@@ -17,7 +17,9 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :legacy, path: 'memoria'
       get :export
     end
-    resources :events, only: [:show], path: ""
+    resources :events, only: [:show], path: "" do
+      get ':song_id', :action => :song, :as => :song
+    end
   end
 
   controller :contact_form do

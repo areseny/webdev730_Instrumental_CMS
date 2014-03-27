@@ -20,6 +20,16 @@
     </div>
   </div>
 </div>
+<div class="share-buttons-wrapper">
+  <div class="share-buttons">
+    <span>Compartilhe</span>
+    <% event_url = artist_event_url(@artist, @event) %>
+    <%= twitter_share_button(@event.twitter_text, url: event_url) %>
+    <%= facebook_share_button(url: event_url) %>
+    <%= google_plus_share_button(url: event_url) %>
+    <%= email_share_button(@event.email_subject, @event.email_body) %>
+  </div>
+</div>
 
 <div class="grid">
   <div class="col col-60">

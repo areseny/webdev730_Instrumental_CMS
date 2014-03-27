@@ -59,4 +59,15 @@ ol.video-nav {
     }
   }
 
+  .share-facebook {
+    display: inline-block;
+    color: white;
+    height: 16px;
+    margin: 10px 0 0 0;
+    padding: 2px 5px 2px 21px;
+
+    font: 11px Arial;
+    background: #888 image-url("mini-facebook-icon.png") no-repeat left;
+  }
+
 }

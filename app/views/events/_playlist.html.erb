@@ -10,6 +10,10 @@
         <dt>Compositor</dt>
         <dd><%= song.composer %></dd>
       </dl>
+      <%= link_to "compartilhar esta música", '#',
+                  :class => 'share-facebook',
+                  :data => { :url => artist_event_song_url(show.artist, show, song) },
+                  :title => "Compartilhar esta música no Facebook" %>
       <% end -%>
     <% end -%>
   </li>

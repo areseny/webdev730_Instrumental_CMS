@@ -17,18 +17,21 @@ jQuery(function($) {
 
   $(".share-twitter").click(function() {
     text = $(this).data("text");
-    url = "http://twitter.com/home?status=" + escape(text) + "+" + escape(window.location.href);
+    share_url = $(this).data("url") || window.location.href;
+    url = "http://twitter.com/home?status=" + escape(text) + "+" + escape(share_url);
     return openPopup(url, 600, 400);
   });
 
   $(".share-facebook").click(function() {
     app_id = $('meta[name=facebook-app-id]').attr("content");
-    url = "http://www.facebook.com/sharer.php?u=" + escape(window.location.href) + '&app_id=' + app_id + '&display=popup';
+    share_url = $(this).data("url") || window.location.href;
+    url = "http://www.facebook.com/sharer.php?u=" + escape(share_url) + '&app_id=' + app_id + '&display=popup';
     return openPopup(url, 680, 400);
   });
 
   $(".share-google-plus").click(function() {
-    url = "https://plus.google.com/share?url=" + escape(window.location.href);
+    share_url = $(this).data("url") || window.location.href;
+    url = "https://plus.google.com/share?url=" + escape(share_url);
     return openPopup(url, 600, 400);
   });
 

@@ -77,6 +77,18 @@ class Event < ActiveRecord::Base
     description
   end
 
+  def twitter_text
+    "Instrumental SESC Brasil: #{title}"
+  end
+
+  def email_subject
+    "Instrumental SESC Brasil: #{title}"
+  end
+
+  def email_body
+    "Instrumental SESC Brasil: #{title}\n\nhttp://instrumentalsescbrasil.org.br/artistas/#{artist.slug}/#{slug}"
+  end
+
   private
 
   def set_sort_order

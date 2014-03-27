@@ -17,4 +17,8 @@ class Song < ActiveRecord::Base
     video.small_thumbnail if video
   end
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end
