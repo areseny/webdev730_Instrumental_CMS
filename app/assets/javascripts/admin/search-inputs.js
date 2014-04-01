@@ -4,7 +4,7 @@ jQuery(function($) {
     name: 'typeahead-shows-prefetch',
     prefetch: {
       url: '/ueber/shows/typeahead.json',
-      ttl_ms: 60000
+      ttl: 5000
     },
     valueKey: 'name',
     highlight: true
@@ -19,7 +19,7 @@ jQuery(function($) {
 
   $(".artist-select").typeahead([{
     name: 'typeahead-artists-prefetch',
-    prefetch: { url: '/ueber/artists/typeahead.json', ttl_ms: 5000 },
+    prefetch: { url: '/ueber/artists/typeahead.json', ttl: 5000 },
     valueKey: 'name',
     highlight: true
   }]).on("typeahead:selected typeahead:autocompleted", function(e, datum) {
