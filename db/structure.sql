@@ -318,7 +318,8 @@ CREATE TABLE gallery_images (
     height integer DEFAULT 0 NOT NULL,
     "position" integer DEFAULT 0,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    fixed boolean DEFAULT false NOT NULL
 );
 
 
@@ -1387,3 +1388,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140228054332');
 INSERT INTO schema_migrations (version) VALUES ('20140228071217');
 
 INSERT INTO schema_migrations (version) VALUES ('20140309193856');
+
+INSERT INTO schema_migrations (version) VALUES ('20140411213854');
