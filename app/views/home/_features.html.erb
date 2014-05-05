@@ -1,4 +1,4 @@
-<% cache "home-page-features", expires_in: 15.minutes do %>
+<% cache [request.host, "home-page-features"], expires_in: 15.minutes, skip_digest: true do %>
 <% if features.any? %>
 <div class="feature">
   <div class="feature-carousel">

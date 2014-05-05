@@ -1,8 +1,12 @@
 module LayoutHelper
 
   def header_logo
-    image = image_tag("header-logo.png", size: '220x120', alt: t("title"))
-    link_to image, root_path, title: t("title"), class: "header-logo"
+    if sound_check_domain?
+      image = image_tag("soundcheck-logo.jpg", size: '124x114', alt: site_title)
+    else
+      image = image_tag("header-logo.png", size: '220x120', alt: site_title)
+    end
+    link_to image, root_path, title: site_title, class: "header-logo"
   end
 
   def footer_facebook_link

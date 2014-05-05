@@ -1,0 +1,7 @@
+<div class="block home-artists">
+  <div class="home-artists-list">
+    <%= link_to "ver todos os programas", sound_check_list_path, :class => "btn-orange" %>
+    <h2>Lista de Programas</h2>
+    <%= render "events_table", events: SoundCheck.visible.random(4), :row_size => 4 %>
+  </div>
+</div>

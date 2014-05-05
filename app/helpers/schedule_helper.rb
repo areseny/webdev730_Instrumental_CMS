@@ -23,4 +23,28 @@ module ScheduleHelper
     return items.last
   end
 
+  def home_tv_feature_tab(item, selected = false)
+    content =
+      content_tag(:h5, item.artist.name) +
+      content_tag(:small, l(item.debuts_at.to_date, format: :tiny))
+    link = link_to content, "#schedule-#{item.debuts_at.to_date.to_s}",
+           class: (selected ? "tab tab-selected" : "tab")
+    div_classes = selected ? 'schedule-tab schedule-tab-selected' : 'schedule-tab'
+    content_tag :div, link, class: div_classes
+  end
+
+  def home_tv_feature_panel(item, selected = false, &block)
+    content = capture(&block)
+    classes = "schedule-tab-panel tab-panel"
+    classes << " tab-panel-selected" if selected
+    content_tag :div, content, class: classes, id: "schedule-#{item.debuts_at.to_date.to_s}"
+  end
+
+  def closest_tv_feature_item(items)
+    items.each do |item|
+      return item if item.debuts_at.to_date >= Date.current
+    end
+    return items.last
+  end
+
 end

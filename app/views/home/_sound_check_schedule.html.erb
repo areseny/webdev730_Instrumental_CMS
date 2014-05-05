@@ -1,0 +1,74 @@
+<div class="home-schedule soundcheck">
+
+  <div class="home-tv-schedule">
+    <div class="events-list-title events-list-title-tv">
+      <h2>Programação no canal SescTV</h2>
+    </div>
+
+    <% cache "tv-features-homepage", skip_digest: true do %>
+      <div class="block">
+        <% if @tv_feature = TvFeature.current %>
+          <%= link_to artist_event_path(@tv_feature.show.artist, @tv_feature.show) do %>
+            <h3>Próxima estréia do palco para a televisão</h3>
+            <div class="debut-image">
+              <%= artist_thumbnail(@tv_feature.artist) %>
+              <h4><%= @tv_feature.artist.name %></h4>
+              <h5><span><%= l @tv_feature.debuts_at, format: :brief %></span></h5>
+            </div>
+            <div class="debut-description">
+              <%= markdown @tv_feature.description %>
+            </div>
+          <% end -%>
+        <% end -%>
+      </div>
+    <% end -%>
+
+    <% cache "tv-schedule-homepage-current-item-#{Date.current.to_s}", skip_digest: true do %>
+      <% if schedule_day = TvScheduleItem.current_or_last_day %>
+        <div class="home-tv-schedule-feed">
+          <h4>Veja a programação para o dia <%= l schedule_day, format: :short %></h4>
+          <ul>
+            <% TvScheduleItem.for_day(schedule_day).each do |schedule_item| %>
+            <li>
+              <span><%= l schedule_item.starts_at, format: :time %></span><%= schedule_item.description %>
+            </li>
+            <% end -%>
+          </ul>
+        </div>
+      <% end -%>
+    <% end -%>
+
+  </div>
+
+  <%# cache "schedule-items-homepage-#{Date.current.to_s}", skip_digest: true do %>
+  <div class="home-site-schedule tabstrip">
+    <div class="home-site-schedule-title">
+      <h2>Próximas Estréias</h2>
+      <h3>Todo domingo às 21:30</h3>
+    </div>
+    <%
+      items = TvFeature.current_items
+      closest = closest_tv_feature_item(items)
+    %>
+    <div class="schedule-tabs">
+      <nav>
+        <% items.each do |item| %>
+          <%= home_tv_feature_tab(item, closest == item) %>
+        <% end -%>
+      </nav>
+    </div>
+    <% items.each do |item| %>
+      <%= home_tv_feature_panel(item, closest == item) do %>
+        <div class="schedule-tab-thumb">
+          <%= artist_thumbnail(item.artist) %>
+          <h5><%= item.artist.name %></h5>
+        </div>
+        <div class="schedule-tab-description">
+          <%= markdown item.description %>
+        </div>
+      <% end -%>
+    <% end -%>
+  </div>
+  <%# end -%>
+
+</div>

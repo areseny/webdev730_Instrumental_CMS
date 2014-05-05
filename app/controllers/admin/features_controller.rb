@@ -46,4 +46,9 @@ class Admin::FeaturesController < AdminController
           .permit(:title, :url, :priority, :description, :banner, :enabled)
   end
 
+  def invalidate_cache
+    expire_fragment("soundcheck-home-page-features")
+    expire_fragment("home-page-features")
+  end
+
 end

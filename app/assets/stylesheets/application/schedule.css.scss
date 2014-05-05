@@ -40,6 +40,19 @@
   }
 }
 
+.soundcheck {
+  .home-site-schedule-title {
+    background: $orange image-url("events-list-tv-background.jpg") repeat-x bottom;
+    h3 { background-color: white; color: $orange; }
+    .schedule-tabs { background-color: $orange; }
+  }
+  .schedule-tabs .schedule-tab {
+    a { color: $orange; }
+    a small { color: white; background-color: $orange; }
+  }
+  .schedule-tab-panel .schedule-tab-thumb h5 { color: $orange; }
+}
+
 .debut-description {
   display: table-cell;
   vertical-align: top;

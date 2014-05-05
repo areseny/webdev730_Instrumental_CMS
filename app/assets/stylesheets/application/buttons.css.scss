@@ -40,3 +40,31 @@
   @include box-shadow(1px);
   font: 14px AAux Pro Bold;
 }
+
+.btn-red {
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  height: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  border: none;
+  padding: 2px 30px;
+  @include gradient(#8e0d0f, #6c0d0d);
+  @include box-shadow(1px);
+  font: 14px AAux Pro Bold;
+}
+
+.btn-grey {
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  height: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  border: none;
+  padding: 2px 30px;
+  @include gradient(#c6c7cb, #2f2622);
+  @include box-shadow(1px);
+  font: 14px AAux Pro Bold;
+}

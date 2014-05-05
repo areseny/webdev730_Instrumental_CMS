@@ -1,0 +1,21 @@
+<div class="whiteblock sound-check-list">
+  <ul>
+  <% @events.each do |event| %>
+    <li>
+      <div class="thumb">
+        <%= image_tag(event.artist.thumbnail_url, size: '200x200',
+              alt: event.artist.name, class: 'round') %>
+      </div>
+      <div class="description">
+        <h2><%= event.artist.name %><small><%= l(event.date) %></small></h2>
+        <%= markdown event.description %>
+        <p>
+          <%= link_to "assistir programa", artist_event_path(event.artist, event), class: "btn-red" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "perfil do artista", artist_path(event.artist), class: 'btn-grey' %>
+        </p>
+      </div>
+    </li>
+  <% end -%>
+  </ul>
+</div>
+

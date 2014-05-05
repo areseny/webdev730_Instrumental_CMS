@@ -9,6 +9,10 @@ body {
   min-height: 300px;
 }
 
+body.soundcheck .layout-background {
+  background: black image-url("soundcheck-bg.jpg") no-repeat center top;
+}
+
 .layout-wrapper {
   width: 980px;
   margin: 0px auto;

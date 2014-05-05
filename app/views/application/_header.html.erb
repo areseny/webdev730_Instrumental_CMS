@@ -1,11 +1,18 @@
-<% cache do %>
+<% cache request.host do %>
 <header>
   <%= header_logo %>
   <%= render "search_form" %>
   <nav class="nav-header" role="navigation">
-    <%= link_to t("artists.index.title"), artists_path %>
-    <%= link_to t("artists.legacy.title"), legacy_artists_path %>
-    <%= link_to t("home.about_us.title"), about_us_path %>
+    <% if sound_check_domain? %>
+      <%= link_to "Instrumental SESC Brasil", root_url(host: "instrumentalsescbrasil.org.br") %>
+      <%= link_to "Lista", sound_check_list_path %>
+      <%= link_to "Sobre", about_us_path %>
+    <% else -%>
+      <%= link_to "Passagem de Som", root_url(host: "passagemdesom.sesctv.org.br") %>
+      <%= link_to t("artists.index.title"), artists_path %>
+      <%= link_to t("artists.legacy.title"), legacy_artists_path %>
+      <%= link_to t("home.about_us.title"), about_us_path %>
+    <% end -%>
     <%= link_to t("layouts.contact_form.title"), contact_form_path %>
   </nav>
 </header>

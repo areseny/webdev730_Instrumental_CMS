@@ -2,11 +2,21 @@ class HomeController < ApplicationController
 
   # GET /
   def index
-    @features = Feature.enabled
+    @features = Feature.not_sound_check.enabled
   end
 
   # GET /projeto
   def about_us
+  end
+
+  # GET /passagem-de-som
+  def sound_check_home
+    @features = Feature.sound_check.enabled
+  end
+
+  # GET /passagem-de-som/lista
+  def sound_check_list
+    @events = SoundCheck.visible
   end
 
   # GET /busca?q=....

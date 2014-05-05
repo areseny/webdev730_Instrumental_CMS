@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
   scope :legacy,  -> { where(type: LegacyTypes) }
   scope :visible, -> { where(visible: true) }
   scope :sorted,  -> { order("date desc, sort_order asc") }
+  scope :random,  -> (size) { order("RANDOM()").limit(size) }
 
   validates :date, :presence => true,
                    :uniqueness => { :scope => :type }

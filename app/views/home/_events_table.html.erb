@@ -1,0 +1,10 @@
+<table class="artists-grid">
+  <% row_size = local_assigns[:row_size] || 3 %>
+  <%= events.in_groups_of(row_size, false) do |events| %>
+  <tr>
+    <% events.each_with_index do |event, i| %>
+      <%= content_tag :td, render(event), class: ('last' if i == (row_size - 1)) %>
+    <% end -%>
+  </tr>
+  <% end -%>
+</table>

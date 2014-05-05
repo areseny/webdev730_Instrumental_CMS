@@ -13,4 +13,10 @@ namespace :db do
     system "cat tmp/dump.sql | psql -d #{dbname}"
   end
 
+  # Backup from live system:
+  # heroku pgbackups:capture
+  # curl -o db/xxx.dump `heroku pgbackups:url`
+  # pg_restore --verbose --clean --no-acl --no-owner -h localhost -U instrumental_sesc_brasil -d instrumental_sesc_brasil_development db/xxx.dump
+  # rm -rf tmp/cache
+
 end

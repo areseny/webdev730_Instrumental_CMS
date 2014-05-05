@@ -1,35 +1,53 @@
 <% title t(".title") %>
 
-<% cache do %>
-<div class="feature">
-  <%= about_us_feature_image %>
-  <div class="feature-sidebar">
-    <h1 class="feature-title"><%= t ".title" %></h1>
-    <div class="block">
-      <%= markdown_t ".content" %>
+<%# cache [request.host, "about-us"] do %>
+
+  <% if sound_check_domain? %>
+    <div class="feature">
+      <%= about_us_feature_image %>
+      <div class="feature-sidebar">
+        <h1 class="feature-title">Sobre</h1>
+        <div class="block">
+          <p>Passagem de Som é um programa documental que narra os bastidores da criação musical, contando com depoimentos de compositores e músicos que participam do Instrumental Sesc Brasil.</p>
+          <p><%= link_to "veja a lista", sound_check_list_path, class: 'btn-red' %></p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="aboutus-credits">
-  <div class="block-title block-title-orange">
-    <h2><%= t ".credits.title" %></h2>
-  </div>
-  <div class="block">
-    <%= markdown_t ".credits.content" %>
-  </div>
-</div>
+  <% else -%>
 
-<div class="aboutus-mention">
-  <div class="block-title block-title-orange">
-    <h2><%= t ".mention.title" %></h2>
-  </div>
-  <div class="block">
-    <%= markdown_t ".mention.content" %>
-  </div>
-  <nav class="aboutus-nav">
-    <%= about_us_sescsp_link %>
-    <%= about_us_sesctv_link %>
-  </nav>
-</div>
-<% end -%>
+    <div class="feature">
+      <%= about_us_feature_image %>
+      <div class="feature-sidebar">
+        <h1 class="feature-title"><%= t ".title" %></h1>
+        <div class="block">
+          <%= markdown_t ".content" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="aboutus-credits">
+      <div class="block-title block-title-orange">
+        <h2><%= t ".credits.title" %></h2>
+      </div>
+      <div class="block">
+        <%= markdown_t ".credits.content" %>
+      </div>
+    </div>
+
+    <div class="aboutus-mention">
+      <div class="block-title block-title-orange">
+        <h2><%= t ".mention.title" %></h2>
+      </div>
+      <div class="block">
+        <%= markdown_t ".mention.content" %>
+      </div>
+      <nav class="aboutus-nav">
+        <%= about_us_sescsp_link %>
+        <%= about_us_sesctv_link %>
+      </nav>
+    </div>
+
+  <% end -%>
+
+<%# end -%>

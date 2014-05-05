@@ -1,0 +1,8 @@
+<div class="artist-thumbnail">
+  <%= link_to artist_event_path(sound_check.artist, sound_check,
+                                host: "passagemdesom.sesctv.org.br") do %>
+    <%= image_tag(sound_check.artist.thumbnail_url, size: '200x200',
+                  alt: sound_check.artist.name, class: 'round') %>
+    <span><%= sound_check.artist.name %></span>
+  <% end -%>
+</div>

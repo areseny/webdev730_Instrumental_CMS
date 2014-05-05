@@ -1,5 +1,12 @@
 InstrumentalSescBrasil::Application.routes.draw do
 
+  constraints host: "passagemdesom.sesctv.org.br" do
+    controller :home do
+      get :sound_check_home, path: ""
+      get :sound_check_list, path: "lista"
+    end
+  end
+
   root to: "home#index"
 
   controller :home do

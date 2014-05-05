@@ -27,4 +27,16 @@ module ApplicationHelper
     content_tag(:dl, tags.join.html_safe, options)
   end
 
+  def sound_check_domain?
+    request.host == "passagemdesom.sesctv.org.br"
+  end
+
+  def site_title
+    if sound_check_domain?
+      "Passagem de Som"
+    else
+      "Instrumental SESC Brasil"
+    end
+  end
+
 end

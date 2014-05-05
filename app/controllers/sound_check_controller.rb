@@ -1,0 +1,3 @@
+class SoundCheckController < ApplicationController
+
+end

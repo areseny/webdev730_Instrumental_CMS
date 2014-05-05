@@ -17,7 +17,12 @@
   <![endif]-->
   <%= render "live_reload" if Rails.env.development? %>
 </head>
+
+<% if sound_check_domain? %>
+<body class="soundcheck">
+<% else -%>
 <body>
+<% end -%>
 
   <div class="layout-background">
     <div class="layout-wrapper">
