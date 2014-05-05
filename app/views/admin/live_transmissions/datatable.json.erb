@@ -4,7 +4,7 @@
     <%= raw(@live_transmissions.map do |item|
       date = link_to l(item.date, format: :brief), edit_admin_live_transmission_path(item)
       description = admin_json_description(item)
-      [date, item.artist.name, description, item.date.to_time.to_i].to_json
+      [date, item.artist.try(:name), description, item.date.to_time.to_i].to_json
     end.join(',')) %>
   ]
 }
