@@ -25,7 +25,7 @@ jQuery(function($) {
   $(".share-facebook").click(function() {
     app_id = $('meta[name=facebook-app-id]').attr("content");
     share_url = $(this).data("url") || window.location.href;
-    url = "http://www.facebook.com/sharer.php?u=" + escape(share_url) + '&app_id=' + app_id + '&display=popup';
+    url = "http://www.facebook.com/sharer.php?u=" + escape(share_url) + '&display=popup';
     return openPopup(url, 680, 400);
   });
 
