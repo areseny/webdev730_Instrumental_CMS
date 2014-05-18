@@ -43,7 +43,7 @@
   position: relative;
   overflow: hidden;
   width: 900px;
-  height: 500px;
+
   > ul {
     position: relative;
     overflow: auto;
@@ -54,6 +54,7 @@
       float: left;
       width: 900px;
       height: 500px;
+      a { display: inline-block; }
     }
   }
 }
