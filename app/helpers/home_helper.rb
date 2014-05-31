@@ -6,6 +6,10 @@ module HomeHelper
               size: '900x600', class: 'round', alt: title)
   end
 
+  def about_us_feature_image_soundcheck
+    image_tag("passagem-de-som-projeto.jpg", size: '900x600', class: 'round', alt: "Passagem de Som")
+  end
+
   def about_us_sescsp_link
     title = t('links.sescsp.title')
     url = t('links.sescsp.url')

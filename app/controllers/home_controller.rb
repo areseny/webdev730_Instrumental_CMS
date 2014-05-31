@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   # GET /passagem-de-som/lista
   def sound_check_list
-    @events = SoundCheck.visible
+    @events = SoundCheck.visible.order("date desc")
   end
 
   # GET /busca?q=....
