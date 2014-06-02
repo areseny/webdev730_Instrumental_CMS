@@ -15,6 +15,9 @@ jQuery(function($) {
       $.cookie('instrumental-playlist', cookieStr);
       $(".clear-playlist").show();
       $(".playlist-list").append(JSON.parse(item));
+      if(!window.playlistPlayer) {
+        createPlaylistPlayer();
+      }
     }
   };
 
@@ -69,25 +72,25 @@ jQuery(function($) {
     autoplay = $('meta[name=youtube-autoplay]').attr("content");
     firstItemData = $(".playlist-list li:first a").data();
 
-    if(firstItemData)
+    if(firstItemData) {
       videoId = firstItemData.video;
-
-    window.playlistPlayer = new YT.Player("playlist-player", {
-      width: 640,
-      height: 380,
-      videoId: videoId,
-      playerVars: {
-        origin: origin,
-        autoplay: autoplay,
-        autohide: 1,
-        rel: 0,
-        showinfo: 1,
-        enablejsapi: 1,
-      },
-      events: {
-        onStateChange: playerStateChange
-      }
-    });
+      window.playlistPlayer = new YT.Player("playlist-player", {
+        width: 640,
+        height: 380,
+        videoId: videoId,
+        playerVars: {
+          origin: origin,
+          autoplay: autoplay,
+          autohide: 1,
+          rel: 0,
+          showinfo: 1,
+          enablejsapi: 1,
+        },
+        events: {
+          onStateChange: playerStateChange
+        }
+      });
+    };
   }
 
   $(document).on("click", ".playlist-item", function() {
