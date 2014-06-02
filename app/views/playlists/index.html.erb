@@ -1,0 +1,53 @@
+<div class="playlist">
+  <div class="block-title">
+    <h1>Acervo de vídeos</h1>
+  </div>
+  <div class="whiteblock grid">
+    <div class="col col-70">
+      <div class="video-player" id="playlist-player"></div>
+    </div>
+    <div class="col col-30 playlist-sidebar">
+      <h2>Minha Playlist</h2>
+      <ul class="playlist-list">
+        <%= render :partial => "song", collection: @playlist.songs %>
+      </ul>
+      <%= link_to "apagar lista", "#",
+                  :class => "clear-playlist btn-green",
+                  :style => (@playlist.songs.any? ? "display: inline-block;" : "display: none;"),
+                  :confirm => "Tem certeza?" %>
+    </div>
+  </div>
+
+
+  <div class="grid" style="margin-top: 25px;">
+    <div class="col col-70">
+      <div class="whiteblock playlist-search">
+        <h2>Buscar vídeos</h2>
+        <%= form_tag search_playlists_path, :remote => true, :method => :get do %>
+          <input type="text" name="q" placeholder="Digite o nome do artista ou da música" autocomplete="off">
+          <input type="submit" value="ok">
+        <% end -%>
+        <hr />
+        <p><small>Clique no + para adicionar uma música em sua playlist</small></p>
+        <table id="playlist-search-results">
+          <thead>
+            <tr>
+              <th>Música</th>
+              <th>Artista</th>
+              <th>Gênero</th>
+              <th colspan="2">Instrumento</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col col-30">
+      <div class="whiteblock playlists-instrumental">
+        <h2>Playlists Instrumental</h2>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>

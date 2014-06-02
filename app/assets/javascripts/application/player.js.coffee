@@ -1,25 +1,26 @@
 root = exports ? this
 
-createPlayer = ->
-  videoId = $.url().param("video_id") || $("#player").data("videoId")
-  origin = $('meta[name=youtube-origin]').attr("content")
-  autoplay = $('meta[name=youtube-autoplay]').attr("content")
-  if videoId
-    root.player = new YT.Player "player",
-      width: 640
-      height: 380
-      videoId: videoId
-      playerVars:
-        autoplay: autoplay
-        autohide: 1
-        rel: 0
-        showinfo: 1
-        enablejsapi: 1
-        origin: origin
-      events:
-        onStateChange: playerStateChange
+$(document).on "youtubeReady", ->
+  if $("#player").length > 0
+    videoId = $.url().param("video_id") || $("#player").data("videoId")
+    origin = $('meta[name=youtube-origin]').attr("content")
+    autoplay = $('meta[name=youtube-autoplay]').attr("content")
+    if videoId
+      root.player = new YT.Player "player",
+        width: 640
+        height: 380
+        videoId: videoId
+        playerVars:
+          autoplay: autoplay
+          autohide: 1
+          rel: 0
+          showinfo: 1
+          enablejsapi: 1
+          origin: origin
+        events:
+          onStateChange: playerStateChange
 
-root.onYouTubeIframeAPIReady = -> createPlayer()
+root.onYouTubeIframeAPIReady = -> $(document).trigger("youtubeReady")
 
 jQuery ->
   if $("#player").length > 0

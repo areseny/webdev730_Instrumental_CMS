@@ -1,0 +1,11 @@
+<li>
+  <a href='#' class='playlist-item' data-id='<%= song.id %>' data-video='<%= song.video.youtube_id %>'>
+    <h3><%= song.title %></h3>
+    <p>
+      <small><%= song.artist.name %></small>
+    </p>
+  </a>
+  <a href='#' class='playlist-delete' data-id='<%= song.id %>'>
+    <%= image_tag("playlist-delete.jpg", alt: "x") %>
+  </a>
+</li>

@@ -1,0 +1,5 @@
+tbody = $("#playlist-search-results tbody");
+tbody.find("tr").remove();
+
+<% results = @songs.map { |song| render('search_result', song: song) } %>
+tbody.append("<%= j raw results.join %>");

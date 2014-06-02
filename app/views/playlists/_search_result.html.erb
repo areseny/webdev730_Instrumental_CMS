@@ -1,0 +1,21 @@
+<%
+  genres = song.genres.to_a.map(&:name).to_sentence
+  genre_list = genres == "" ? "-" : genres
+  instruments = song.instruments.to_a.map(&:name).to_sentence
+  instrument_list = instruments == "" ? "-" : instruments
+%>
+
+<tr>
+  <td><%= song.title_with_composer %></td>
+  <td><%= song.artist.name %></td>
+  <td><%= genre_list %></td>
+  <td><%= instrument_list %></td>
+  <td>
+    <%= link_to image_tag("playlist-add.jpg", alt: "+", title: "Adicionar à Playlist"), '#',
+                :class => 'playlist-add',
+                :data => {
+                  :song_id => song.id,
+                  :item => render("song", :song => song).to_json
+                } %>
+  </td>
+</tr>

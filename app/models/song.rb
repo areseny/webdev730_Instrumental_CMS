@@ -13,6 +13,16 @@ class Song < ActiveRecord::Base
   scope :ordered, -> { order(:position) }
   scope :top, -> (size) { joins(:video).order("videos.views desc").limit(size) }
 
+  def self.search(q)
+    joins('inner join events on events.id = songs.playlistable_id')
+    .joins('inner join artists on artists.id = events.artist_id')
+    .where("artists.name ilike :q OR songs.title ilike :q", q: "%#{q}%")
+  end
+
+  def title_with_composer
+    composer.present? ? "#{title} (#{composer})" : title
+  end
+
   def video_thumbnail
     video.small_thumbnail if video
   end

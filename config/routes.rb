@@ -29,6 +29,10 @@ InstrumentalSescBrasil::Application.routes.draw do
     end
   end
 
+  resources :playlists, :only => [:index] do
+    get :search, path: 'busca', on: :collection
+  end
+
   legacy_route = lambda { |request|
     request.params[:id] =~ /^\d{1,7}$/ && request.params[:format] =~ /^aspx$/i
   }
