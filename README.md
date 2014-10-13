@@ -3,6 +3,9 @@ Instrumental Sesc Brasil
 
 ## Development environment
 
+Ensure to install freetds before running bundle install:
+`brew install freetds`
+
 Start up with `foreman start -f Procfile.dev`
 
 ## Environment Variables
