@@ -23,3 +23,5 @@
 
 # Ignore local uploads
 /public/uploads
+
+.ruby-*
