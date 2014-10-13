@@ -33,6 +33,8 @@ InstrumentalSescBrasil::Application.routes.draw do
     get :search, path: 'busca', on: :collection
   end
 
+  get 'radio_instrumental' => 'radio#show', as: 'radio'
+
   legacy_route = lambda { |request|
     request.params[:id] =~ /^\d{1,7}$/ && request.params[:format] =~ /^aspx$/i
   }

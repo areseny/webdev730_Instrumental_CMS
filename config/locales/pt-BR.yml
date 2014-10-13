@@ -94,6 +94,10 @@ pt-BR:
       message: Mensagem
       send: enviar
 
+  radio:
+    show:
+      title: Rádio Instrumental
+
   flash:
     server_error: |-
       Ocorreu um erro no servidor.
