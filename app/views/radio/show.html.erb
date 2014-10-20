@@ -3,7 +3,23 @@
 <div class="block-title">
   <h1><%= t(".title")%></h1>
 </div>
-<div class="block">
-  <iframe width="100%" height="350" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/54865629%3Fsecret_token%3Ds-Xa7kd&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=true"></iframe>
+<div class="whiteblock grid playlists-instrumental">
+  <div class="col col-55">
+    <h2>Playlists Instrumental</h2>
+    <hr />
+    <div id="playlist_links">
+      <a href="javascript:void(0)" data-item="acervo" title="Acervo completo"><%= image_tag("playlists/acervo.png", size: '460x90', class: 'round', alt: "Acervo completo") %></a>
+      <a href="javascript:void(0)" data-item="chorinho" title="Chorinhos do Brasil"><%= image_tag("playlists/chorinho.png", size: '460x90', class: 'round', alt: "Chorinhos do Brasil") %></a>
+      <a href="javascript:void(0)" data-item="jazz" title="Jazz"><%= image_tag("playlists/jazz.png", size: '460x90', class: 'round', alt: "Jazz") %></a>
+      <a href="javascript:void(0)" data-item="rock" title="Rock"><%= image_tag("playlists/rock.png", size: '460x90', class: 'round', alt: "Rock") %></a>
+      <a href="javascript:void(0)" data-item="baioes" title="Baiões Nordestinos"><%= image_tag("playlists/baioes.png", size: '460x90', class: 'round', alt: "Baiões Nordestinos") %></a>
+    </div>
+  </div>
+  <div class="col col-45 playlist-sidebar">
+    <h2>Você está ouvindo: <span id="radio_name">Acervo completo</span></h2>
+    <hr />
+    <div id="radio">
+      <iframe width="380" height="480" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/54865629%3Fsecret_token%3Ds-Xa7kd&amp;color=00aaad&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
+    </div>
+  </div>
 </div>
-
