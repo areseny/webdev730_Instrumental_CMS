@@ -64,14 +64,6 @@ InstrumentalSescBrasil::Application.configure do
   # config.assets.precompile += %w( search.js )
   config.assets.precompile += %w(admin.css admin.js) # Admin area assets
 
-  config.assets.paths << Rails.root.join("app", "assets", "fonts")
-
-  # CloundFront configuration.
-  config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin'   => '*',
-    'Access-Control-Request-Method' => '*'
-  }
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -103,4 +95,9 @@ InstrumentalSescBrasil::Application.configure do
     :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  config.font_assets.origin = Proc.new do |source, request|
+    scheme = request.ssl? ? "https" : "http"
+    "#{scheme}://www.instrumentalsescbrasil.org.br"
+  end
 end
