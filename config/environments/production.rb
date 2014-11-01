@@ -58,7 +58,7 @@ InstrumentalSescBrasil::Application.configure do
   config.cache_store = :dalli_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = "//#{ENV['CLOUDFRONT_DOMAIN']}"
+  config.action_controller.asset_host = "http://#{ENV['CLOUDFRONT_DOMAIN']}"
   config.assets.prefix = "/assets"
 
   # Precompile additional assets.
