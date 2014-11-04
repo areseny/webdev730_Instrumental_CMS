@@ -96,8 +96,5 @@ InstrumentalSescBrasil::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  config.font_assets.origin = Proc.new do |source, request|
-    scheme = request.ssl? ? "https" : "http"
-    "#{scheme}://www.instrumentalsescbrasil.org.br"
-  end
+  config.font_assets.origin = "http://www.instrumentalsescbrasil.org.br"
 end
