@@ -1,12 +1,27 @@
-@import 'mixins';
+@font-face {
+  font-family: "Aaux Pro Regular";
+  src: url("/assets/fonts/aauxpro-regular.eot");
+  src: url("/assets/fonts/aauxpro-regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/aauxpro-regular.woff") format("woff"), url("/assets/fonts/aauxpro-regular.ttf") format("truetype"), url("/assets/fonts/aauxpro-regular.svg#aauxpro") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
-@include webfont("Aaux Pro Regular", "aauxpro-regular", "aauxpro");
-@include webfont("Aaux Pro Bold", "aauxpro-bold", "aauxpro");
-@include webfont("DIN Pro Bold", "dinpro-bold", "dinpro");
+@font-face {
+  font-family: "Aaux Pro Bold";
+  src: url("/assets/fonts/aauxpro-bold.eot");
+  src: url("/assets/fonts/aauxpro-bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/aauxpro-bold.woff") format("woff"), url("/assets/fonts/aauxpro-bold.ttf") format("truetype"), url("/assets/fonts/aauxpro-bold.svg#aauxpro") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 @font-face {
   font-family: "Aaux Pro Light";
   src: url("/assets/fonts/aauxpro-light.eot");
   src: url("/assets/fonts/aauxpro-light.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/aauxpro-light.woff") format("woff"), url("/assets/fonts/aauxpro-light.ttf") format("truetype"), url("/assets/fonts/aauxpro-light.svg#aauxpro") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "DIN Pro Bold";
+  src: url("/assets/fonts/dinpro-bold.eot");
+  src: url("/assets/fonts/dinpro-bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/dinpro-bold.woff") format("woff"), url("/assets/fonts/dinpro-bold.ttf") format("truetype"), url("/assets/fonts/dinpro-bold.svg#dinpro") format("svg");
   font-weight: normal;
   font-style: normal; }
