@@ -3,5 +3,5 @@
 @include webfont("Aaux Pro Regular", "aauxpro-regular", "aauxpro");
 @include webfont("Aaux Pro Bold", "aauxpro-bold", "aauxpro");
 @include webfont("Aaux Pro Light", "aauxpro-light", "aauxpro");
-@include webfont("DIN Pro Bold", "dinpro-bold", "dinpro");
-@include webfont("Prodis", "prodis-bold", "prodis");
+
+@font-face{font-family:"DIN Pro Bold";src:url("//d1271wz4ej4iw4.cloudfront.net/assets/dinpro-bold-8d2350d2658ee239d9ea64dc3f49e2c9.eot");src:url("//d1271wz4ej4iw4.cloudfront.net/assets/dinpro-bold-8d2350d2658ee239d9ea64dc3f49e2c9.eot?#iefix") format("embedded-opentype"),url("//d1271wz4ej4iw4.cloudfront.net/assets/dinpro-bold-c5227e6425ffdc2015fe5e359f493639.woff") format("woff"),url("//www.instrumentalsescbrasil.org.br/assets/fonts/dinpro-bold.ttf") format("truetype"),url("//d1271wz4ej4iw4.cloudfront.net/assets/dinpro-bold-e2a489a994f6c218c6c6f1cb2d2a3e1c.svg#dinpro") format("svg");font-weight:normal;font-style:normal}
