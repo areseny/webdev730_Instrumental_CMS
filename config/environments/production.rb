@@ -97,4 +97,6 @@ InstrumentalSescBrasil::Application.configure do
   ActionMailer::Base.delivery_method = :smtp
 
   config.font_assets.origin = "http://www.instrumentalsescbrasil.org.br"
+
+  config.assets.paths = config.assets.paths - Rails.root.join("app", "assets", "fonts")
 end
