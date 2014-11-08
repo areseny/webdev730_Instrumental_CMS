@@ -27,6 +27,7 @@ gem 'dotenv', require: false
 gem 'roo'
 gem 'pg_search'
 gem 'font_assets'
+gem 'wannabe_bool'
 
 # Assets precompilation
 gem 'sass-rails', '~> 4.0.0'
