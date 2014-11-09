@@ -3,23 +3,20 @@ class Admin::HomeController < AdminController
   end
 
   def sync_videos
-    #rake  = "RAILS_ENV=#{Rails.env} "
-    #rake += "bundle exec rake account:compulsory_migration[/tmp/#{params[:file_name]}] --trace "
-    #rake += " &" # Run rake in a background process.
-
-    #log_info rake
-
-    #Kernel.system(rake)
-
-    flash[:success] = 'Vídeos sincronizados.'
-    redirect_to admin_root_path
+    run_rake('videos:sync', 'Vídeos sincronizando')
   end
 
   def clear_cache
-    rake = "RAILS_ENV=#{Rails.env} bundle exec rake tmp:cache:clear --trace &"
+    run_rake('tmp:cache:clear', 'Cache limpo')
+  end
+
+  private
+
+  def run_rake(name, success_message)
+    rake = "RAILS_ENV=#{Rails.env} bundle exec rake #{name} --trace &"
     Kernel.system(rake)
 
-    flash[:success] = 'Cache limpo.'
+    flash[:success] = success_message
   rescue => e
     Rails.logger.error e.message
     flash[:error] = 'Não rolou'
