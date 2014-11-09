@@ -16,18 +16,14 @@ class Admin::HomeController < AdminController
   end
 
   def clear_cache
-    #Dalli::Client.new.flush
-
-    Rails.logger.info 'Start cache cleaning...'
-
-    rake = 'RAILS_ENV=production bundle exec rake tmp:cache:clear --trace'
+    rake = "RAILS_ENV=#{Rails.env} bundle exec rake tmp:cache:clear --trace &"
     Kernel.system(rake)
 
-    Rails.logger.info 'Cache cleaned.'
-
     flash[:success] = 'Cache limpo.'
-    redirect_to admin_root_path
   rescue => e
     Rails.logger.error e.message
+    flash[:error] = 'Não rolou'
+  ensure
+    redirect_to admin_root_path
   end
 end
