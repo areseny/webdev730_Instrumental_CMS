@@ -18,7 +18,7 @@ class Admin::HomeController < AdminController
   def clear_cache
     #Dalli::Client.new.flush
 
-    rake = 'run rake tmp:cache:clear --app instrumental-sesc-brasil'
+    rake = 'rake tmp:cache:clear --app instrumental-sesc-brasil'
     Kernel.system(rake)
 
     flash[:success] = 'Cache limpo.'

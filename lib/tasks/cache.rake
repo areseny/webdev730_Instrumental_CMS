@@ -1,9 +1,9 @@
 namespace :tmp do
 
   task :clear_dalli_store do
-    logger.info 'Start cache cleaning...'
+    Rails.logger.info 'Start cache cleaning...'
     Dalli::Client.new.flush
-    logger.info 'Cache cleaned.'
+    Rails.logger.info 'Cache cleaned.'
   end
 
   namespace :cache do
