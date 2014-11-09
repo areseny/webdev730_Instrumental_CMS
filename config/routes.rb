@@ -55,7 +55,6 @@ InstrumentalSescBrasil::Application.routes.draw do
   get 'auth/failure' => 'oauth#failure'
 
   namespace :admin, path: 'ueber', as: :admin do
-
     root to: 'home#dashboard'
 
     get    'login' => 'authentication#login_form', as: :login
@@ -64,6 +63,9 @@ InstrumentalSescBrasil::Application.routes.draw do
 
     get 'instruments' => 'instruments#index', :format => :json
     get 'genres' => 'genres#index', :format => :json
+
+    post 'sync_videos' => 'home#sync_videos'
+    post 'clear_cache' => 'home#clear_cache'
 
     resources :features, except: :show
     resources :artists, :except => :show do
@@ -133,7 +135,5 @@ InstrumentalSescBrasil::Application.routes.draw do
       get :datatable, :on => :collection, :format => :json
     end
     resource :live_transmission_settings, :only => [:edit, :update]
-
   end
-
 end

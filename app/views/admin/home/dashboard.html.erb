@@ -1,1 +1,11 @@
 <h1 class="page-header">Painel de Controle</h1>
+<p>
+  <%= form_tag controller: 'home', action: 'sync_videos', method: 'post' do %>
+    <%= submit_tag 'Sincronizar vídeos' %>
+  <% end %>
+</p>
+<p>
+  <%= form_tag controller: 'home', action: 'clear_cache', method: 'post' do %>
+    <%= submit_tag 'Limpar cache' %>
+  <% end %>
+</p>
