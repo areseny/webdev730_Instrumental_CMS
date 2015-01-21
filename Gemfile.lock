@@ -264,7 +264,7 @@ GEM
       rack
       raindrops (~> 0.7)
     vcr (2.7.0)
-    wannabe_bool (0.0.1)
+    wannabe_bool (0.1.0)
     will_paginate (3.0.5)
     will_paginate-bootstrap (1.0.0)
       will_paginate (>= 3.0.3)
