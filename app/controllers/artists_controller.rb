@@ -1,5 +1,4 @@
 class ArtistsController < ApplicationController
-
   # GET /artistas(/letra/:letter)
   def index
     @artists =
@@ -38,5 +37,4 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find_by_slug!(params[:id])
   end
-
 end

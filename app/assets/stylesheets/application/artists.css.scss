@@ -51,6 +51,18 @@
   width: 255px;
 }
 
+.block.artist-playlist {
+  h2 {
+    color: $orange;
+    font: 20px Aaux Pro Bold;
+    margin: 0;
+  }
+
+  .header {
+    margin: 0 0 15px 0;
+  }
+}
+
 .block.artist-details {
   font-size: 14px;
   padding: 5px 25px;

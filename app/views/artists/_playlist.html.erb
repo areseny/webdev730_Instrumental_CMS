@@ -1,0 +1,9 @@
+<% if artist.playlist_embed? %>
+  <div class="block artist-playlist">
+    <div class="header">
+      <h2>Músicas</h2>
+      Ouça as principais músicas do artista<br>
+    </div>
+    <%= raw artist.playlist_embed %>
+  </div>
+<% end -%>
