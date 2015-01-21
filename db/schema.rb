@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222062943) do
+ActiveRecord::Schema.define(version: 20150121001327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "artists", force: true do |t|
     t.string   "slug",                                     null: false
@@ -31,11 +32,18 @@ ActiveRecord::Schema.define(version: 20140222062943) do
     t.string   "banner"
     t.integer  "banner_width"
     t.integer  "banner_height"
+    t.integer  "view_count",                  default: 0,  null: false
+    t.text     "playlist_embed"
   end
 
   add_index "artists", ["name"], name: "index_artists_on_name", unique: true, using: :btree
   add_index "artists", ["slug"], name: "index_artists_on_slug", unique: true, using: :btree
   add_index "artists", ["sort_name"], name: "index_artists_on_sort_name", using: :btree
+
+  create_table "artists_genres", id: false, force: true do |t|
+    t.integer "artist_id", null: false
+    t.integer "genre_id",  null: false
+  end
 
   create_table "artists_instruments", id: false, force: true do |t|
     t.integer "artist_id",     null: false
@@ -117,13 +125,14 @@ ActiveRecord::Schema.define(version: 20140222062943) do
   add_index "features", ["enabled", "priority"], name: "index_features_on_enabled_and_priority", using: :btree
 
   create_table "gallery_images", force: true do |t|
-    t.integer  "artist_id",              null: false
-    t.string   "image",                  null: false
-    t.integer  "width",      default: 0, null: false
-    t.integer  "height",     default: 0, null: false
+    t.integer  "artist_id",                  null: false
+    t.string   "image",                      null: false
+    t.integer  "width",      default: 0,     null: false
+    t.integer  "height",     default: 0,     null: false
     t.integer  "position",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "fixed",      default: false, null: false
   end
 
   add_index "gallery_images", ["artist_id", "position"], name: "index_gallery_images_on_artist_id_and_position", unique: true, using: :btree
@@ -135,6 +144,13 @@ ActiveRecord::Schema.define(version: 20140222062943) do
   end
 
   add_index "genres", ["name"], name: "index_genres_on_name", unique: true, using: :btree
+
+  create_table "genres_search_results", id: false, force: true do |t|
+    t.integer "search_result_id", null: false
+    t.integer "genre_id",         null: false
+  end
+
+  add_index "genres_search_results", ["genre_id", "search_result_id"], name: "unique_genres_search_results", unique: true, using: :btree
 
   create_table "genres_songs", id: false, force: true do |t|
     t.integer "genre_id", null: false
@@ -150,6 +166,13 @@ ActiveRecord::Schema.define(version: 20140222062943) do
   end
 
   add_index "instruments", ["name"], name: "index_instruments_on_name", unique: true, using: :btree
+
+  create_table "instruments_search_results", id: false, force: true do |t|
+    t.integer "search_result_id", null: false
+    t.integer "instrument_id",    null: false
+  end
+
+  add_index "instruments_search_results", ["instrument_id", "search_result_id"], name: "unique_instruments_search_results", unique: true, using: :btree
 
   create_table "live_transmission_settings", force: true do |t|
     t.time     "starts_at",  null: false
@@ -169,6 +192,15 @@ ActiveRecord::Schema.define(version: 20140222062943) do
 
   add_index "live_transmissions", ["date"], name: "index_live_transmissions_on_date", using: :btree
 
+  create_table "pdf_schedules", force: true do |t|
+    t.date     "available_date", null: false
+    t.string   "file",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pdf_schedules", ["available_date"], name: "index_pdf_schedules_on_available_date", unique: true, using: :btree
+
   create_table "schedule_items", force: true do |t|
     t.date     "date",        null: false
     t.integer  "artist_id",   null: false
@@ -178,6 +210,18 @@ ActiveRecord::Schema.define(version: 20140222062943) do
   end
 
   add_index "schedule_items", ["date"], name: "index_schedule_items_on_date", using: :btree
+
+  create_table "search_results", force: true do |t|
+    t.integer  "searchable_id",   null: false
+    t.string   "searchable_type", null: false
+    t.string   "result_type",     null: false
+    t.string   "title",           null: false
+    t.text     "content",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "search_results", ["result_type"], name: "index_search_results_on_result_type", using: :btree
 
   create_table "songs", force: true do |t|
     t.integer  "playlistable_id",               null: false

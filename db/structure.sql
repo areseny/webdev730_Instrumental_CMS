@@ -75,7 +75,8 @@ CREATE TABLE artists (
     banner character varying(255),
     banner_width integer,
     banner_height integer,
-    view_count integer DEFAULT 0 NOT NULL
+    view_count integer DEFAULT 0 NOT NULL,
+    playlist_embed text
 );
 
 
@@ -1390,3 +1391,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140228071217');
 INSERT INTO schema_migrations (version) VALUES ('20140309193856');
 
 INSERT INTO schema_migrations (version) VALUES ('20140411213854');
+
+INSERT INTO schema_migrations (version) VALUES ('20150121001327');
