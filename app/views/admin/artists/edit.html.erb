@@ -3,7 +3,7 @@
   <%= render "admin_form", :model => @artist,
              :attributes => %w(name description instrument_names genre_names
                                banner thumbnail
-                               facebook_page twitter_widget_id),
+                               facebook_page twitter_widget_id playlist_embed),
              :field_options => {
                 :name => { :autofocus => true },
                 :instrument_names => { :class => "instruments-tokenfield" },
