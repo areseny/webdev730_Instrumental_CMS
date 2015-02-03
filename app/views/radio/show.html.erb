@@ -1,25 +1,47 @@
-<% title t(".title") %>
+<!DOCTYPE html>
+<html id="top">
+<head>
+  <title><% title t(".title") %></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= fontawesome_asset_tags %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/iefix.css" />
+  <![endif]-->
+</head>
 
-<div class="block-title">
-  <h1><%= t(".title")%></h1>
-</div>
-<div class="whiteblock grid playlists-instrumental">
-  <div class="col col-55">
-    <h2>Playlists Instrumental</h2>
-    <hr />
-    <div id="playlist_links">
-      <a href="javascript:void(0)" data-item="acervo" title="Acervo completo"><%= image_tag("playlists/acervo.png", size: '460x90', class: 'round', alt: "Acervo completo") %></a>
-      <a href="javascript:void(0)" data-item="chorinho" title="Chorinhos do Brasil"><%= image_tag("playlists/chorinho.png", size: '460x90', class: 'round', alt: "Chorinhos do Brasil") %></a>
-      <a href="javascript:void(0)" data-item="jazz" title="Jazz"><%= image_tag("playlists/jazz.png", size: '460x90', class: 'round', alt: "Jazz") %></a>
-      <a href="javascript:void(0)" data-item="rock" title="Rock"><%= image_tag("playlists/rock.png", size: '460x90', class: 'round', alt: "Rock") %></a>
-      <a href="javascript:void(0)" data-item="baioes" title="Baiões Nordestinos"><%= image_tag("playlists/baioes.png", size: '460x90', class: 'round', alt: "Baiões Nordestinos") %></a>
+<body class="radio">
+  <div id="radio_container">
+    <div class="top grid">
+      <div class="col col-20">
+        <%= image_tag("logo.png", size: '100x100', alt: "Instrumental SESC Brasil") %>
+      </div>
+      <div class="col col-80">
+        <span class="title">Rádio Instrumental Sesc Brasil</span>
+        <div class="info grid">
+          <div class="col col-50">
+            <span class="listening">Você está ouvindo:</span><br>
+            <span id="radio_name" class="title">Acervo completo</span>
+          </div>
+          <div class="col col-50">
+            <span class="select">selecionar rádio</span><br>
+            <select id="playlists">
+              <option value="acervo">Acervo Completo</option>
+              <option value="chorinho">Chorinhos do Brasil</option>
+              <option value="jazz">Jazz</option>
+              <option value="rock">Rock</option>
+              <option value="baioes">Baiões Nordestinos</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col col-45 playlist-sidebar">
-    <h2>Você está ouvindo: <span id="radio_name">Acervo completo</span></h2>
-    <hr />
     <div id="radio">
-      <iframe width="380" height="480" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/54865629%3Fsecret_token%3Ds-Xa7kd&amp;color=00aaad&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
+      <iframe width="500" height="480" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/54865629%3Fsecret_token%3Ds-Xa7kd&amp;color=00aaad&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
     </div>
   </div>
-</div>
+  <%= render "google_analytics_snippet" %>
+</body>
+</html>

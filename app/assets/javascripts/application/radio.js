@@ -1,13 +1,22 @@
 $(document).ready(function() {
-  $('#playlist_links a').click(function() {
-    info = radiosInfo[$(this).data('item')];
+  $('#radio_link').click(function(event) {
+    event.preventDefault();
+
+    var w = window.open($(this).attr('href'), 'Radio', 'width=540,height=640,scrollbars=no,resizable=no,status=no,toolbar=no,menubar=no');
+    w.focus();
+
+    return false;
+  });
+
+  $('select#playlists').change(function() {
+    info = radiosInfo[$(this).val()];
 
     $('#radio_name').html(info['title']);
     $('#radio').html(getRadioIframe(info));
   });
 
   function getRadioIframe(info) {
-    var iframe  = '<iframe width="380" height="480" scrolling="no" frameborder="no"';
+    var iframe  = '<iframe width="500" height="480" scrolling="no" frameborder="no"';
         iframe += 'src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/';
         iframe += info['id'];
         iframe += '&amp;color=' + info['color'];

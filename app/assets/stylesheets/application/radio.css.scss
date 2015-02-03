@@ -1,0 +1,37 @@
+@import "_mixins";
+
+body.radio {
+  padding: 20px;
+}
+
+#radio_container {
+  width: 500px;
+
+  .top {
+    padding-bottom: 15px;
+
+    .title {
+      color: #FFFFFF;
+      font-size: 25px;
+    }
+
+    .listening {
+      color: $orange;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .select {
+      color: #CCCCCC;
+      font-size: 16px;
+    }
+
+    select {
+      font-size: 16px;
+    }
+
+    .info {
+      padding-top: 15px;
+    }
+  }
+}
