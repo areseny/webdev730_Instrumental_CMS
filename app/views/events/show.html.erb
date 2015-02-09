@@ -23,8 +23,15 @@
 <% cache [@event, @song].compact do %>
 
 <div class="block-title">
-  <h1><%= @event.article_title %></h1>
-  <small><%= l @event.date, format: :long %></small>
+  <div class="artist-thumb">
+    <%= link_to(@artist, title: @artist.name) do %>
+      <%= image_tag(@artist.thumbnail_url, size: '50x50', alt: @artist.name, style: "border: 1px solid #FFF") %>
+    <% end -%>
+  </div>
+  <div class="artist-title">
+    <h1><%= @event.article_title %></h1>
+    <small><%= l @event.date, format: :long %></small>
+  </div>
 </div>
 <div class="whiteblock grid">
   <div class="col col-70">

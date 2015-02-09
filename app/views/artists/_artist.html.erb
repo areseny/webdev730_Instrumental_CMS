@@ -1,8 +1,7 @@
 <% cache artist do %>
 <div class="artist-thumbnail">
   <%= link_to artist do %>
-    <%= image_tag(artist.thumbnail_url, size: '200x200',
-                  alt: artist.name, class: 'round') %>
+    <%= image_tag(artist.thumbnail_url, size: '200x200', alt: artist.name, class: 'round') %>
     <span><%= artist.name %></span>
   <% end -%>
 </div>
