@@ -51,6 +51,8 @@ group :development do
   gem 'letter_opener'
   gem 'awesome_print'
   gem 'tiny_tds', require: false
+  gem 'pry-rails'
+  gem 'pry-debugger'
 end
 
 group :development, :test do
