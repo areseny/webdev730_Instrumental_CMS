@@ -1,7 +1,7 @@
 <% @home_page_menu_active = true %>
 <h1 class="page-header">Home Page - Programação SescTV</h1>
 <div style="margin-bottom: 15px;">
-  <%= link_to "Importar do Excel", import_admin_tv_schedule_items_path, class: "btn btn-primary" %>
+  <%= link_to "Importar arquivo CSV", import_admin_tv_schedule_items_path, class: "btn btn-primary" %>
   <%= link_to "Apagar todos os itens", clear_admin_tv_schedule_items_path,
               :method => :post, :class => 'btn btn-danger',
               :data => { :confirm => "Tem certeza que deseja apagar TODOS os itens abaixo?" } %>

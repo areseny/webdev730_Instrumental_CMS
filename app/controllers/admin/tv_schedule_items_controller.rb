@@ -1,5 +1,4 @@
 class Admin::TvScheduleItemsController < AdminController
-
   def index
   end
 
@@ -11,13 +10,21 @@ class Admin::TvScheduleItemsController < AdminController
   end
 
   def upload
-    total = TvScheduleItem.import(params[:file])
+    if params[:file].blank?
+      flash[:warning] = "admin.tv_schedule_items.no_import"
+      redirect_to import_admin_tv_schedule_items_path
+      return
+    end
+
+    total = TvScheduleItem.import(params[:file].path)
+
     if total > 0
       invalidate_cache
       flash[:success] = "admin.tv_schedule_items.import"
     else
       flash[:warning] = "admin.tv_schedule_items.no_import"
     end
+
     redirect_to admin_tv_schedule_items_path
   end
 
@@ -34,5 +41,4 @@ class Admin::TvScheduleItemsController < AdminController
     expire_fragment("tv-schedule-homepage-current-item-#{Date.current.to_s}")
     expire_fragment("tv-schedule-footer-feed-#{Date.current.to_s}")
   end
-
 end

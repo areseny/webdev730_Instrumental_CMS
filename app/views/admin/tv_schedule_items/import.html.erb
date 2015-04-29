@@ -4,13 +4,22 @@
   <%= link_to "Voltar à lista", admin_tv_schedule_items_path, class: "btn btn-default" %>
 </div>
 <div class="panel panel-default">
-  <div class="panel-heading">Importar arquivo do Excel</div>
+  <div class="panel-heading">Importar arquivo CSV</div>
   <div class="panel-body">
     <div class="alert alert-info">
       <a href="#" class="close" data-dismiss="alert">×</a>
       <p>
         <%= fa_icon "info-circle" %>
-        A planilha deve conter três colunas contendo: data, hora, e o nome do programa.
+        Cada linha do arquivo CSV deve ter 3 colunas, separadas por vírgula (,):
+        <ul>
+            <li>data (DD/MM/AAAA)</li>
+            <li>hora (HH:MM:SS)</li>
+            <li>nome do programa</li>
+        </ul>
+      </p>
+      <p>
+        Por exemplo:<br>
+        31/05/2015, 13:45:00, Instrumental SESC Brasil - Pedro Bonamides
       </p>
       <p>
         Caso alguma linha contenha data ou hora com formato inválido, com o nome do programa faltando, essa linha será ignorada.
