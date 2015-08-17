@@ -85,55 +85,72 @@ describe YoutubeParser do
     parser.factsheet.should == "Foo\nBar?\n\nBarbaz!!\n"
   end
 
-  it "detects band member information" do
-    parser = parse description: <<-_.dedent
-      Descrição do evento
+  context 'band members' do
+    it "detects band member information" do
+      parser = parse description: <<-_.dedent
+        Descrição do evento
 
-      Formação:
-      João - Baixo
-      Maria - Bateria e Bumbo
-      Pedro - Guitarra, violão e flauta
-      Foo bar baz
-    _
-    parser.band_members.should == [
-      ["João", ["baixo"]],
-      ["Maria", ["bateria", "bumbo"]],
-      ["Pedro", ["guitarra", "violão", "flauta"]]
-    ]
-  end
+        Formação:
+        João - Baixo
+        Maria - Bateria e Bumbo
+        Pedro - Guitarra, violão e flauta
+        Foo bar baz
+      _
+      parser.band_members.should == [
+        ["João", ["baixo"]],
+        ["Maria", ["bateria", "bumbo"]],
+        ["Pedro", ["guitarra", "violão", "flauta"]]
+      ]
+    end
 
-  it "ignores punctuation in band member information" do
-    parser = parse description: <<-_.dedent
-      Descrição do evento
+    it "ignores punctuation in band member information" do
+      parser = parse description: <<-_.dedent
+        Descrição do evento
 
-      Formação:
-      João - Baixo;
-      Maria - Bateria e Bumbo
-      Pedro - Guitarra, violão; e flauta.
-      Foo bar baz
-    _
-    parser.band_members.should == [
-      ["João", ["baixo"]],
-      ["Maria", ["bateria", "bumbo"]],
-      ["Pedro", ["guitarra", "violão", "flauta"]]
-    ]
-  end
+        Formação:
+        João - Baixo;
+        Maria - Bateria e Bumbo
+        Pedro - Guitarra, violão; e flauta.
+        Foo bar baz
+      _
+      parser.band_members.should == [
+        ["João", ["baixo"]],
+        ["Maria", ["bateria", "bumbo"]],
+        ["Pedro", ["guitarra", "violão", "flauta"]]
+      ]
+    end
 
-  it "orders the parsed band members" do
-    parser = parse description: <<-_.dedent
-      Descrição do evento
+    it "orders the parsed band members" do
+      parser = parse description: <<-_.dedent
+        Descrição do evento
 
-      Formação:
-      João - Baixo
-      Pedro - Guitarra, violão e flauta
-      Maria - Bateria e Bumbo
-      Foo bar baz
-    _
-    parser.band_members.should == [
-      ["João", ["baixo"]],
-      ["Maria", ["bateria", "bumbo"]],
-      ["Pedro", ["guitarra", "violão", "flauta"]]
-    ]
+        Formação:
+        João - Baixo
+        Pedro - Guitarra, violão e flauta
+        Maria - Bateria e Bumbo
+        Foo bar baz
+      _
+      parser.band_members.should == [
+        ["João", ["baixo"]],
+        ["Maria", ["bateria", "bumbo"]],
+        ["Pedro", ["guitarra", "violão", "flauta"]]
+      ]
+    end
+
+    it 'removes duplicated instruments' do
+      parser = parse description: <<-_.dedent
+        Descrição do evento
+
+        Formação:
+        Almir - violão, bandolim e violão
+        João - viola caipira e violão
+        Foo bar baz
+      _
+      parser.band_members.should == [
+        ['Almir', ['violão', 'bandolim']],
+        ['João', ['viola caipira', 'violão']],
+      ]
+    end
   end
 
   it "detects the event's date in the video's description" do

@@ -8,43 +8,37 @@ class YoutubeParser
     @full_description = description
   end
 
-  SongPattern =
-    /^([^|()]+) \| ([^|()]+) \(([^|()]+)\) \s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
+  SongPattern = /^([^|()]+) \| ([^|()]+) \(([^|()]+)\) \s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
 
   def song_match
     @song_match ||= SongPattern.match(title)
   end
 
-  InterviewPattern =
-    /^([^|()]+) \| \s*entrevista\s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
+  InterviewPattern = /^([^|()]+) \| \s*entrevista\s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
 
   def interview_match
     @interview_match ||= InterviewPattern.match(title)
   end
 
-  VideoChatPattern =
-    /^([^|()]+) \| \s*bate-papo\s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
+  VideoChatPattern = /^([^|()]+) \| \s*bate-papo\s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
 
   def video_chat_match
     @video_chat_match ||= VideoChatPattern.match(title)
   end
 
-  TvShowPattern =
-    /^([^|()]+) \|\s*programa\s+instrumental\s+sesc\s+brasil\s*$/xi
+  TvShowPattern = /^([^|()]+) \|\s*programa\s+instrumental\s+sesc\s+brasil\s*$/xi
 
   def tv_show_match
     @tv_show_match ||= TvShowPattern.match(title)
   end
 
-  SoundCheckPattern =
-    /^([^|()]+) \|\s*programa\s+passagem\s+de\s+som\s*$/xi
+  SoundCheckPattern = /^([^|()]+) \|\s*programa\s+passagem\s+de\s+som\s*$/xi
 
   def sound_check_match
     @sound_check_match ||= SoundCheckPattern.match(title)
   end
 
-  LegacyTvShowPattern =
-    /^([^|()]+) \|\s*programa\s+instrumental\s+sesc\s+brasil\s+\|\s+memória\s*$/xi
+  LegacyTvShowPattern = /^([^|()]+) \|\s*programa\s+instrumental\s+sesc\s+brasil\s+\|\s+memória\s*$/xi
 
   def legacy_tv_show_match
     @legacy_tv_show_match ||= LegacyTvShowPattern.match(title)
@@ -98,8 +92,7 @@ class YoutubeParser
     @factsheet ||= factsheet_match[1] if factsheet_match
   end
 
-  BandPattern =
-    /^\s*formação\s*:\s*\n((?:[^-\n]+-[^-\n]+\n)+)/i
+  BandPattern = /^\s*formação\s*:\s*\n((?:[^-\n]+-[^-\n]+\n)+)/i
 
   def band_match
     @band_match ||= BandPattern.match(full_description)
@@ -113,7 +106,7 @@ class YoutubeParser
           instruments = instruments.split(/\se\s|,|;|\./).map do |instrument|
             instrument.strip.downcase.presence
           end
-          [name.strip, instruments.compact]
+          [name.strip, instruments.compact.uniq]
         end
         array.sort_by(&:first)
       end
@@ -122,8 +115,7 @@ class YoutubeParser
     end
   end
 
-  DatePattern =
-    /que\s+ocorreu.+dia\s+(\d{2}\/\d{2}\/\d{4})\s*$/i
+  DatePattern = /que\s+ocorreu.+dia\s+(\d{2}\/\d{2}\/\d{4})\s*$/i
 
   def date_match
     @date_match ||= DatePattern.match(full_description)
@@ -169,5 +161,4 @@ class YoutubeParser
   def self.eligible?(attributes)
     new(title: attributes[:title], description: attributes[:description]).eligible?
   end
-
 end
