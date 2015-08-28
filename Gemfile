@@ -41,6 +41,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 2.1.30'
 
 group :production do
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 group :development do
