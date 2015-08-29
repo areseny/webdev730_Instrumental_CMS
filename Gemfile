@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.3'
 
 gem 'rails', '4.0.0'
 gem 'rails-i18n', '4.0.0'
@@ -53,7 +53,7 @@ group :development do
   gem 'awesome_print'
   gem 'tiny_tds', require: false
   gem 'pry-rails'
-  gem 'pry-debugger'
+  gem 'pry-byebug'
 end
 
 group :development, :test do
