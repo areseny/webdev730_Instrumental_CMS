@@ -8,7 +8,7 @@ class Admin::TvFeaturesController < AdminController
   end
 
   def new
-    @tv_feature = TvFeature.new(debuts_at: l(Date.today + 21.hours + 30.minutes, format: :list))
+    @tv_feature = TvFeature.new(debuts_at: Date.today + 21.hours + 30.minutes)
   end
 
   def create
