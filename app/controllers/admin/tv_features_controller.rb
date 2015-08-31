@@ -48,8 +48,8 @@ class Admin::TvFeaturesController < AdminController
   private
 
   def tv_feature_params
-    params.require(:tv_feature)
-          .permit(:debuts_at, :show_id, :description)
+    params[:debuts_at] = DateTime.parse(params[:debuts_at])
+    params.require(:tv_feature).permit(:debuts_at, :show_id, :description)
   end
 
   def invalidate_cache
