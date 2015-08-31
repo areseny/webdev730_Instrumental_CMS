@@ -48,7 +48,7 @@ class Admin::TvFeaturesController < AdminController
   private
 
   def tv_feature_params
-    params[:debuts_at] = DateTime.parse(params[:debuts_at])
+    params[:tv_feature][:debuts_at] = DateTime.parse(params[:tv_feature][:debuts_at])
     params.require(:tv_feature).permit(:debuts_at, :show_id, :description)
   end
 
