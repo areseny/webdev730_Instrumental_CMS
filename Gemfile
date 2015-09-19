@@ -31,8 +31,8 @@ gem 'wannabe_bool'
 
 # Assets precompilation
 gem 'sass-rails'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails'
+gem 'uglifier'
 gem 'unf'
 gem 'asset_sync'
 
