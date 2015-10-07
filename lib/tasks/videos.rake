@@ -1,32 +1,30 @@
 require 'dotenv/tasks'
 
 namespace :videos do
-
-  # Sync video information with YouTube
+  desc 'Sync video information with YouTube'
   task :sync do
     require 'dotenv'
     Dotenv.load
-    Rake::Task["environment"].execute
+    Rake::Task['environment'].execute
 
     Video.transaction do
       parsed_videos.each do |parsed_video|
         begin
           video = Video.where(youtube_id: parsed_video[:video_id]).first_or_initialize
-          parser = YoutubeParser.new(title: parsed_video[:title],
-                                     description: parsed_video[:description])
+          parser = YoutubeParser.new(title: parsed_video[:title], description: parsed_video[:description])
+
           if video.new_record?
             event_type = parser.match_type.to_s.classify
-            event_type = "LegacyShow" if event_type == "Show" && parser.date.year <= 2004
+            event_type = 'LegacyShow' if event_type == 'Show' && parser.date.year <= 2004
+
             artist = Artist.find_by_name(parser.artist_name)
             if artist.nil?
-              logger.info "#{video_url(parsed_video)} Artista não encontrado: "\
-                          "#{parser.artist_name}"
+              logger.info "#{video_url(parsed_video)} Artista não encontrado: #{parser.artist_name}"
               next
             else
               event = Event.where(date: parser.date, type: event_type).first
               if event && event.artist_id != artist.id
-                logger.info "#{video_url(parsed_video)}  Conflito com evento existente: "\
-                            "#{event.date} (#{event.artist.name})"
+                logger.info "#{video_url(parsed_video)}  Conflito com evento existente: #{event.date} (#{event.artist.name})"
                 next
               end
             end
@@ -45,7 +43,7 @@ namespace :videos do
             large_thumbnail: thumbnails['maxres'] || thumbnails['high'] || thumbnails['medium'],
             small_thumbnail: thumbnails['default'],
           }
-          video.timecodes.clear
+
           video.timecodes = (parser.timecodes || []).map do |seconds, description|
             Timecode.new(seconds: seconds, description: description)
           end
@@ -57,7 +55,7 @@ namespace :videos do
                                            factsheet: parser.factsheet,
                                            slug: generate_event_slug(parser.date, event_type))
 
-            if event_type == "Show" || event_type == "LegacyShow"
+            if event_type == 'Show' || event_type == 'LegacyShow'
               song = Song.create!(playlistable: event,
                                   title: parser.song_title,
                                   composer: parser.composer_name)
@@ -78,17 +76,16 @@ namespace :videos do
               video.viewable = event
             end
 
-            event.update_attributes!(description: parser.description,
-                                     factsheet: parser.factsheet,
-                                     visible: true)
+            event.update_attributes!(description: parser.description, factsheet: parser.factsheet, visible: true)
           end
 
           video.save!
-        rescue StandardError => e
-          logger.info video_url(parsed_video)
-          logger.info parser.inspect
-
-          raise e
+          logger.info "#{video_url(parsed_video)} #{event_type} sincronizado com sucesso. Artista: #{parser.artist_name}"
+        rescue => e
+          logger.error video_url(parsed_video)
+          logger.error parser.inspect
+          logger.error e.print
+          raise
         end
       end
     end
@@ -97,7 +94,7 @@ namespace :videos do
   private
 
   def youtube
-    @youtube ||= AuthProvider.find_by_key!("youtube")
+    @youtube ||= AuthProvider.find_by_key!('youtube')
   end
 
   def client
@@ -126,8 +123,8 @@ namespace :videos do
   end
 
   def generate_event_slug(date, type)
-    date_slug = I18n.l(date, format: "%d-%B-%Y")
-    I18n.t("slugs.#{type.underscore}") + "-em-" + date_slug.parameterize
+    date_slug = I18n.l(date, format: '%d-%B-%Y')
+    I18n.t("slugs.#{type.underscore}") + '-em-' + date_slug.parameterize
   end
 
   def logger
@@ -137,5 +134,4 @@ namespace :videos do
   def video_url(video)
     "http://www.youtube.com/watch?v=#{video[:video_id]}"
   end
-
 end

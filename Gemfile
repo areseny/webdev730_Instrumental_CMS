@@ -28,6 +28,7 @@ gem 'roo'
 gem 'pg_search'
 gem 'font_assets'
 gem 'wannabe_bool'
+gem 'rails-labeled_log'
 
 # Assets precompilation
 gem 'sass-rails'
