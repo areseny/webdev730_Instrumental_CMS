@@ -24,7 +24,7 @@ namespace :videos do
             else
               event = Event.where(date: parser.date, type: event_type).first
               if event && event.artist_id != artist.id
-                logger.info "#{video_url(parsed_video)}  Conflito com evento existente: #{event.date} (#{event.artist.name})"
+                logger.info "#{video_url(parsed_video)} Conflito com evento existente: #{event.date} (#{event.artist.name})"
                 next
               end
             end
@@ -80,7 +80,7 @@ namespace :videos do
           end
 
           video.save!
-          logger.info "#{video_url(parsed_video)} #{event_type} sincronizado com sucesso. Artista: #{parser.artist_name}"
+          logger.info "#{video_url(parsed_video)} sincronizado com sucesso. Artista: #{parser.artist_name}"
         rescue => e
           logger.error video_url(parsed_video)
           logger.error parser.inspect
