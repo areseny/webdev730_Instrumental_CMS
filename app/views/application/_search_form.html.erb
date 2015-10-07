@@ -1,9 +1,6 @@
 <form class="search-form" action="/busca" method="get">
-  <%= text_field_tag("q", @search_term, class: 'search-form-input',
-                     placeholder: 'Buscar no site', maxlength: 255,
-                     autofocus: true) %>
-  <%= button_tag("Buscar", name: nil, type: 'submit',
-                 class: 'search-form-submit') %>
+  <%= text_field_tag("q", @search_term, class: 'search-form-input', placeholder: 'Buscar no site', maxlength: 255, autofocus: true) %>
+  <%= button_tag(".", name: nil, type: 'submit', class: 'search-form-submit') %>
 </form>
 <script>
   jQuery(function($) {
