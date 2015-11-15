@@ -6,7 +6,7 @@
     <% if sound_check_domain? %>
       <%= link_to "Programas", sound_check_list_path %>
       <%= link_to "Sobre", about_us_path %>
-      <%= link_to "Instrumental SESC Brasil", root_url(host: "instrumentalsescbrasil.org.br"), target: '_blank' %>
+      <%= link_to "Instrumental SESC Brasil", root_url(host: "www.instrumentalsescbrasil.org.br"), target: '_blank' %>
     <% else -%>
       <%= link_to t("artists.index.title"), artists_path %>
       <%= link_to "Playlists", playlists_path %>
