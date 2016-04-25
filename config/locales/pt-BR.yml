@@ -205,7 +205,7 @@ pt-BR:
     contact_form_notification:
       to:
         name: "Instrumental SESC Brasil"
-        email: "contato-instrumental@streamer.com.br"
+        email: "instrumental@canalindependente.com.br"
       subject: "Mensagem enviada pelo formulário de contato do site do Instrumental SESC Brasil"
       body: |-
         Mensagem enviada através do formulário de contato do site:
@@ -221,7 +221,7 @@ pt-BR:
     contact_form_acknowledgement:
       from:
         name: "Instrumental SESC Brasil"
-        email: "contato@instrumentalsescbrasil.org.br"
+        email: "instrumental@canalindependente.com.br"
       subject: "Obrigado por seu contato"
       body: |-
         Olá, %NOME%. Obrigado pelo seu contato no site do Instrumental SESC Brasil.
