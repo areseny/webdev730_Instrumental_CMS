@@ -19,9 +19,7 @@
 <div class="block">
   <div class="grid">
     <div class="col" style="width: 640px;">
-      <iframe width="640" height="385"
-        src="http://cdn.livestream.com/embed/instrumentalsesc?layout=4&amp;height=385&amp;width=640&amp;autoplay=true" style="border:0;outline:0" frameborder="0" scrolling="no">
-      </iframe>
+      <%= raw @transmission.live_video %>
       <div class="share-buttons">
         <span>Compartilhe</span>
         <%= twitter_share_button(@transmission.twitter_text) %>

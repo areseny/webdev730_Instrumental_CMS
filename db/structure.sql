@@ -478,7 +478,8 @@ CREATE TABLE live_transmissions (
     description text NOT NULL,
     band_members text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    live_video text
 );
 
 
@@ -1393,3 +1394,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140309193856');
 INSERT INTO schema_migrations (version) VALUES ('20140411213854');
 
 INSERT INTO schema_migrations (version) VALUES ('20150121001327');
+
+INSERT INTO schema_migrations (version) VALUES ('20160521184459');

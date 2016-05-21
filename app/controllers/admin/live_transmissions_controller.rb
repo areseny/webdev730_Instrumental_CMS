@@ -49,7 +49,7 @@ class Admin::LiveTransmissionsController < AdminController
 
   def live_transmission_params
     params.require(:live_transmission)
-          .permit(:date, :artist_id, :description, :band_members)
+          .permit(:date, :artist_id, :description, :band_members, :live_video)
   end
 
   def invalidate_cache
