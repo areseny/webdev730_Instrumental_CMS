@@ -8,7 +8,7 @@ class YoutubeParser
     @full_description = description
   end
 
-  SongPattern = /^([^|()]+) \| ([^|()]+) \(([^|()]+)\) \s*\|\s*instrumental\s+sesc\s+brasil\s*$/xi
+  SongPattern = /^([^|()]+) \| ([^|()]+) \(([^|()]+)\) \s*\|\s*(instrumental\s+sesc\s+brasil|inst.\s+sesc)\s*$/xi
 
   def song_match
     @song_match ||= SongPattern.match(title)
