@@ -7,6 +7,8 @@ namespace :videos do
     Dotenv.load
     Rake::Task['environment'].execute
 
+    logger.info 'Iniciando sincronização de vídeos...'
+
     Video.transaction do
       parsed_videos.each do |parsed_video|
         begin
@@ -82,6 +84,7 @@ namespace :videos do
           video.save!
           logger.info "#{video_url(parsed_video)} sincronizado com sucesso. Artista: #{parser.artist_name}"
         rescue => e
+          logger.error 'Xi Marquinhos! Aconteceu algum "pobrema".'
           logger.error video_url(parsed_video)
           logger.error parser.inspect
           logger.error e.print
@@ -89,6 +92,9 @@ namespace :videos do
         end
       end
     end
+
+    logger.info 'Videos sincronizados com sucesso, Chico Mineiro!'
+    logger.info 'Vai pra casa!'
   end
 
   private
