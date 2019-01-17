@@ -52,7 +52,7 @@ group :development do
   gem 'guard-livereload'
   gem 'letter_opener'
   gem 'awesome_print'
-  gem 'tiny_tds', require: false
+  gem 'tiny_tds'       #, require: false
   gem 'pry-rails'
   gem 'pry-byebug'
 end
