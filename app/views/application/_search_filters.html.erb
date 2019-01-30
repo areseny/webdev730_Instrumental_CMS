@@ -15,7 +15,7 @@
     <h3><%= t ".filter_by_instrument" %></h3>
     <ul class="filter-list">
     <% instruments.each do |id, name, count| %>
-      <li><%= link_to "#{name.capitalize} (#{count})", params.merge(instrument_id: id) %></li>
+      <li><%= link_to "#{name.mb_chars.capitalize} (#{count})", params.merge(instrument_id: id) %></li>
     <% end -%>
     </ul>
   <% end -%>
