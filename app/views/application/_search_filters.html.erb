@@ -6,7 +6,7 @@
 <% if instrument %>
   <h3><%= t ".filter_by_instrument" %></h3>
   <p>
-    <strong><%= instrument.name.capitalize %></strong>
+    <strong><%= instrument.name.mb_chars.capitalize %></strong>
     <%= link_to "[x]", params.merge(instrument_id: nil) %>
   </p>
 <% else -%>
